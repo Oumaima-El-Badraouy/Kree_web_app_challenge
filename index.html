@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>KREE | Leader LLD Maroc</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://unpkg.com/lucide@latest"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+   <style>
+       body { font-family: 'Inter', sans-serif; }
+       .no-scrollbar::-webkit-scrollbar { display: none; }
+       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+       .custom-scroll::-webkit-scrollbar { width: 6px; }
+       .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+       .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+       .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+      
+       .car-shadow {
+           box-shadow: inset 0 -20px 60px -10px rgba(0,0,0,0.4);
+       }
+       .gold-gradient {
+           background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+       }
+   </style>
+
+
+   <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   colors: {
+                       kree: { blue: '#0056b3', dark: '#001A33', orange: '#FF6600' }
+                   }
+               }
+           }
+       }
+   </script>
+</head>
+<body class="bg-white text-gray-900">
+
+
+   <!-- NAVBAR -->
+   <nav class="bg-kree-dark border-b border-white/5 sticky top-0 z-40 shadow-xl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex justify-between h-20 items-center">
+               <div class="flex items-center gap-12 cursor-pointer" onclick="window.location.reload()">
+                   <div class="flex flex-col leading-none select-none group">
+                       <div class="flex items-baseline tracking-tighter transition-transform duration-300 group-hover:scale-105 origin-left">
+                           <span class="text-[32px] md:text-[40px] font-black text-kree-orange mr-[-2px]">K</span>
+                           <span class="text-[32px] md:text-[40px] font-black text-white tracking-wide">REE</span>
+                       </div>
+                       <span class="text-[8px] md:text-[9px] font-medium tracking-[0.4em] text-white/60 ml-1 mt-[4px]">RENTAL CARS</span>
+                   </div>
+               </div>
+               <button id="nav-auth-btn" onclick="openAuthModal()" class="bg-kree-orange text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-orange-600 transition-all flex items-center gap-2 transform hover:-translate-y-0.5">
+                   <i data-lucide="user" class="w-4 h-4"></i> <span id="nav-auth-text">Espace Client</span>
+               </button>
+           </div>
+       </div>
+   </nav>
+
+
+   <!-- HERO -->
+   <div class="relative bg-kree-dark overflow-hidden py-20 md:py-28">
+       <div class="max-w-7xl mx-auto px-4 relative z-10">
+           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-kree-orange text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in">
+               <i data-lucide="star" class="w-3 h-3 fill-current"></i> Leader de la LLD au Maroc
+           </div>
+           <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8 animate-fade-in">
+               La liberté <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500">sur mesure.</span>
+           </h1>
+           <p class="text-lg text-gray-300 mb-10 max-w-xl animate-fade-in">Configurez votre loyer en temps réel. Choisissez la durée, le kilométrage et repartez avec votre véhicule premium sous 48h.</p>
+       </div>
+       <!-- Abstract shapes -->
+       <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-kree-blue/10 to-transparent pointer-events-none"></div>
+   </div>
+
+
+   <!-- CATALOGUE -->
+   <main class="max-w-7xl mx-auto px-4 py-12">
+       <!-- Filtres Sticky -->
+       <div class="mb-10 sticky top-20 z-30 bg-white/95 backdrop-blur-xl py-4 border-b border-gray-100 transition-all">
+           <div class="flex overflow-x-auto pb-2 gap-3 no-scrollbar" id="filter-container"></div>
+       </div>
+
+
+       <!-- Grille Véhicules -->
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="vehicle-grid"></div>
+   </main>
+
+
+   <!-- MODALE CONFIGURATEUR -->
+   <div id="configurator-modal" class="fixed inset-0 z-50 hidden">
+       <div class="absolute inset-0 bg-kree-dark/90 backdrop-blur-sm transition-opacity" onclick="closeConfigurator()"></div>
+       <div class="relative w-full h-full flex items-center justify-center p-4 pointer-events-none">
+           <div class="bg-white w-full max-w-6xl h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row pointer-events-auto animate-fade-in">
+              
+               <!-- Gauche : Image -->
+               <div class="w-full md:w-5/12 h-64 md:h-full relative bg-gray-900 flex-shrink-0">
+                   <img id="conf-image" src="" class="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105">
+                   <div class="absolute inset-0 bg-gradient-to-t from-kree-dark via-transparent to-transparent md:bg-gradient-to-r"></div>
+                   <button onclick="closeConfigurator()" class="absolute top-4 left-4 md:hidden bg-black/20 p-2 rounded-full text-white backdrop-blur-md"><i data-lucide="x" class="w-5 h-5"></i></button>
+                   <div class="absolute bottom-0 left-0 p-8 text-white w-full">
+                       <span id="conf-luxe-badge" class="hidden gold-gradient text-black text-[10px] font-black px-3 py-1 rounded mb-3 inline-block tracking-widest shadow-lg">COLLECTION PRESTIGE</span>
+                       <h2 id="conf-name" class="text-3xl md:text-5xl font-bold mb-2 leading-tight"></h2>
+                       <p class="text-white/80 text-lg flex items-center gap-2"><span id="conf-category"></span> • <span id="conf-fuel"></span></p>
+                   </div>
+               </div>
+
+
+               <!-- Droite : Config -->
+               <div class="w-full md:w-7/12 h-full flex flex-col bg-white relative">
+<div class="flex-1 overflow-y-auto p-6 md:p-10 pb-28 md:pb-10 custom-scroll">
+                      
+                       <div class="flex justify-between items-start mb-8">
+                           <div>
+                               <h3 class="text-kree-orange text-xs font-extrabold tracking-widest uppercase mb-2">Configurateur</h3>
+                               <h2 class="text-3xl font-black text-kree-dark">Personnalisez votre offre</h2>
+                           </div>
+                           <button onclick="closeConfigurator()" class="hidden md:block p-2 hover:bg-gray-100 rounded-full transition-colors group">
+                               <i data-lucide="x" class="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors"></i>
+                           </button>
+                       </div>
+
+
+                       <!-- Client Type -->
+                       <div class="bg-gray-100 p-1.5 rounded-xl flex mb-8 shadow-inner">
+                           <button onclick="setClientType('business')" id="btn-business" class="flex-1 py-3 rounded-lg text-sm font-bold transition-all bg-white text-kree-dark shadow-sm">Entreprise (HT)</button>
+                           <button onclick="setClientType('individual')" id="btn-individual" class="flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500">Particulier (TTC)</button>
+                       </div>
+
+
+                       <!-- Transmission -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="settings-2" class="w-4 h-4"></i> Boîte de Vitesse</div>
+                           <div class="flex gap-3">
+                               <button onclick="setTransmission('Manuelle')" id="btn-trans-man" class="flex-1 p-4 rounded-xl border-2 text-left transition-all">
+                                   <span class="block font-black text-lg">Manuelle</span>
+                                   <span class="text-xs text-gray-500" id="txt-trans-man">Standard</span>
+                               </button>
+                               <button onclick="setTransmission('Automatique')" id="btn-trans-auto" class="flex-1 p-4 rounded-xl border-2 text-left transition-all">
+                                   <span class="block font-black text-lg">Automatique</span>
+                                   <span class="text-xs text-gray-500" id="txt-trans-auto">+ Confort</span>
+                               </button>
+                           </div>
+                       </div>
+
+
+                       <!-- Durée -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="calendar" class="w-4 h-4"></i> Durée</div>
+                           <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="duration-options"></div>
+                       </div>
+
+
+                       <!-- Km -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="gauge" class="w-4 h-4"></i> Kilométrage</div>
+                           <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="mileage-options"></div>
+                       </div>
+
+
+                       <div class="h-10"></div>
+                   </div>
+
+
+                   <!-- Sticky Footer -->
+<div class="border-t border-gray-100 bg-white p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-30 sticky bottom-0 md:relative">
+                       <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                           <div>
+                               <p class="text-sm font-bold text-gray-400 uppercase tracking-wider" id="price-label">Loyer mensuel (HT)</p>
+                               <div class="text-5xl font-black text-kree-dark tracking-tight flex items-baseline gap-1">
+                                   <span id="conf-price">0</span> <span class="text-lg text-gray-400 font-medium">/mois</span>
+                               </div>
+                               <p id="vat-notice" class="text-xs text-kree-orange mt-1 font-medium hidden">Inclus TVA (20%)</p>
+                           </div>
+                           <button id="conf-cta-btn" onclick="handleConfigAction()" class="h-16 px-10 rounded-2xl text-lg font-bold bg-kree-blue text-white shadow-xl hover:bg-blue-700 transition-all flex items-center justify-center gap-3 w-full md:w-auto transform hover:-translate-y-1">
+                               <span id="conf-cta-text">SE CONNECTER</span> <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+
+   <!-- AUTH MODAL -->
+   <div id="auth-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+       <div class="absolute inset-0 bg-kree-dark/80 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+       <div class="relative bg-white w-full max-w-md rounded-3xl shadow-2xl overflow-hidden animate-fade-in p-8 border border-gray-100">
+           <div class="text-center mb-8">
+               <h2 class="text-2xl font-black text-kree-dark mb-2">Espace Client</h2>
+               <p class="text-gray-500 text-sm">Accédez à vos devis et contrats</p>
+           </div>
+           <form onsubmit="event.preventDefault(); simulateLogin();" class="space-y-4">
+               <div>
+                   <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Email professionnel</label>
+                   <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all" placeholder="contact@kree.ma" required>
+               </div>
+               <div>
+                   <label class="block text-xs font-bold text-gray-700 uppercase mb-1">Mot de passe</label>
+                   <input type="password" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all" placeholder="••••••••" value="demo1234">
+               </div>
+               <button type="submit" class="w-full bg-kree-blue text-white font-bold py-4 rounded-xl hover:bg-[#004494] transition-colors flex items-center justify-center gap-2 mt-6 shadow-lg shadow-blue-500/20">
+                   <span id="auth-btn-text">Se connecter</span>
+               </button>
+           </form>
+       </div>
+   </div>
+
+
+   <!-- DASHBOARD MODAL -->
+   <div id="dashboard-modal" class="fixed inset-0 z-[55] hidden flex items-center justify-end">
+       <div class="absolute inset-0 bg-kree-dark/50 backdrop-blur-sm" onclick="closeDashboard()"></div>
+       <div class="relative w-full max-w-2xl bg-white h-full shadow-2xl overflow-hidden flex flex-col animate-fade-in">
+           <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+               <div>
+                   <h2 class="text-2xl font-black text-kree-dark">Mon Tableau de Bord</h2>
+                   <p class="text-sm text-gray-500">Vos demandes en cours</p>
+               </div>
+               <button onclick="closeDashboard()" class="p-2 hover:bg-gray-200 rounded-full transition-colors">
+                   <i data-lucide="x" class="w-6 h-6 text-gray-400"></i>
+               </button>
+           </div>
+           <div id="dashboard-content" class="flex-grow overflow-y-auto p-6 space-y-4 bg-gray-50"></div>
+           <div class="p-6 border-t border-gray-100 bg-white flex items-center justify-between shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+               <div class="flex items-center gap-3">
+                   <div class="w-10 h-10 rounded-full bg-kree-dark text-white flex items-center justify-center font-bold"><i data-lucide="user" class="w-5 h-5"></i></div>
+                   <div><p class="font-bold text-kree-dark">Client Démo</p><p class="text-xs text-gray-500"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b9dad5d0dcd7cdf9dddcd4d697d4d8">[email&#160;protected]</a></p></div>
+               </div>
+               <button onclick="logout()" class="text-red-500 text-sm font-bold hover:bg-red-50 px-4 py-2 rounded-lg transition-colors">Déconnexion</button>
+           </div>
+       </div>
+   </div>
+
+
+   <!-- Floating CTA -->
+   <button id="floating-cta" onclick="handleFloatingAction()" class="fixed bottom-6 right-6 z-40 px-6 py-4 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-500 transform translate-y-20 opacity-0 bg-kree-orange text-white hover:bg-orange-600 shadow-orange-500/30 hover:scale-105">
+       <i data-lucide="log-in" class="w-5 h-5"></i><span class="font-bold text-base" id="floating-cta-text">Se connecter</span>
+   </button>
+
+
+   <!-- SCRIPT -->
+   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+       // CONFIGURATION FLOTTE
+       const VEHICLES = [
+           // ECONOMIQUE
+           { id: 1, name: "Renault Clio 5", category: "Economique", type: "Eco", image: "images/renault-clio-5_5.jpg", basePrice: 3500, fuel: "Diesel", gear: "Manuelle", allowBothGears: true },
+           { id: 2, name: "Changan Alsvin", category: "Economique", type: "Eco", image: "images/changan-alsvin_0.jpg", basePrice: 3200, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 3, name: "Renault Kardian", category: "Economique", type: "SUV", image: "images/renault-kardian_0.jpg", basePrice: 3900, fuel: "Diesel", gear: "Manuelle", allowBothGears: true },
+
+           // CONFORT
+           { id: 4, name: "Hyundai Tucson", category: "Confort", type: "SUV", image: "images/hyundai-tucson_0.jpg", basePrice: 6500, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 5, name: "Changan CS35 Plus", category: "Confort", type: "SUV", image: "images/changan-cs35-plus_2.jpg", basePrice: 5500, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 6, name: "Changan CS55 Plus", category: "Confort", type: "SUV", image: "images/changan-cs55-plus_6.jpg", basePrice: 6500, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 7, name: "Hyundai Accent 2025", category: "Confort", type: "Sedan", image: "images/hyundai-accent-2025_4.jpg", basePrice: 4900, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+
+           // 7/9 PLACES
+           { id: 8, name: "Dacia Lodgy", category: "7/9 Places", type: "Minivan", image: "images/dacia-lodgy_0.jpg", basePrice: 4200, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+           { id: 9, name: "Dacia Jogger", category: "7/9 Places", type: "Minivan", image: "images/dacia-jogger_5.jpg", basePrice: 4800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+           { id: 10, name: "Mercedes Classe V", category: "7/9 Places", type: "Luxe", image: "images/mercedes-classe-v_1.jpg", basePrice: 18000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 11, name: "Hyundai Staria", category: "7/9 Places", type: "Luxe", image: "images/hyundai-tucson_0.jpg", basePrice: 12000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+
+           // UTILITAIRE
+           { id: 12, name: "Dacia Dokker", category: "Utilitaire", type: "Van", image: "images/dacia-lodgy_0.jpg", basePrice: 3800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+
+           // LUXE
+           { id: 13, name: "Mercedes Classe A AMG", category: "Luxe", type: "Sport", image: "images/mercedes-classe-v_1.jpg", basePrice: 8500, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 14, name: "VW Touareg", category: "Luxe", type: "SUV", image: "images/vw-touareg.jpg", basePrice: 14000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 15, name: "Mercedes Classe S", category: "Luxe", type: "Limousine", image: "images/mercedes-classe-v_9.jpg", basePrice: 25000, fuel: "Diesel", gear: "Auto", allowBothGears: false }
+       ];
+
+
+       let state = { user: null, quotes: [], activeCategory: 'Tous', currentVehicle: null, duration: 24, mileage: 10000, clientType: 'business', transmission: 'Manuelle' };
+
+
+       function init() { renderFilters(); renderVehicles(); lucide.createIcons(); }
+
+
+       function renderFilters() {
+           const container = document.getElementById('filter-container');
+           const cats = ["Tous", "Economique", "Confort", "7/9 Places", "Utilitaire", "Luxe"];
+           container.innerHTML = cats.map(cat => `<button onclick="filterCategory('${cat}')" class="px-6 py-3 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${state.activeCategory === cat ? 'bg-kree-dark text-white border-kree-dark shadow-lg scale-105' : 'bg-white text-gray-500 border-gray-200 hover:border-kree-blue/50'}">${cat}</button>`).join('');
+       }
+
+
+       function renderVehicles() {
+           const grid = document.getElementById('vehicle-grid');
+           const filtered = state.activeCategory === 'Tous' ? VEHICLES : VEHICLES.filter(v => v.category === state.activeCategory);
+          
+           if (filtered.length === 0) { grid.innerHTML = `<div class="col-span-full text-center py-20 text-gray-400">Aucun véhicule.</div>`; return; }
+
+
+           grid.innerHTML = filtered.map(v => {
+               const isLuxe = v.category === 'Luxe' || (v.category === '7/9 Places' && v.basePrice > 10000);
+               return `
+               <div class="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border ${isLuxe ? 'border-yellow-500/40 shadow-yellow-500/10' : 'border-gray-100'} hover:-translate-y-2 cursor-pointer" onclick="openConfigurator(${v.id})">
+                   <div class="aspect-[16/9] relative overflow-hidden bg-gray-100">
+                       ${isLuxe ? '<div class="absolute top-3 right-3 gold-gradient text-black text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg z-10 flex items-center gap-1 tracking-wider"><i data-lucide="star" class="w-3 h-3"></i> PREMIUM</div>' : ''}
+                       <div class="absolute top-3 left-3 bg-kree-dark/90 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1.5 rounded-md z-10 uppercase tracking-widest shadow-md">${v.category}</div>
+                       <img src="${v.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 car-shadow">
+                       <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white via-white/60 to-transparent"></div>
+                   </div>
+                   <div class="p-6 relative -mt-6">
+                       <h3 class="text-xl font-black text-kree-dark mb-1 leading-tight">${v.name}</h3>
+                       <div class="flex gap-3 text-xs text-gray-500 font-bold uppercase mb-5"><span>${v.fuel}</span> • <span>${v.gear}</span></div>
+                       <div class="pt-4 border-t border-dashed border-gray-200 flex justify-between items-end">
+                           <div><p class="text-[10px] text-gray-400 font-bold uppercase mb-0.5">À partir de</p><div class="text-2xl font-black ${isLuxe ? 'text-yellow-600' : 'text-kree-dark'}">${formatPrice(v.basePrice)}</div></div>
+                           <button class="w-full max-w-[140px] py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 transform group-hover:scale-[1.02] shadow-md ${isLuxe ? 'gold-gradient text-black hover:shadow-yellow-500/30' : 'bg-kree-blue text-white hover:bg-[#004494]'}"><span>CONFIGURER</span><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                       </div>
+                   </div>
+               </div>`
+           }).join('');
+           lucide.createIcons();
+       }
+
+
+       // ACTIONS
+       window.filterCategory = (cat) => { state.activeCategory = cat; renderFilters(); renderVehicles(); }
+      
+       window.openConfigurator = (id) => {
+           state.currentVehicle = VEHICLES.find(v => v.id === id);
+           state.duration = 24; state.mileage = 10000; state.clientType = 'business';
+           state.transmission = state.currentVehicle.allowBothGears ? 'Manuelle' : (state.currentVehicle.gear === 'Auto' ? 'Automatique' : 'Manuelle');
+          
+           document.getElementById('conf-image').src = state.currentVehicle.image;
+           document.getElementById('conf-name').innerText = state.currentVehicle.name;
+           document.getElementById('conf-category').innerText = state.currentVehicle.category;
+           document.getElementById('conf-fuel').innerText = state.currentVehicle.fuel;
+          
+           const isLuxe = state.currentVehicle.category === 'Luxe' || (state.currentVehicle.category === '7/9 Places' && state.currentVehicle.basePrice > 10000);
+           const badge = document.getElementById('conf-luxe-badge');
+           isLuxe ? badge.classList.remove('hidden') : badge.classList.add('hidden');
+          
+           updateConfiguratorUI();
+           document.getElementById('configurator-modal').classList.remove('hidden');
+       }
+       window.closeConfigurator = () => document.getElementById('configurator-modal').classList.add('hidden');
+
+
+       window.setClientType = (t) => { state.clientType = t; updateConfiguratorUI(); }
+       window.setDuration = (d) => { state.duration = d; updateConfiguratorUI(); }
+       window.setMileage = (m) => { state.mileage = m; updateConfiguratorUI(); }
+       window.setTransmission = (t) => { if(state.currentVehicle.allowBothGears) { state.transmission = t; updateConfiguratorUI(); } }
+
+
+       function updateConfiguratorUI() {
+           const isBiz = state.clientType === 'business';
+           const isLuxe = state.currentVehicle.category === 'Luxe' || (state.currentVehicle.category === '7/9 Places' && state.currentVehicle.basePrice > 10000);
+
+
+           // Client BTNs
+           document.getElementById('btn-business').className = `flex-1 py-3 rounded-lg text-sm font-bold transition-all ${isBiz ? 'bg-white text-kree-dark shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:bg-gray-100'}`;
+           document.getElementById('btn-individual').className = `flex-1 py-3 rounded-lg text-sm font-bold transition-all ${!isBiz ? 'bg-white text-kree-dark shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:bg-gray-100'}`;
+           document.getElementById('price-label').innerText = isBiz ? "Loyer mensuel (HT)" : "Loyer mensuel (TTC)";
+
+
+           // Transmision BTNs
+           const btnMan = document.getElementById('btn-trans-man');
+           const btnAuto = document.getElementById('btn-trans-auto');
+           const isAuto = state.transmission === 'Automatique';
+
+
+           if (state.currentVehicle.allowBothGears) {
+               btnMan.className = `flex-1 p-4 rounded-xl border-2 text-left transition-all cursor-pointer ${!isAuto ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 text-gray-500 hover:border-gray-300'}`;
+               btnAuto.className = `flex-1 p-4 rounded-xl border-2 text-left transition-all cursor-pointer ${isAuto ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 text-gray-500 hover:border-gray-300'}`;
+               document.getElementById('txt-trans-auto').innerText = "+ 400 DH/mois";
+               document.getElementById('txt-trans-man').innerText = "Standard";
+           } else {
+               const baseGear = state.currentVehicle.gear === 'Auto' ? 'Automatique' : 'Manuelle';
+               if (baseGear === 'Manuelle') {
+                   btnMan.className = `flex-1 p-4 rounded-xl border-2 border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue text-left transition-all`;
+                   btnAuto.className = `flex-1 p-4 rounded-xl border-2 border-gray-100 text-gray-300 bg-gray-50 text-left transition-all btn-disabled`;
+                   document.getElementById('txt-trans-auto').innerText = "Non disponible";
+               } else {
+                   btnAuto.className = `flex-1 p-4 rounded-xl border-2 border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue text-left transition-all`;
+                   btnMan.className = `flex-1 p-4 rounded-xl border-2 border-gray-100 text-gray-300 bg-gray-50 text-left transition-all btn-disabled`;
+                   document.getElementById('txt-trans-auto').innerText = "Standard";
+               }
+           }
+
+
+           // Options
+           document.getElementById('duration-options').innerHTML = [{v: 24, b: "Best Deal"}, {v: 12, b: "+20%"}, {v: 6, b: "+35%"}, {v: 1, b: "Spot"}].map(d =>
+               `<button onclick="setDuration(${d.v})" class="relative p-3 rounded-xl border-2 text-left transition-all flex flex-col justify-between h-24 ${state.duration === d.v ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 bg-white hover:border-gray-300'}"><span class="text-xl font-black">${d.v}<span class="text-xs ml-1">Mois</span></span><span class="text-[10px] font-bold bg-gray-100 px-2 py-0.5 rounded w-fit text-gray-600">${d.b}</span></button>`).join('');
+
+
+           document.getElementById('mileage-options').innerHTML = [10000, 20000, 30000].map(k =>
+               `<button onclick="setMileage(${k})" class="p-4 rounded-xl border-2 flex items-center justify-between transition-all ${state.mileage === k ? 'border-kree-blue bg-blue-50 text-kree-blue font-bold' : 'border-gray-100 text-gray-500'}"><span>${k/1000}k km/an</span></button>`).join('');
+
+
+           // CALCUL PRIX
+           let price = state.currentVehicle.basePrice;
+           if(state.duration === 12) price *= 1.20; else if(state.duration === 6) price *= 1.35; else if(state.duration === 1) price *= 1.50;
+          
+           if(state.mileage > 10000) {
+               const high = state.mileage === 30000;
+               const supp = (state.currentVehicle.type === "Eco" || state.currentVehicle.category === "Economique") ? (high ? 500 : 300) : (isLuxe ? (high ? 2500 : 1500) : (high ? 900 : 500));
+               price += supp;
+           }
+
+
+           if(state.currentVehicle.allowBothGears && state.transmission === 'Automatique') price += 400;
+           if(state.clientType === 'individual') price *= 1.20;
+
+
+           document.getElementById('conf-price').innerText = formatPrice(Math.round(price));
+          
+           // CTA
+           const ctaBtn = document.getElementById('conf-cta-btn');
+           const ctaText = document.getElementById('conf-cta-text');
+           ctaText.innerText = state.user ? "BLOQUER CE TARIF" : "SE CONNECTER";
+           ctaBtn.className = isLuxe ? "h-16 px-10 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-3 w-full md:w-auto gold-gradient text-black hover:shadow-yellow-500/30" : "h-16 px-10 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-3 w-full md:w-auto bg-kree-blue text-white hover:bg-[#004494]";
+          
+           // VAT Notice
+           const vat = document.getElementById('vat-notice');
+           !isBiz ? vat.classList.remove('hidden') : vat.classList.add('hidden');
+          
+           lucide.createIcons();
+       }
+
+
+       function formatPrice(p) { return new Intl.NumberFormat('fr-MA', { style: 'currency', currency: 'MAD', maximumFractionDigits: 0 }).format(p); }
+
+
+       // AUTH & NAVIGATION
+       window.openAuthModal = () => document.getElementById('auth-modal').classList.remove('hidden');
+       window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
+       window.simulateLogin = () => { setTimeout(() => { state.user = { name: "Client" }; updateAuthUI(); window.closeAuthModal(); }, 1000); }
+       window.logout = () => { state.user = null; updateAuthUI(); window.closeDashboard(); }
+      
+       function updateAuthUI() {
+           if (state.user) {
+               document.getElementById('nav-auth-btn').onclick = window.openDashboard;
+               document.getElementById('nav-auth-btn').classList.replace('bg-kree-orange', 'bg-kree-blue');
+               document.getElementById('nav-auth-text').innerText = "Mon Espace";
+               document.getElementById('floating-cta-text').innerText = "Mon Espace";
+               document.getElementById('floating-cta').onclick = window.openDashboard;
+               document.getElementById('floating-cta').classList.replace('bg-kree-orange', 'bg-kree-blue');
+           } else {
+               document.getElementById('nav-auth-btn').onclick = window.openAuthModal;
+               document.getElementById('nav-auth-btn').classList.replace('bg-kree-blue', 'bg-kree-orange');
+               document.getElementById('nav-auth-text').innerText = "Espace Client";
+               document.getElementById('floating-cta-text').innerText = "Se connecter";
+               document.getElementById('floating-cta').onclick = window.openAuthModal;
+               document.getElementById('floating-cta').classList.replace('bg-kree-blue', 'bg-kree-orange');
+           }
+           if(!document.getElementById('configurator-modal').classList.contains('hidden')) updateConfiguratorUI();
+       }
+
+
+       window.openDashboard = () => { renderDashboard(); document.getElementById('dashboard-modal').classList.remove('hidden'); }
+       window.closeDashboard = () => document.getElementById('dashboard-modal').classList.add('hidden');
+       window.handleConfigAction = () => state.user ? saveQuote() : (window.closeConfigurator(), window.openAuthModal());
+       window.handleFloatingAction = () => state.user ? openDashboard() : openAuthModal();
+
+
+       window.saveQuote = () => {
+           state.quotes.unshift({
+               id: Date.now(),
+               vehicle: state.currentVehicle,
+               price: document.getElementById('conf-price').innerText,
+               duration: state.duration,
+               mileage: state.mileage,
+               clientType: state.clientType
+           });
+           window.closeConfigurator();
+           window.openDashboard();
+       }
+
+
+       function renderDashboard() {
+           const container = document.getElementById('dashboard-content');
+           if (!state.quotes.length) { container.innerHTML = '<div class="text-center text-gray-500 py-10">Aucun devis sauvegardé.</div>'; return; }
+           container.innerHTML = state.quotes.map(q => `
+               <div class="border border-gray-100 rounded-xl p-4 flex gap-4 items-center bg-white shadow-sm mb-3">
+                   <img src="${q.vehicle.image}" class="w-24 h-16 object-cover rounded-lg bg-gray-100">
+                   <div>
+                       <h4 class="font-bold text-kree-dark">${q.vehicle.name}</h4>
+                       <p class="text-xs text-gray-500">${q.duration} Mois • ${q.mileage/1000}k km • ${q.clientType}</p>
+                       <p class="text-kree-blue font-bold text-sm mt-1">${q.price} / mois</p>
+                   </div>
+               </div>`).join('');
+       }
+
+
+       window.addEventListener('scroll', () => {
+           const btn = document.getElementById('floating-cta');
+           if(window.scrollY > 300) btn.classList.remove('translate-y-20', 'opacity-0');
+           else btn.classList.add('translate-y-20', 'opacity-0');
+       });
+
+
+       init();
+   </script>
+</body>
+</html>
