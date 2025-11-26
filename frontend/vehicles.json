@@ -1,0 +1,169 @@
+{
+  "VEHICLES": [
+    {
+      "id": 1,
+      "name": "Renault Clio 5",
+      "category": "Economique",
+      "type": "Eco",
+      "image": "imgs/renault_clio_5_4.jpg",
+      "basePrice": 3500,
+      "fuel": "Diesel",
+      "gear": "Manuelle",
+      "allowBothGears": true
+    },
+    {
+      "id": 2,
+      "name": "Changan Alsvin",
+      "category": "Economique",
+      "type": "Eco",
+      "image": "imgs/changan_alsvin_7.jpg",
+      "basePrice": 3200,
+      "fuel": "Essence",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 3,
+      "name": "Renault Kardian",
+      "category": "Economique",
+      "type": "SUV",
+      "image": "imgs/renault_kardian_5.jpg",
+      "basePrice": 3900,
+      "fuel": "Diesel",
+      "gear": "Manuelle",
+      "allowBothGears": true
+    },
+    {
+      "id": 4,
+      "name": "Hyundai Tucson",
+      "category": "Confort",
+      "type": "SUV",
+      "image": "imgs/hyundai_tucson_4.jpg",
+      "basePrice": 6500,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 5,
+      "name": "Changan CS35 Plus",
+      "category": "Confort",
+      "type": "SUV",
+      "image": "imgs/changan_cs35_plus_2.webp",
+      "basePrice": 5500,
+      "fuel": "Essence",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 6,
+      "name": "Changan CS55 Plus",
+      "category": "Confort",
+      "type": "SUV",
+      "image": "imgs/changan_cs55_plus_0.png",
+      "basePrice": 6500,
+      "fuel": "Essence",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 7,
+      "name": "Hyundai Accent 2025",
+      "category": "Confort",
+      "type": "Sedan",
+      "image": "imgs/hyundai_accent_2025_1.png",
+      "basePrice": 4900,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 8,
+      "name": "Dacia Lodgy",
+      "category": "7/9 Places",
+      "type": "Minivan",
+      "image": "imgs/dacia_lodgy_7.jpg",
+      "basePrice": 4200,
+      "fuel": "Diesel",
+      "gear": "Manuelle",
+      "allowBothGears": false
+    },
+    {
+      "id": 9,
+      "name": "Dacia Jogger",
+      "category": "7/9 Places",
+      "type": "Minivan",
+      "image": "imgs/dacia_jogger_3.png",
+      "basePrice": 4800,
+      "fuel": "Diesel",
+      "gear": "Manuelle",
+      "allowBothGears": false
+    },
+    {
+      "id": 10,
+      "name": "Mercedes Classe V",
+      "category": "7/9 Places",
+      "type": "Luxe",
+      "image": "imgs/mercedes_classe_v_1.webp",
+      "basePrice": 18000,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 11,
+      "name": "Hyundai Staria",
+      "category": "7/9 Places",
+      "type": "Luxe",
+      "image": "imgs/hyundai_staria_5.jpg",
+      "basePrice": 12000,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 12,
+      "name": "Dacia Dokker",
+      "category": "Utilitaire",
+      "type": "Van",
+      "image": "imgs/dacia_dokker_1.jpg",
+      "basePrice": 3800,
+      "fuel": "Diesel",
+      "gear": "Manuelle",
+      "allowBothGears": false
+    },
+    {
+      "id": 13,
+      "name": "Mercedes Classe A AMG",
+      "category": "Luxe",
+      "type": "Sport",
+      "image": "imgs/mercedes_classe_a_amg_3.png",
+      "basePrice": 8500,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 14,
+      "name": "VW Touareg",
+      "category": "Luxe",
+      "type": "SUV",
+      "image": "imgs/vw_touareg_7.jpg",
+      "basePrice": 14000,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    },
+    {
+      "id": 15,
+      "name": "Mercedes Classe S",
+      "category": "Luxe",
+      "type": "Limousine",
+      "image": "imgs/mercedes_classe_s_7.jpg",
+      "basePrice": 25000,
+      "fuel": "Diesel",
+      "gear": "Auto",
+      "allowBothGears": false
+    }
+  ]
+}

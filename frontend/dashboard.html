@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KREE - Mon Espace Client</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kree: { blue: '#0056b3', dark: '#001A33', orange: '#FF6600' }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    
+    <style>
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        .notification-bell {
+            position: relative;
+        }
+        .notification-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s infinite;
+        }
+        .btn-config.active,
+        .mileage-btn.active,
+        .trans-btn.active {
+            background-color: #FF6600;
+            color: white;
+            border-color: #FF6600;
+        }
+        .filter-btn.active {
+            background-color: #FF6600;
+            color: white;
+            border-color: #FF6600;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-kree-dark border-b border-white/10 sticky top-0 z-40 shadow-xl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-kree-orange rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">K</span>
+                    </div>
+                    <div>
+                        <h1 class="text-white font-bold text-lg">KREE</h1>
+                        <p class="text-white/60 text-xs">Espace Client</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation -->
+                <div class="hidden md:flex items-center space-x-6">
+                    <button onclick="showSection('dashboard')" class="nav-link text-white/80 hover:text-white px-3 py-2 rounded-lg transition-colors">
+                        Dashboard
+                    </button>
+                    <button onclick="showSection('requests')" class="nav-link text-white/80 hover:text-white px-3 py-2 rounded-lg transition-colors">
+                        Mes Demandes
+                    </button>
+                    <button onclick="showSection('proposals')" class="nav-link text-white/80 hover:text-white px-3 py-2 rounded-lg transition-colors">
+                        Propositions
+                    </button>
+                    <button onclick="showSection('rentals')" class="nav-link text-white/80 hover:text-white px-3 py-2 rounded-lg transition-colors">
+                        Mes Locations
+                    </button>
+                    <button onclick="showSection('new-request')" class="nav-link bg-kree-orange text-white px-4 py-2 rounded-lg hover:bg-orange-600 transition-colors">
+                        Nouvelle Demande
+                    </button>
+                </div>
+                
+                <!-- User Actions -->
+                <div class="flex items-center space-x-4">
+                    <!-- Notifications -->
+                    <button onclick="toggleNotifications()" class="notification-bell text-white/80 hover:text-white relative p-2 rounded-lg transition-colors">
+                        <i data-lucide="bell" class="w-6 h-6"></i>
+                        <span id="notificationCount" class="notification-count hidden">0</span>
+                    </button>
+                    
+                    <!-- User Menu -->
+                    <div class="relative">
+                        <button onclick="toggleUserMenu()" class="flex items-center space-x-2 text-white/80 hover:text-white transition-colors">
+                            <div class="w-8 h-8 bg-kree-orange rounded-full flex items-center justify-center">
+                                <i data-lucide="user" class="w-4 h-4 text-white"></i>
+                            </div>
+                            <span id="userName" class="hidden sm:block">Client</span>
+                            <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                        </button>
+                        
+                        <div id="userMenu" class="hidden absolute right-0 mt-2 w-48 glass-effect border border-white/20 rounded-lg shadow-lg">
+                            <div class="p-3 border-b border-white/20">
+                                <p class="text-black font-medium" id="userFullName">Client KREE</p>
+                                <p class="text-black text-sm" id="userEmail">client@example.com</p>
+                            </div>
+                            <button onclick="showSection('profile')" class="block w-full text-left px-4 py-2 text-black hover:text-white hover:bg-white/10">
+                                Mon Profil
+                            </button>
+                            <button onclick="logout()" class="block w-full text-left px-4 py-2 text-red-500 hover:text-red-200 hover:bg-red-100/20 border-t border-white/20">
+                                Déconnexion
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-white/20 bg-kree-dark/95">
+            <div class="px-4 py-3 space-y-2">
+                <button onclick="showSection('dashboard'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg">
+                    Dashboard
+                </button>
+                <button onclick="showSection('requests'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg">
+                    Mes Demandes
+                </button>
+                <button onclick="showSection('proposals'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg">
+                    Propositions
+                </button>
+                <button onclick="showSection('rentals'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg">
+                    Mes Locations
+                </button>
+                <button onclick="showSection('new-request'); toggleMobileMenu()" class="block w-full text-left px-3 py-2 bg-kree-orange text-white rounded-lg hover:bg-orange-600">
+                    Nouvelle Demande
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Notifications Panel -->
+    <div id="notificationsPanel" class="fixed top-16 right-4 w-80 max-h-96 glass-effect border border-white/20 rounded-lg shadow-lg z-40 hidden">
+        <div class="p-4 border-b border-white/20">
+            <h3 class="text-black font-medium">Notifications</h3>
+        </div>
+        <div id="notificationsList" class="max-h-80 overflow-y-auto p-4 space-y-3 custom-scroll">
+            <!-- Notifications will be loaded here -->
+        </div>
+        <div class="p-4 border-t border-white/20">
+            <button onclick="markAllNotificationsRead()" class="text-sm text-black hover:text-gray-700">
+                Marquer toutes comme lues
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="space-y-6">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-kree-dark mb-2">Bonjour <span id="dashboardUserName">Client</span> !</h1>
+                <p class="text-gray-600">Suivez vos demandes et locations en temps réel</p>
+            </div>
+            
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Demandes actives</p>
+                            <p class="text-2xl font-bold text-kree-dark" id="activeRequests">0</p>
+                        </div>
+                        <i data-lucide="file-text" class="w-8 h-8 text-blue-500"></i>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Propositions reçues</p>
+                            <p class="text-2xl font-bold text-kree-dark" id="receivedProposals">0</p>
+                        </div>
+                        <i data-lucide="mail" class="w-8 h-8 text-purple-500"></i>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Locations actives</p>
+                            <p class="text-2xl font-bold text-kree-dark" id="activeRentals">0</p>
+                        </div>
+                        <i data-lucide="car" class="w-8 h-8 text-green-500"></i>
+                    </div>
+                </div>
+                <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-gray-600 text-sm">Véhicules à livrer</p>
+                            <p class="text-2xl font-bold text-kree-dark" id="pendingDeliveries">0</p>
+                        </div>
+                        <i data-lucide="truck" class="w-8 h-8 text-orange-500"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="glass-effect rounded-2xl p-6 border border-gray-200/50">
+                <h3 class="text-xl font-semibold text-kree-dark mb-4">Actions rapides</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <button onclick="showSection('new-request')" class="bg-kree-blue text-white p-4 rounded-xl hover:bg-blue-700 transition-colors flex items-center space-x-3">
+                        <i data-lucide="plus-circle" class="w-5 h-5"></i>
+                        <span>Nouvelle demande</span>
+                    </button>
+                    <button onclick="showSection('proposals')" class="bg-purple-500 text-white p-4 rounded-xl hover:bg-purple-600 transition-colors flex items-center space-x-3">
+                        <i data-lucide="eye" class="w-5 h-5"></i>
+                        <span>Voir mes propositions</span>
+                    </button>
+                    <button onclick="showSection('rentals')" class="bg-green-500 text-white p-4 rounded-xl hover:bg-green-600 transition-colors flex items-center space-x-3">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                        <span>Mes locations</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="glass-effect rounded-2xl p-6 border border-gray-200/50">
+                <h3 class="text-xl font-semibold text-kree-dark mb-4">Activité récente</h3>
+                <div id="recentActivity" class="space-y-4">
+                    <p class="text-gray-500 text-center py-8">Aucune activité récente</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requests Section -->
+        <section id="requests" class="hidden space-y-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-3xl font-bold text-kree-dark">Mes Demandes</h1>
+                <button onclick="showSection('new-request')" class="bg-kree-blue text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Nouvelle demande
+                </button>
+            </div>
+            
+            <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                <div id="requestsList" class="space-y-4">
+                    <!-- Requests will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Proposals Section -->
+        <section id="proposals" class="hidden space-y-6">
+            <h1 class="text-3xl font-bold text-kree-dark">Propositions Reçues</h1>
+            
+            <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                <div id="proposalsList" class="space-y-6">
+                    <!-- Proposals will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Rentals Section -->
+        <section id="rentals" class="hidden space-y-6">
+            <h1 class="text-3xl font-bold text-kree-dark">Mes Locations</h1>
+            
+            <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                <div id="rentalsList" class="space-y-6">
+                    <!-- Rentals will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- New Request Section -->
+        <section id="new-request" class="hidden space-y-6">
+            <h1 class="text-3xl font-bold text-kree-dark mb-8">Configurer mon véhicule</h1>
+            
+            <!-- Configurator Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+                <!-- Configuration Panel -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Client Type -->
+                    <div class="glass-effect rounded-xl p-6 border border-gray-200/50 space-y-3">
+                        <h3 class="font-semibold text-kree-dark">Type de client</h3>
+                        <div class="flex flex-col gap-2">
+                            <button id="btn-individual" onclick="selectClientType('individual')" class="btn-config w-full px-4 py-2 rounded-lg border-2 border-gray-300 text-gray-700 hover:border-kree-orange active:bg-orange-50">
+                                <span>👤 Particulier (TTC)</span>
+                            </button>
+                            <button id="btn-business" onclick="selectClientType('business')" class="btn-config w-full px-4 py-2 rounded-lg border-2 border-gray-300 text-gray-700 hover:border-kree-orange active:bg-orange-50">
+                                <span>🏢 Entreprise (HT)</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Duration Selector -->
+                    <div class="glass-effect rounded-xl p-6 border border-gray-200/50 space-y-3">
+                        <h3 class="font-semibold text-kree-dark">Durée</h3>
+                        <input type="range" id="duration-slider" min="6" max="60" value="12" step="6" class="w-full cursor-pointer" oninput="updateDurationDisplay(this.value)">
+                        <div class="text-center">
+                            <p id="duration-display" class="text-xl font-bold text-kree-orange">12 mois</p>
+                        </div>
+                    </div>
+
+                    <!-- Mileage Selector -->
+                    <div class="glass-effect rounded-xl p-6 border border-gray-200/50 space-y-3">
+                        <h3 class="font-semibold text-kree-dark">Kilométrage</h3>
+                        <div class="flex gap-2 flex-wrap">
+                            <button onclick="selectMileage('10000')" class="mileage-btn px-3 py-2 rounded-lg border-2 border-gray-300 text-sm hover:border-kree-orange">10k</button>
+                            <button onclick="selectMileage('20000')" class="mileage-btn px-3 py-2 rounded-lg border-2 border-gray-300 text-sm hover:border-kree-orange">20k</button>
+                            <button onclick="selectMileage('30000')" class="mileage-btn px-3 py-2 rounded-lg border-2 border-gray-300 text-sm hover:border-kree-orange">30k</button>
+                            <button onclick="selectMileage('unlimited')" class="mileage-btn px-3 py-2 rounded-lg border-2 border-gray-300 text-sm hover:border-kree-orange">∞</button>
+                        </div>
+                    </div>
+
+                    <!-- Transmission Selector -->
+                    <div class="glass-effect rounded-xl p-6 border border-gray-200/50 space-y-3">
+                        <h3 class="font-semibold text-kree-dark">Transmission</h3>
+                        <div class="flex flex-col gap-2">
+                            <button id="btn-trans-man" onclick="selectTransmission('manual')" class="trans-btn w-full px-4 py-2 rounded-lg border-2 border-gray-300 text-gray-700 hover:border-kree-orange">
+                                <span>🚗 Manuelle</span>
+                            </button>
+                            <button id="btn-trans-auto" onclick="selectTransmission('auto')" class="trans-btn w-full px-4 py-2 rounded-lg border-2 border-gray-300 text-gray-700 hover:border-kree-orange">
+                                <span>⚙️ Automatique</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vehicles Display -->
+                <div class="lg:col-span-3 space-y-6">
+                    <!-- Category Filters -->
+                    <div class="glass-effect rounded-xl p-6 border border-gray-200/50">
+                        <h3 class="font-semibold text-kree-dark mb-4">Catégories</h3>
+                        <div id="filters-container" class="flex flex-wrap gap-3">
+                            <button onclick="filterCategory('all')" class="filter-btn px-4 py-2 rounded-full border-2 border-kree-orange bg-kree-orange text-white font-medium">
+                                Tous
+                            </button>
+                            <button onclick="filterCategory('Economique')" class="filter-btn px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 font-medium hover:border-kree-orange">
+                                Économique
+                            </button>
+                            <button onclick="filterCategory('Confort')" class="filter-btn px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 font-medium hover:border-kree-orange">
+                                Confort
+                            </button>
+                            <button onclick="filterCategory('7/9 Places')" class="filter-btn px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 font-medium hover:border-kree-orange">
+                                7/9 Places
+                            </button>
+                            <button onclick="filterCategory('Utilitaire')" class="filter-btn px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 font-medium hover:border-kree-orange">
+                                Utilitaire
+                            </button>
+                            <button onclick="filterCategory('Luxe')" class="filter-btn px-4 py-2 rounded-full border-2 border-gray-300 text-gray-700 font-medium hover:border-kree-orange">
+                                Luxe
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Vehicles Grid -->
+                    <div id="vehicles-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Vehicles will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Alert Container -->
+    <div id="alertContainer" class="fixed top-4 right-4 z-50 space-y-2">
+        <!-- Alerts will be shown here -->
+    </div>
+
+    <script>
+        // Global state
+        let currentUser = null;
+        let currentSection = 'dashboard';
+        let notifications = [];
+        let dashboardState = {
+            clientType: 'individual',
+            duration: 12,
+            mileage: '20000',
+            transmission: 'manual',
+            activeCategory: 'all'
+        };
+        
+        // API Configuration
+        const API_BASE = 'http://localhost:3001/api';
+
+        // VEHICLES DATA
+        const VEHICLES = [
+            // ECONOMIQUE
+            { id: 1, name: "Renault Clio 5", category: "Economique", image: "images/renault_clio_5_4.jpg", basePrice: 3500, transmission: "Manuelle" },
+            { id: 2, name: "Changan Alsvin", category: "Economique", image: "images/changan_alsvin_7.jpg", basePrice: 3200, transmission: "Auto" },
+            { id: 3, name: "Renault Kardian", category: "Economique", image: "images/renault_kardian_5.jpg", basePrice: 3900, transmission: "Manuelle" },
+            
+            // CONFORT
+            { id: 4, name: "Hyundai Tucson", category: "Confort", image: "images/hyundai_tucson_4.jpg", basePrice: 6500, transmission: "Auto" },
+            { id: 5, name: "Changan CS35 Plus", category: "Confort", image: "images/changan_cs35_plus_2.webp", basePrice: 5500, transmission: "Auto" },
+            { id: 6, name: "Changan CS55 Plus", category: "Confort", image: "images/changan_cs55_plus_0.png", basePrice: 6500, transmission: "Auto" },
+            { id: 7, name: "Hyundai Accent 2025", category: "Confort", image: "images/hyundai_accent_2025_1.png", basePrice: 4900, transmission: "Auto" },
+            
+            // 7/9 PLACES
+            { id: 8, name: "Dacia Lodgy", category: "7/9 Places", image: "images/dacia_lodgy_7.jpg", basePrice: 4200, transmission: "Manuelle" },
+            { id: 9, name: "Dacia Jogger", category: "7/9 Places", image: "images/dacia_jogger_3.png", basePrice: 4800, transmission: "Manuelle" },
+            { id: 10, name: "Mercedes Classe V", category: "7/9 Places", image: "images/mercedes_classe_v_1.webp", basePrice: 18000, transmission: "Auto" },
+            { id: 11, name: "Hyundai Staria", category: "7/9 Places", image: "images/hyundai_staria_5.jpg", basePrice: 12000, transmission: "Auto" },
+            
+            // UTILITAIRE
+            { id: 12, name: "Dacia Dokker", category: "Utilitaire", image: "images/dacia_dokker_1.jpg", basePrice: 3800, transmission: "Manuelle" },
+            
+            // LUXE
+            { id: 13, name: "BMW X5", category: "Luxe", image: "images/bmw_x5_0.jpg", basePrice: 25000, transmission: "Auto" },
+            { id: 14, name: "Mercedes C-Class", category: "Luxe", image: "images/mercedes_c_class_1.jpg", basePrice: 20000, transmission: "Auto" }
+        ];
+        
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', function() {
+            lucide.createIcons();
+            checkAuthState();
+            renderVehicles();
+            setupEventListeners();
+        });
+        
+        // CONFIGURATEUR FUNCTIONS
+        function selectClientType(type) {
+            dashboardState.clientType = type;
+            document.querySelectorAll('.btn-config').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-${type === 'individual' ? 'individual' : 'business'}`).classList.add('active');
+        }
+
+        function updateDurationDisplay(value) {
+            dashboardState.duration = parseInt(value);
+            document.getElementById('duration-display').textContent = value + ' mois';
+        }
+
+        function selectMileage(mileage) {
+            dashboardState.mileage = mileage;
+            document.querySelectorAll('.mileage-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function selectTransmission(type) {
+            dashboardState.transmission = type;
+            document.querySelectorAll('.trans-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn-trans-${type === 'manual' ? 'man' : 'auto'}`).classList.add('active');
+        }
+
+        function filterCategory(category) {
+            dashboardState.activeCategory = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active', 'bg-kree-orange', 'text-white', 'border-kree-orange'));
+            event.target.classList.add('active', 'bg-kree-orange', 'text-white', 'border-kree-orange');
+            renderVehicles();
+        }
+
+        function renderVehicles() {
+            const grid = document.getElementById('vehicles-grid');
+            if (!grid) return;
+
+            let filtered = VEHICLES;
+            if (dashboardState.activeCategory !== 'all') {
+                filtered = VEHICLES.filter(v => v.category === dashboardState.activeCategory);
+            }
+
+            // Filter by transmission if needed
+            if (dashboardState.transmission !== 'manual') {
+                filtered = filtered.filter(v => v.transmission === 'Auto');
+            }
+
+            grid.innerHTML = filtered.map(vehicle => `
+                <div class="glass-effect rounded-xl p-4 border border-gray-200/50 hover:shadow-lg transition-shadow">
+                    <div class="mb-4">
+                        <img src="${vehicle.image}" alt="${vehicle.name}" class="w-full h-48 object-cover rounded-lg" onerror="this.src='images/default-car.jpg'">
+                    </div>
+                    <h3 class="text-lg font-semibold text-kree-dark mb-2">${vehicle.name}</h3>
+                    <p class="text-sm text-gray-600 mb-4">${vehicle.category}</p>
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-2xl font-bold text-kree-orange">${vehicle.basePrice.toLocaleString()} DH</span>
+                        <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">${vehicle.transmission}</span>
+                    </div>
+                    <button onclick="selectVehicle(${vehicle.id})" class="w-full bg-kree-orange text-white py-2 rounded-lg hover:bg-orange-600 transition-colors font-medium">
+                        Configurer
+                    </button>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        function selectVehicle(vehicleId) {
+            const vehicle = VEHICLES.find(v => v.id === vehicleId);
+            if (!vehicle) return;
+
+            // Create request with vehicle configuration
+            const requestData = {
+                vehicleDetails: vehicle,
+                monthlyPrice: vehicle.basePrice,
+                durationMonths: dashboardState.duration,
+                mileage: dashboardState.mileage,
+                clientType: dashboardState.clientType,
+                transmission: dashboardState.transmission
+            };
+
+            // Save to state for later submission
+            localStorage.setItem('vehicleConfig', JSON.stringify(requestData));
+            
+            alert(`✅ ${vehicle.name} sélectionné! Vous pouvez maintenant soumettre votre demande.`);
+            showSection('dashboard');
+        }
+
+        // Event Listeners
+        function setupEventListeners() {
+            document.getElementById('requestForm').addEventListener('submit', handleRequestSubmit);
+            
+            // Click outside to close dropdowns
+            document.addEventListener('click', function(e) {
+                const userMenu = document.getElementById('userMenu');
+                const notificationsPanel = document.getElementById('notificationsPanel');
+                
+                if (!e.target.closest('#userMenu') && !e.target.closest('[onclick="toggleUserMenu()"]')) {
+                    userMenu.classList.add('hidden');
+                }
+                
+                if (!e.target.closest('#notificationsPanel') && !e.target.closest('[onclick="toggleNotifications()"]')) {
+                    notificationsPanel.classList.add('hidden');
+                }
+            });
+        }
+        
+        // Auth Functions
+        function checkAuthState() {
+            const userData = localStorage.getItem('kree_user');
+            
+            if (userData) {
+                currentUser = JSON.parse(userData);
+                updateUserUI();
+                showSection('dashboard');
+                loadDashboardData();
+                loadNotifications();
+                // Set up auto-refresh for notifications
+                setInterval(loadNotifications, 30000); // Refresh every 30 seconds
+            } else {
+                // For demo purposes, create a demo user
+                currentUser = {
+                    id: 'user1',
+                    name: 'Ahmed Benali',
+                    email: 'ahmed@example.com',
+                    phone: '+212 6 12 34 56 78'
+                };
+                localStorage.setItem('kree_user', JSON.stringify(currentUser));
+                updateUserUI();
+                showSection('dashboard');
+                loadDashboardData();
+                loadNotifications();
+            }
+        }
+        
+        function updateUserUI() {
+            document.getElementById('userName').textContent = currentUser.name;
+            document.getElementById('userFullName').textContent = currentUser.name;
+            document.getElementById('userEmail').textContent = currentUser.email;
+            document.getElementById('dashboardUserName').textContent = currentUser.name.split(' ')[0];
+        }
+        
+        function logout() {
+            localStorage.removeItem('kree_user');
+            window.location.reload();
+            window.location.href = 'index.html';
+        }
+        
+        // Navigation Functions
+        function showSection(sectionName) {
+            // Hide all sections
+            document.querySelectorAll('main > section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionName).classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-white', 'bg-kree-blue');
+                link.classList.add('text-white/80');
+            });
+            
+            // Highlight current section in mobile menu
+            const currentNavLink = document.querySelector(`[onclick="showSection('${sectionName}')"]`);
+            if (currentNavLink && currentNavLink.classList.contains('nav-link')) {
+                currentNavLink.classList.add('text-white', 'bg-kree-blue');
+            }
+            
+            currentSection = sectionName;
+            
+            // Load section data
+            switch (sectionName) {
+                case 'dashboard':
+                    loadDashboardData();
+                    loadRecentActivity();
+                    break;
+                case 'requests':
+                    loadRequests();
+                    break;
+                case 'proposals':
+                    loadProposals();
+                    break;
+                case 'rentals':
+                    loadRentals();
+                    break;
+            }
+        }
+        
+        // Load Data Functions
+        async function loadDashboardData() {
+            try {
+                // Load requests
+                const requestsResponse = await fetch(`${API_BASE}/customer/requests/${currentUser.id}`);
+                const requests = await requestsResponse.json();
+                
+                // Load proposals
+                const proposalsResponse = await fetch(`${API_BASE}/customer/proposals/${currentUser.id}`);
+                const proposals = await proposalsResponse.json();
+                
+                // Load rentals
+                const rentalsResponse = await fetch(`${API_BASE}/customer/rentals/${currentUser.id}`);
+                const rentals = await rentalsResponse.json();
+                
+                // Update stats
+                document.getElementById('activeRequests').textContent = requests.filter(r => r.status !== 'completed').length;
+                document.getElementById('receivedProposals').textContent = proposals.filter(p => p.status === 'sent').length;
+                document.getElementById('activeRentals').textContent = rentals.filter(r => r.status === 'active').length;
+                document.getElementById('pendingDeliveries').textContent = rentals.filter(r => r.delivery_status === 'pending').length;
+                
+            } catch (error) {
+                console.error('Error loading dashboard data:', error);
+            }
+        }
+        
+        async function loadRecentActivity() {
+            try {
+                const response = await fetch(`${API_BASE}/notifications?user_id=${currentUser.id}&limit=5`);
+                const activityNotifications = await response.json();
+                
+                const container = document.getElementById('recentActivity');
+                
+                if (activityNotifications.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-center py-8">Aucune activité récente</p>';
+                    return;
+                }
+                
+                container.innerHTML = activityNotifications.map(notification => `
+                    <div class="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                        <div class="w-2 h-2 bg-kree-blue rounded-full mt-2 ${notification.read ? 'opacity-50' : ''}"></div>
+                        <div class="flex-1">
+                            <p class="text-kree-dark font-medium">${notification.title}</p>
+                            <p class="text-gray-600 text-sm">${notification.message}</p>
+                            <p class="text-gray-500 text-xs mt-1">${formatDate(notification.created_at)}</p>
+                        </div>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error loading recent activity:', error);
+            }
+        }
+        
+        async function loadRequests() {
+            try {
+                const response = await fetch(`${API_BASE}/customer/requests/${currentUser.id}`);
+                const requests = await response.json();
+                
+                const container = document.getElementById('requestsList');
+                container.innerHTML = '';
+                
+                if (requests.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-center py-8">Aucune demande pour le moment</p>';
+                    return;
+                }
+                
+                requests.forEach(request => {
+                    const item = document.createElement('div');
+                    item.className = 'bg-white border border-gray-200 rounded-lg p-6 shadow-sm';
+                    item.innerHTML = `
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-kree-dark">${request.vehicle_type} - ${request.vehicle_category}</h3>
+                                <p class="text-gray-600">${request.fuel_type} • ${request.transmission} • ${request.duration} mois</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${getStatusClass(request.status)}">${getStatusLabel(request.status)}</span>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                            <div>
+                                <span class="text-gray-500">Kilométrage:</span>
+                                <span class="text-kree-dark ml-1">${request.mileage} km/an</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Usage:</span>
+                                <span class="text-kree-dark ml-1">${request.usage_type === 'business' ? 'Professionnel' : 'Personnel'}</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Budget:</span>
+                                <span class="text-kree-dark ml-1">${request.min_budget || 'Non'} - ${request.max_budget || 'Non'} DH</span>
+                            </div>
+                            <div>
+                                <span class="text-gray-500">Créée:</span>
+                                <span class="text-kree-dark ml-1">${formatDate(request.created_at)}</span>
+                            </div>
+                        </div>
+                        ${request.special_requirements ? `<div class="mt-3 p-3 bg-gray-50 rounded-lg"><span class="text-gray-500 text-sm">Exigences:</span> <span class="text-kree-dark text-sm">${request.special_requirements}</span></div>` : ''}
+                    `;
+                    container.appendChild(item);
+                });
+                
+            } catch (error) {
+                console.error('Error loading requests:', error);
+                showAlert('Erreur lors du chargement des demandes', 'error');
+            }
+        }
+        
+        async function loadProposals() {
+            try {
+                const response = await fetch(`${API_BASE}/customer/proposals/${currentUser.id}`);
+                const proposals = await proposalsResponse.json();
+                
+                const container = document.getElementById('proposalsList');
+                container.innerHTML = '';
+                
+                if (proposals.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-center py-8">Aucune proposition reçue pour le moment</p>';
+                    return;
+                }
+                
+                proposals.forEach(proposal => {
+                    const item = document.createElement('div');
+                    item.className = 'bg-white border border-gray-200 rounded-lg p-6 shadow-sm';
+                    item.innerHTML = `
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-kree-dark">${proposal.vehicle_details}</h3>
+                                <p class="text-gray-600">Proposé le ${formatDate(proposal.created_at)}</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${getProposalStatusClass(proposal.status)}">${getProposalStatusLabel(proposal.status)}</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-2xl font-bold text-kree-blue">${proposal.monthly_price} DH</p>
+                                <p class="text-sm text-gray-600">par mois</p>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-lg font-semibold text-kree-dark">${proposal.deposit_amount} DH</p>
+                                <p class="text-sm text-gray-600">caution</p>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-lg font-semibold text-kree-dark">${formatDate(proposal.delivery_date)}</p>
+                                <p class="text-sm text-gray-600">livraison prévue</p>
+                            </div>
+                        </div>
+                        ${proposal.includes_services && proposal.includes_services.length > 0 ? `
+                            <div class="mb-4">
+                                <h4 class="font-medium text-kree-dark mb-2">Services inclus:</h4>
+                                <div class="flex flex-wrap gap-2">
+                                    ${proposal.includes_services.map(service => `<span class="px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full">${service}</span>`).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        ${proposal.proposal_message ? `
+                            <div class="mb-4 p-3 bg-blue-50 rounded-lg">
+                                <h4 class="font-medium text-kree-dark mb-1">Message de l'agence:</h4>
+                                <p class="text-gray-700">${proposal.proposal_message}</p>
+                            </div>
+                        ` : ''}
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm text-gray-500">Expire le: ${formatDate(proposal.expires_at)}</p>
+                            ${proposal.status === 'sent' ? `
+                                <div class="space-x-3">
+                                    <button onclick="rejectProposal('${proposal.id}')" class="px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">
+                                        Refuser
+                                    </button>
+                                    <button onclick="bookProposal('${proposal.id}')" class="px-6 py-2 bg-kree-blue text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                        Réserver
+                                    </button>
+                                </div>
+                            ` : proposal.status === 'accepted' ? `
+                                <span class="px-4 py-2 bg-green-100 text-green-800 rounded-lg font-medium">Réservation confirmée</span>
+                            ` : proposal.status === 'rejected' ? `
+                                <span class="px-4 py-2 bg-red-100 text-red-800 rounded-lg font-medium">Proposition refusée</span>
+                            ` : ''}
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+                
+            } catch (error) {
+                console.error('Error loading proposals:', error);
+                showAlert('Erreur lors du chargement des propositions', 'error');
+            }
+        }
+        
+        async function loadRentals() {
+            try {
+                const response = await fetch(`${API_BASE}/customer/rentals/${currentUser.id}`);
+                const rentals = await response.json();
+                
+                const container = document.getElementById('rentalsList');
+                container.innerHTML = '';
+                
+                if (rentals.length === 0) {
+                    container.innerHTML = '<p class="text-gray-500 text-center py-8">Aucune location pour le moment</p>';
+                    return;
+                }
+                
+                rentals.forEach(rental => {
+                    const daysRemaining = Math.ceil((new Date(rental.end_date) - new Date()) / (1000 * 60 * 60 * 24));
+                    
+                    const item = document.createElement('div');
+                    item.className = 'bg-white border border-gray-200 rounded-lg p-6 shadow-sm';
+                    item.innerHTML = `
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-lg font-semibold text-kree-dark">${rental.vehicle_details}</h3>
+                                <p class="text-gray-600">Location #${rental.id.slice(-8)}</p>
+                            </div>
+                            <span class="px-3 py-1 rounded-full text-xs font-medium ${getDeliveryStatusClass(rental.delivery_status)}">${getDeliveryStatusLabel(rental.delivery_status)}</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-lg font-bold text-kree-blue">${rental.monthly_payment} DH</p>
+                                <p class="text-sm text-gray-600">Paiement mensuel</p>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-lg font-semibold text-kree-dark">${formatDate(rental.start_date)}</p>
+                                <p class="text-sm text-gray-600">Début location</p>
+                            </div>
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <p class="text-lg font-semibold text-kree-dark">${formatDate(rental.end_date)}</p>
+                                <p class="text-sm text-gray-600">Fin location</p>
+                            </div>
+                            <div class="text-center p-3 ${daysRemaining <= 30 ? 'bg-orange-100' : 'bg-gray-50'} rounded-lg">
+                                <p class="text-lg font-semibold text-kree-dark">${daysRemaining} jours</p>
+                                <p class="text-sm text-gray-600">Restants</p>
+                            </div>
+                        </div>
+                        ${rental.actual_delivery_date ? `
+                            <div class="mb-4 p-3 bg-green-50 rounded-lg">
+                                <p class="text-sm"><span class="font-medium">Véhicule livré le:</span> ${formatDate(rental.actual_delivery_date)}</p>
+                                ${rental.delivery_location ? `<p class="text-sm"><span class="font-medium">Lieu:</span> ${rental.delivery_location}</p>` : ''}
+                            </div>
+                        ` : ''}
+                        ${daysRemaining <= 7 && daysRemaining > 0 ? `
+                            <div class="mb-4 p-4 bg-orange-100 border border-orange-200 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="alert-circle" class="w-5 h-5 text-orange-600"></i>
+                                    <p class="text-orange-800 font-medium">Votre location se termine bientôt !</p>
+                                </div>
+                                <p class="text-orange-700 text-sm mt-1">Merci de prendre contact avec l'agence pour organiser le retour du véhicule.</p>
+                            </div>
+                        ` : daysRemaining <= 0 ? `
+                            <div class="mb-4 p-4 bg-red-100 border border-red-200 rounded-lg">
+                                <div class="flex items-center space-x-2">
+                                    <i data-lucide="alert-triangle" class="w-5 h-5 text-red-600"></i>
+                                    <p class="text-red-800 font-medium">Location échue !</p>
+                                </div>
+                                <p class="text-red-700 text-sm mt-1">Veuillez retourner le véhicule immédiatement ou contacter l'agence.</p>
+                            </div>
+                        ` : ''}
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm text-gray-500">Dernière mise à jour: ${formatDate(rental.created_at)}</p>
+                            <button onclick="contactAgency('${rental.agency_id}')" class="px-4 py-2 bg-kree-blue text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                Contacter l'agence
+                            </button>
+                        </div>
+                    `;
+                    container.appendChild(item);
+                });
+                
+                lucide.createIcons();
+                
+            } catch (error) {
+                console.error('Error loading rentals:', error);
+                showAlert('Erreur lors du chargement des locations', 'error');
+            }
+        }
+        
+        // Request Submission
+        async function handleRequestSubmit(event) {
+            event.preventDefault();
+            
+            const requestData = {
+                user_id: currentUser.id,
+                vehicle_type: document.getElementById('vehicleType').value,
+                vehicle_category: document.getElementById('vehicleCategory').value,
+                fuel_type: document.getElementById('fuelType').value,
+                transmission: document.getElementById('transmission').value,
+                duration: parseInt(document.getElementById('duration').value),
+                mileage: parseInt(document.getElementById('mileage').value),
+                usage_type: document.getElementById('usageType').value,
+                min_budget: document.getElementById('minBudget').value ? parseInt(document.getElementById('minBudget').value) : null,
+                max_budget: document.getElementById('maxBudget').value ? parseInt(document.getElementById('maxBudget').value) : null,
+                special_requirements: document.getElementById('specialRequirements').value || null,
+                client_name: currentUser.name,
+                client_phone: currentUser.phone
+            };
+            
+            try {
+                const response = await fetch(`${API_BASE}/customer/requests`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(requestData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showAlert('Demande soumise avec succès ! Les agences vont vous proposer leurs offres.', 'success');
+                    showSection('requests');
+                    document.getElementById('requestForm').reset();
+                } else {
+                    showAlert(data.error || 'Erreur lors de la soumission', 'error');
+                }
+            } catch (error) {
+                showAlert('Erreur de connexion au serveur', 'error');
+            }
+        }
+        
+        // Proposal Actions
+        async function bookProposal(proposalId) {
+            if (!confirm('Êtes-vous sûr de vouloir réserver cette proposition ?')) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE}/customer/book-proposal/${proposalId}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showAlert('Réservation confirmée ! Vous recevrez les détails par email.', 'success');
+                    loadProposals();
+                    loadDashboardData();
+                } else {
+                    showAlert(data.error || 'Erreur lors de la réservation', 'error');
+                }
+            } catch (error) {
+                showAlert('Erreur de connexion au serveur', 'error');
+            }
+        }
+        
+        function rejectProposal(proposalId) {
+            if (confirm('Êtes-vous sûr de vouloir refuser cette proposition ?')) {
+                showAlert('Proposition refusée', 'info');
+                loadProposals();
+            }
+        }
+        
+        function contactAgency(agencyId) {
+            // For demo purposes, just show a message
+            showAlert('Contact agence: +212 5 37 12 34 56', 'info');
+        }
+        
+        // Notifications
+        async function loadNotifications() {
+            try {
+                const response = await fetch(`${API_BASE}/notifications?user_id=${currentUser.id}`);
+                notifications = await response.json();
+                
+                // Update notification count
+                const unreadCount = notifications.filter(n => !n.read).length;
+                const countElement = document.getElementById('notificationCount');
+                if (unreadCount > 0) {
+                    countElement.textContent = unreadCount;
+                    countElement.classList.remove('hidden');
+                } else {
+                    countElement.classList.add('hidden');
+                }
+                
+                // Update notifications list if panel is visible
+                if (!document.getElementById('notificationsPanel').classList.contains('hidden')) {
+                    displayNotifications();
+                }
+                
+            } catch (error) {
+                console.error('Error loading notifications:', error);
+            }
+        }
+        
+        function toggleNotifications() {
+            const panel = document.getElementById('notificationsPanel');
+            panel.classList.toggle('hidden');
+            
+            if (!panel.classList.contains('hidden')) {
+                displayNotifications();
+            }
+        }
+        
+        function displayNotifications() {
+            const container = document.getElementById('notificationsList');
+            container.innerHTML = '';
+            
+            if (notifications.length === 0) {
+                container.innerHTML = '<p class="text-gray/60 text-center py-4">Aucune notification</p>';
+                return;
+            }
+            
+            notifications.forEach(notification => {
+                const item = document.createElement('div');
+                item.className = `p-3 rounded-lg cursor-pointer hover:bg-white/10 ${!notification.read ? 'bg-white/5' : ''}`;
+                item.onclick = () => markNotificationRead(notification.id);
+                item.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <p class="text-white font-medium">${notification.title}</p>
+                            <p class="text-white/70 text-sm">${notification.message}</p>
+                            <p class="text-white/50 text-xs mt-1">${formatDate(notification.created_at)}</p>
+                        </div>
+                        ${!notification.read ? '<div class="w-2 h-2 bg-kree-orange rounded-full mt-1"></div>' : ''}
+                    </div>
+                `;
+                container.appendChild(item);
+            });
+        }
+        
+        async function markNotificationRead(notificationId) {
+            try {
+                // For demo purposes, just mark as read in UI
+                const notification = notifications.find(n => n.id === notificationId);
+                if (notification) {
+                    notification.read = true;
+                    loadNotifications();
+                }
+            } catch (error) {
+                console.error('Error marking notification as read:', error);
+            }
+        }
+        
+        async function markAllNotificationsRead() {
+            try {
+                // For demo purposes, just mark all as read in UI
+                notifications.forEach(n => n.read = true);
+                loadNotifications();
+            } catch (error) {
+                console.error('Error marking all notifications as read:', error);
+            }
+        }
+        
+        // UI Functions
+        function toggleUserMenu() {
+            document.getElementById('userMenu').classList.toggle('hidden');
+        }
+        
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+        
+        function showAlert(message, type = 'info') {
+            const container = document.getElementById('alertContainer');
+            const alert = document.createElement('div');
+            
+            const typeColors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500',
+                info: 'bg-blue-500'
+            };
+            
+            alert.className = `${typeColors[type]} text-white px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 ease-in-out`;
+            alert.textContent = message;
+            
+            container.appendChild(alert);
+            
+            setTimeout(() => {
+                alert.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (alert.parentNode) {
+                        alert.parentNode.removeChild(alert);
+                    }
+                }, 300);
+            }, 3000);
+        }
+        
+        // Utility Functions
+        function formatDate(dateString) {
+            return new Date(dateString).toLocaleDateString('fr-FR', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        function getStatusClass(status) {
+            const classes = {
+                pending: 'bg-yellow-100 text-yellow-800',
+                assigned: 'bg-blue-100 text-blue-800',
+                quoted: 'bg-purple-100 text-purple-800',
+                approved: 'bg-green-100 text-green-800',
+                rejected: 'bg-red-100 text-red-800'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-800';
+        }
+        
+        function getStatusLabel(status) {
+            const labels = {
+                pending: 'En attente',
+                assigned: 'Assigné',
+                quoted: 'Devisé',
+                approved: 'Approuvé',
+                rejected: 'Rejeté',
+                completed: 'Terminé'
+            };
+            return labels[status] || status;
+        }
+        
+        function getProposalStatusClass(status) {
+            const classes = {
+                sent: 'bg-blue-100 text-blue-800',
+                accepted: 'bg-green-100 text-green-800',
+                rejected: 'bg-red-100 text-red-800',
+                expired: 'bg-gray-100 text-gray-800'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-800';
+        }
+        
+        function getProposalStatusLabel(status) {
+            const labels = {
+                sent: 'Nouvelle proposition',
+                accepted: 'Acceptée',
+                rejected: 'Refusée',
+                expired: 'Expirée'
+            };
+            return labels[status] || status;
+        }
+        
+        function getDeliveryStatusClass(status) {
+            const classes = {
+                pending: 'bg-orange-100 text-orange-800',
+                delivered: 'bg-green-100 text-green-800',
+                returned: 'bg-blue-100 text-blue-800'
+            };
+            return classes[status] || 'bg-gray-100 text-gray-800';
+        }
+        
+        function getDeliveryStatusLabel(status) {
+            const labels = {
+                pending: 'À livrer',
+                delivered: 'Livré',
+                returned: 'Retourné'
+            };
+            return labels[status] || status;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,2153 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <!-- SEO Meta Tags -->
+   <title>KREE | Leader de la Location Longue Durée au Maroc - LLD Vehicules</title>
+   <meta name="description" content="KREE est le leader marocain de la location longue durée. Flotte premium, devis instantané, service 24/7. Découvrez notre catalogue de véhicules pour entreprises et particuliers.">
+   <meta name="keywords" content="location longue durée, LLD Maroc, location vehicule Casablanca, flotte entreprise, leasing automobile, KREE Maroc, location voiture, vehicule de prestige">
+   <meta name="author" content="KREE - Leader LLD Maroc">
+   
+   <!-- Open Graph / Facebook -->
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://kree.ma/">
+   <meta property="og:title" content="KREE | Leader de la Location Longue Durée au Maroc">
+   <meta property="og:description" content="La liberté sur mesure avec KREE. Découvrez notre flotte premium et configurez votre loyer en temps réel.">
+   <meta property="og:image" content="https://kree.ma/images/og-image.jpg">
+   <meta property="og:locale" content="fr_FR">
+   
+   <!-- Twitter -->
+   <meta property="twitter:card" content="summary_large_image">
+   <meta property="twitter:url" content="https://kree.ma/">
+   <meta property="twitter:title" content="KREE | Leader de la Location Longue Durée au Maroc">
+   <meta property="twitter:description" content="La liberté sur mesure avec KREE. Découvrez notre flotte premium et configurez votre loyer en temps réel.">
+   <meta property="twitter:image" content="https://kree.ma/images/og-image.jpg">
+   
+   <!-- Canonical URL -->
+   <link rel="canonical" href="https://kree.ma/">
+   
+   <!-- Structured Data JSON-LD -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Organization",
+     "name": "KREE",
+     "description": "Leader de la Location Longue Durée au Maroc",
+     "url": "https://kree.ma",
+     "logo": "https://kree.ma/images/logo.png",
+     "contactPoint": {
+       "@type": "ContactPoint",
+       "telephone": "+212-5-22-000-000",
+       "contactType": "customer service",
+       "availableLanguage": "French"
+     },
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "123 Avenue Mohammed V",
+       "addressLocality": "Casablanca",
+       "addressCountry": "MA",
+       "postalCode": "20000"
+     },
+     "sameAs": [
+     "https://www.instagram.com/kree_ma/",
+       "https://www.facebook.com/kreemaroc",
+       "https://wa.me/00212697278436
+"
+     ]
+   }
+   </script>
+   
+   <!-- Vehicle Structured Data -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Service",
+     "name": "Location Longue Durée de Véhicules",
+     "description": "Services de location longue durée pour entreprises et particuliers au Maroc",
+     "provider": {
+       "@type": "Organization",
+       "name": "KREE"
+     },
+     "areaServed": {
+       "@type": "Country",
+       "name": "Morocco"
+     },
+     "serviceType": "Vehicle Rental"
+   }
+   </script>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://unpkg.com/lucide@latest"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+   <style>
+       body { 
+           font-family: 'Inter', sans-serif; 
+           overflow-x: hidden;
+       }
+       .no-scrollbar::-webkit-scrollbar { display: none; }
+       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+       .custom-scroll::-webkit-scrollbar { width: 6px; }
+       .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+       .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+       .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+      
+       .car-shadow {
+           box-shadow: inset 0 -20px 60px -10px rgba(0,0,0,0.4);
+       }
+       .gold-gradient {
+           background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+       }
+       
+       /* Effets parallax */
+       .parallax-section {
+           position: relative;
+           overflow: hidden;
+       }
+       .parallax-bg {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 160%;
+           z-index: -1;
+           transform: translateZ(0);
+           will-change: transform;
+       }
+       
+       /* Effets glass iOS */
+       .glass-effect {
+           background: rgba(255, 255, 255, 0.25);
+           backdrop-filter: blur(20px);
+           -webkit-backdrop-filter: blur(20px);
+           border: 1px solid rgba(255, 255, 255, 0.18);
+       }
+       .glass-dark {
+           background: rgba(0, 26, 51, 0.7);
+           backdrop-filter: blur(20px);
+           -webkit-backdrop-filter: blur(20px);
+           border: 1px solid rgba(255, 255, 255, 0.1);
+       }
+       
+       /* Animations fluides */
+       .smooth-transition {
+           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+       }
+       .float-animation {
+           animation: float 6s ease-in-out infinite;
+       }
+       @keyframes float {
+           0%, 100% { transform: translateY(0); }
+           50% { transform: translateY(-10px); }
+       }
+       
+       /* Effet de liquide */
+       .liquid-effect {
+           position: relative;
+           overflow: hidden;
+       }
+       .liquid-effect::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+           transition: left 0.7s;
+       }
+       .liquid-effect:hover::before {
+           left: 100%;
+       }
+
+       /* Styles pour la traduction arabe */
+       [dir="rtl"] {
+           text-align: right;
+       }
+       
+       [dir="rtl"] .nav-menu {
+           direction: rtl;
+       }
+       
+       [dir="rtl"] .language-selector {
+           direction: rtl;
+       }
+
+       /* Styles WhatsApp Chat */
+       .whatsapp-float {
+           position: fixed;
+           width: 60px;
+           height: 60px;
+           bottom: 35px;
+           right: 50px; 
+           background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+           color: #FFF;
+           border-radius: 50%;
+           font-size: 30px;
+           box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+           z-index: 1000;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+           cursor: pointer;
+           animation: pulse-green 2s infinite;
+       }
+
+       .whatsapp-float:hover {
+           transform: scale(1.1) rotate(5deg);
+           box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+       }
+
+       @keyframes pulse-green {
+           0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+           70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+           100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+       }
+   </style>
+
+   <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   colors: {
+                       kree: { blue: '#0056b3', dark: '#001A33', orange: '#FF6600' }
+                   }
+               }
+           }
+       }
+   </script>
+</head>
+<body class="bg-white text-gray-900">
+
+   <!-- NAVBAR -->
+   <nav class="glass-dark bg-kree-dark border-b border-white/5 sticky top-0 z-40 shadow-xl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex justify-between h-20 items-center">
+               <div class="flex items-center">
+                   <div class="flex flex-col leading-none select-none group cursor-pointer" onclick="showSection('home')" style="direction: ltr;">
+                       <div class="flex items-baseline tracking-tighter transition-transform duration-300 group-hover:scale-105 origin-left">
+                           <span class="text-[32px] md:text-[40px] font-black text-kree-orange mr-[-2px] no-translate">K</span>
+                           <span class="text-[32px] md:text-[40px] font-black text-white tracking-wide no-translate">REE</span>
+                       </div>
+                       <span class="text-[8px] md:text-[9px] font-medium tracking-[0.4em] text-white/60 ml-1 mt-[-2px] no-translate">RENTAL CARS</span>
+                   </div>
+               </div>
+               
+              <!-- Menu Navigation Centré Desktop -->
+<div class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+    <button onclick="showSection('home')" 
+        class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+        data-translate="Accueil">
+        Accueil
+    </button>
+
+    <button onclick="showSection('about')" 
+        class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+        data-translate="À propos">
+        À propos
+    </button>
+
+    <a href="partenaires.html" 
+        class="text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
+        <span data-translate="Espace Partenaire">Espace Partenaire</span>
+        <i data-lucide="external-link" class="w-4 h-4"></i>
+    </a>
+
+   <!-- 🌍 Dropdown Traduction -->
+<div class="relative group">
+    <button 
+        class="flex items-center gap-1 text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all select-none">
+        <i data-lucide="globe" class="w-5 h-5"></i>
+        <span id="current-lang">FR</span>
+        <i data-lucide="chevron-down" class="w-4 h-4"></i>
+    </button>
+
+    <!-- Menu -->
+    <div class="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg py-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 border border-gray-200">
+        <button onclick="changeLanguage('fr')" id="lang-fr" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇫🇷 Français</button>
+        <button onclick="changeLanguage('en')" id="lang-en" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇬🇧 English</button>
+        <button onclick="changeLanguage('ar')" id="lang-ar" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇲🇦 العربية</button>
+    </div>
+</div>
+</div>
+
+               <!-- Burger Menu Mobile -->
+               <button id="burger-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-kree-orange transition-colors">
+                   <i data-lucide="menu" class="w-6 h-6"></i>
+               </button>
+               
+               <button id="nav-auth-btn" onclick="openAuthModal()" class="bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-kree-blue transition-all flex items-center gap-2 transform hover:-translate-y-0.5 liquid-effect hidden md:flex">
+                   <i data-lucide="user" class="w-4 h-4"></i> <span id="nav-auth-text">Espace Client</span>
+               </button>
+           </div>
+
+           <!-- Mobile Menu Dropdown -->
+           <div id="mobile-menu" class="hidden pb-4 border-t border-white/10 md:hidden">
+               <button onclick="showSection('home'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="Accueil">
+                   Accueil
+               </button>
+
+               <button onclick="showSection('about'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="À propos">
+                   À propos
+               </button>
+
+               <a href="partenaires.html" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
+                   <span data-translate="Espace Partenaire">Espace Partenaire</span>
+                   <i data-lucide="external-link" class="w-4 h-4"></i>
+               </a>
+
+               <!-- Language Selection Mobile -->
+               <div class="px-4 py-2">
+                   <p class="text-white/60 text-xs font-medium mb-2" data-translate="Langue">Langue</p>
+                   <div class="flex gap-2">
+                       <button onclick="changeLanguage('fr'); toggleMobileMenu()" id="lang-fr-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇫🇷 FR</button>
+                       <button onclick="changeLanguage('en'); toggleMobileMenu()" id="lang-en-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇬🇧 EN</button>
+                       <button onclick="changeLanguage('ar'); toggleMobileMenu()" id="lang-ar-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇲🇦 AR</button>
+                   </div>
+               </div>
+
+               <!-- Auth Button Mobile -->
+               <button id="nav-auth-btn-mobile" onclick="openAuthModal(); toggleMobileMenu()" class="w-full mt-3 bg-orange-600 text-white px-4 py-2.5 rounded-full text-sm font-bold hover:bg-kree-blue transition-all flex items-center justify-center gap-2 mx-4">
+                   <i data-lucide="user" class="w-4 h-4"></i> <span id="nav-auth-text-mobile">Espace Client</span>
+               </button>
+           </div>
+       </div>
+   </nav>
+
+   <!-- SECTION HOME -->
+   <div id="home-section" class="section">
+       <!-- HERO avec parallax -->
+       <div class="relative bg-kree-dark overflow-hidden py-20 md:py-28 parallax-section">
+           <div class="parallax-bg bg-gradient-to-br from-kree-dark via-kree-blue/30 to-kree-orange/20"></div>
+           <div class="max-w-7xl mx-auto px-4 relative z-10">
+               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-effect text-kree-orange text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in float-animation">
+                   <i data-lucide="star" class="w-3 h-3 fill-current"></i> <span data-translate="Leader de la LLD au Maroc">Leader de la LLD au Maroc</span>
+               </div>
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8 animate-fade-in">
+                   <span data-translate="La liberté">La liberté</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500" data-translate="sur mesure.">sur mesure.</span>
+               </h1>
+               <p class="text-lg text-gray-300 mb-10 max-w-xl animate-fade-in" data-translate="Configurez votre loyer en temps réel">Configurez votre loyer en temps réel. Choisissez la durée, le kilométrage et repartez avec votre véhicule premium sous 48h.</p>
+               
+               <!-- Floating elements pour effet iOS -->
+               <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-kree-orange/10 blur-3xl"></div>
+               <div class="absolute -bottom-10 left-1/4 w-60 h-60 rounded-full bg-kree-blue/10 blur-3xl"></div>
+           </div>
+       </div>
+
+       <!-- CATALOGUE -->
+       <main class="max-w-7xl mx-auto px-4 py-12 parallax-section">
+           <div class="parallax-bg bg-gradient-to-b from-white to-gray-50/80"></div>
+           <!-- Filtres Sticky -->
+           <div class="mb-10 sticky top-[-10] z-30 glass-effect py-4 border-b border-gray-100/50 transition-all">
+               <div class="flex overflow-x-auto pb-2 gap-3 no-scrollbar" id="filter-container"></div>
+           </div>
+
+           <!-- Grille Véhicules -->
+           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="vehicle-grid"></div>
+       </main>
+   </div>
+
+   <!-- SECTION À PROPOS -->
+   <div id="about-section" class="section hidden">
+       <div class="bg-kree-dark py-20">
+           <div class="max-w-7xl mx-auto px-4 text-center">
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8">
+                   <span data-translate="À propos de KREE">À propos de</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500">K<span class="text-transparent bg-clip-text bg-white">REE</span></span> 
+               </h1>
+               <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="Leader marocain de la location longue durée">
+                   Leader marocain de la location longue durée, nous accompagnons les entreprises et les particuliers dans leurs projets de mobilité.
+               </p>
+           </div>
+       </div>
+
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <!-- Stats -->
+           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-blue mb-2">10+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Années d'expérience">Années d'expérience</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-orange mb-2">5000+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Véhicules en flotte">Véhicules en flotte</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-blue mb-2">1500+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Clients satisfaits">Clients satisfaits</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-orange mb-2">24/7</div>
+                   <div class="text-gray-600 font-medium" data-translate="Support client">Support client</div>
+               </div>
+           </div>
+
+           <!-- Notre Mission -->
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+               <div>
+                   <h2 class="text-3xl font-black text-kree-dark mb-6" data-translate="Notre Mission">Notre Mission</h2>
+                   <p class="text-gray-600 text-lg mb-6" data-translate="Chez KREE, nous révolutionnons">
+                       Chez KREE, nous révolutionnons la mobilité au Maroc en proposant des solutions de location longue durée adaptées aux besoins de chacun. 
+                       Notre expertise et notre commitment font de nous le partenaire de confiance pour tous vos projets automobiles.
+                   </p>
+                   <p class="text-gray-600 text-lg" data-translate="Avec une flotte moderne">
+                       Avec une flotte moderne et un service client exceptionnel, nous nous engageons à vous offrir une expérience de location sans tracas.
+                   </p>
+               </div>
+               <div class="glass-effect p-8 rounded-2xl">
+                   <h3 class="text-xl font-bold text-kree-dark mb-4" data-translate="Nos Valeurs">Nos Valeurs</h3>
+                   <ul class="space-y-4">
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Excellence du service client">Excellence du service client</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Transparence et confiance">Transparence et confiance</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Innovation continue">Innovation continue</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Respect de l'environnement">Respect de l'environnement</span>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+
+           <!-- Contact -->
+           <div class="glass-effect p-8 rounded-2xl text-center">
+               <h2 class="text-2xl font-black text-kree-dark mb-6" data-translate="Contactez-nous">Contactez-nous</h2>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   <div>
+                       <i data-lucide="map-pin" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Adresse">Adresse</h3>
+                       <p class="text-gray-600">Mohammedia, Maroc  /<br>Marrakech, Maroc</p>
+                   </div>
+                   <div>
+                       <i data-lucide="phone" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Téléphone">Téléphone</h3>
+                       <p class="text-gray-600">00212697278436</p>
+                   </div>
+                   <div>
+                       <i data-lucide="mail" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Email">Email</h3>
+                       <p class="text-gray-600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c3cfcdcdc5d2c3c9c1cce0cbd2c5c58ecdc1"><span class="__cf_email__" data-cfemail="a0d4c1dac9d2c5c4c18ed0d2cfe0c7cdc1c9cc8ec3cfcd">tazireda.pro@gmail.com</span></a></p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- MODALE CONFIGURATEUR -->
+   <div id="configurator-modal" class="fixed inset-0 z-50 hidden">
+       <div class="absolute inset-0 bg-kree-dark/90 backdrop-blur-sm transition-opacity" onclick="closeConfigurator()"></div>
+       <div class="relative w-full h-full flex items-center justify-center p-4 pointer-events-none">
+           <div class="glass-effect w-full max-w-6xl h-[90vh] rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row pointer-events-auto animate-fade-in border border-white/20">
+              
+               <!-- Gauche : Image -->
+               <div class="w-full md:w-5/12 h-64 md:h-full relative bg-gray-900 flex-shrink-0">
+                   <img id="conf-image" src="" class="w-full h-full object-cover opacity-90 transition-transform duration-700 hover:scale-105">
+                   <div class="absolute inset-0 bg-gradient-to-t from-kree-dark via-transparent to-transparent md:bg-gradient-to-r"></div>
+                   <button onclick="closeConfigurator()" class="absolute top-4 left-4 md:hidden glass-dark p-2 rounded-full text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+                   <div class="absolute bottom-0 left-0 p-8 text-white w-full">
+                       <span id="conf-luxe-badge" class="hidden gold-gradient text-black text-[10px] font-black px-3 py-1 rounded mb-3 inline-block tracking-widest shadow-lg">COLLECTION PRESTIGE</span>
+                       <h2 id="conf-name" class="text-3xl md:text-5xl font-bold mb-2 leading-tight"></h2>
+                       <p class="text-white/80 text-lg flex items-center gap-2"><span id="conf-category"></span> • <span id="conf-fuel"></span></p>
+                   </div>
+               </div>
+
+               <!-- Droite : Config -->
+               <div class="w-full md:w-7/12 h-full flex flex-col bg-white/90 relative">
+                    <div class="flex-1 overflow-y-scroll overscroll-contain p-6 md:p-10 pb-56 md:pb-10 custom-scroll">
+                      
+                       <div class="flex justify-between items-start mb-8">
+                           <div>
+                               <h3 class="text-kree-orange text-xs font-extrabold tracking-widest uppercase mb-2">Configurateur</h3>
+                               <h2 class="text-3xl font-black text-kree-dark">Personnalisez votre offre</h2>
+                           </div>
+                           <button onclick="closeConfigurator()" class="hidden md:block p-2 hover:bg-gray-100/50 rounded-full transition-colors group glass-effect">
+                               <i data-lucide="x" class="w-6 h-6 text-gray-400 group-hover:text-red-500 transition-colors"></i>
+                           </button>
+                       </div>
+
+                       <!-- Client Type -->
+                       <div class="bg-gray-100/50 p-1.5 rounded-xl flex mb-8 shadow-inner">
+                           <button onclick="setClientType('business')" id="btn-business" class="flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark shadow-sm liquid-effect">Entreprise (HT)</button>
+                           <button onclick="setClientType('individual')" id="btn-individual" class="flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500 liquid-effect">Particulier (TTC)</button>
+                       </div>
+
+                       <!-- Transmission -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="settings-2" class="w-4 h-4"></i> Boîte de Vitesse</div>
+                           <div class="flex gap-3">
+                               <button onclick="setTransmission('Manuelle')" id="btn-trans-man" class="flex-1 p-4 rounded-xl border-2 text-left transition-all liquid-effect">
+                                   <span class="block font-black text-lg">Manuelle</span>
+                                   <span class="text-xs text-gray-500" id="txt-trans-man">Standard</span>
+                               </button>
+                               <button onclick="setTransmission('Automatique')" id="btn-trans-auto" class="flex-1 p-4 rounded-xl border-2 text-left transition-all liquid-effect">
+                                   <span class="block font-black text-lg">Automatique</span>
+                                   <span class="text-xs text-gray-500" id="txt-trans-auto">+ Confort</span>
+                               </button>
+                           </div>
+                       </div>
+
+                       <!-- Durée -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="calendar" class="w-4 h-4"></i> Durée</div>
+                           <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="duration-options"></div>
+                       </div>
+
+                       <!-- Km -->
+                       <div class="mb-8">
+                           <div class="flex items-center gap-2 mb-4 text-kree-blue font-bold text-sm uppercase tracking-wide"><i data-lucide="gauge" class="w-4 h-4"></i> Kilométrage</div>
+                           <div class="grid grid-cols-2 md:grid-cols-3 gap-0" id="mileage-options"></div>
+                       </div>
+
+                       <div class="h-10"></div>
+                   </div>
+
+                   <!-- Sticky Footer -->
+                   <div class="border-t border-gray-100/50 glass-effect p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] z-30 sticky bottom-0 md:relative">
+                       <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                           <div>
+                               <p class="text-sm font-bold text-gray-400 uppercase tracking-wider" id="price-label">Loyer mensuel (HT)</p>
+                               <div class="text-5xl font-black text-kree-dark tracking-tight flex items-baseline gap-1">
+                                   <span id="conf-price">0</span> <span class="text-lg text-gray-400 font-medium">/mois</span>
+                               </div>
+                               <p id="vat-notice" class="text-xs text-kree-orange mt-1 font-medium hidden">Inclus TVA (20%)</p>
+                           </div>
+                           <button id="conf-cta-btn" onclick="handleConfigAction()" class="h-16 px-10 rounded-2xl text-lg font-bold bg-kree-blue text-white shadow-xl hover:bg-blue-700 transition-all flex items-center justify-center gap-3 w-full md:w-auto transform hover:-translate-y-1 liquid-effect">
+                               <span id="conf-cta-text">SE CONNECTER</span> <i data-lucide="chevron-right" class="w-5 h-5"></i>
+                           </button>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+<!-- AUTH MODAL -->
+<div id="auth-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+
+    <div class="relative glass-effect w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden animate-fade-in border border-white/10 p-10">
+
+        <!-- TABS -->
+        <div class="flex justify-center mb-10 bg-gray-100/40 p-1.5 rounded-xl w-full max-w-xs mx-auto">
+            <button onclick="switchAuthTab('login')" 
+                id="login-tab"
+                class="flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark shadow-sm">
+                Connexion
+            </button>
+
+            <button onclick="switchAuthTab('register')" 
+                id="register-tab"
+                class="flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500 hover:bg-gray-100/40">
+                Inscription
+            </button>
+        </div>
+
+        <!-- LOGIN FORM -->
+        <div id="login-form">
+            <h2 class="text-3xl font-black text-center text-kree-dark mb-2" id="login-title">Bienvenue !</h2>
+            <p class="text-center text-gray-500 mb-8" id="login-subtitle">Accédez à votre espace client</p>
+
+            <form class="space-y-6 max-w-md mx-auto" onsubmit="event.preventDefault(); simulateLogin();">
+                
+                <!-- Email -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="login-email">Email</label>
+                    <input type="email" id="login-email-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="email@kree.ma" required>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="login-password">Mot de passe</label>
+                    <input type="password" id="login-password-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="••••••••" required>
+                </div>
+
+                <!-- Submit -->
+                <button type="submit"
+                    class="w-full bg-kree-blue text-white font-bold py-4 rounded-xl hover:bg-blue-700
+                    transition-colors shadow-lg shadow-blue-500/20 liquid-effect" id="login-submit">
+                    Se connecter
+                </button>
+
+            </form>
+        </div>
+
+        <!-- REGISTER FORM -->
+        <div id="register-form" class="hidden">
+
+            <h2 class="text-3xl font-black text-center text-kree-dark mb-2" id="register-title">Créer un compte</h2>
+            <p class="text-center text-gray-500 mb-8" id="register-subtitle">Inscrivez-vous en quelques secondes</p>
+
+            <!-- 2 Columns Only -->
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6" 
+                  onsubmit="event.preventDefault(); simulateRegister();">
+
+                <!-- Prénom -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-firstname">Prénom</label>
+                    <input type="text" id="reg-firstname-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="Oumaima" required>
+                </div>
+
+                <!-- Nom -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-lastname">Nom</label>
+                    <input type="text" id="reg-lastname-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="El Badraouy" required>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-email">Email</label>
+                    <input type="email" id="reg-email-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="contact@email.com" required>
+                </div>
+
+                <!-- Pays -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="country-label">Pays</label>
+                    <select id="reg-country" 
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        required>
+                        <option value="">Sélectionner un pays</option>
+                        <option value="MA" data-code="+212">🇲🇦 Maroc (+212)</option>
+                        <option value="FR" data-code="+33">🇫🇷 France (+33)</option>
+                        <option value="US" data-code="+1">🇺🇸 États-Unis (+1)</option>
+                        <option value="GB" data-code="+44">🇬🇧 Royaume-Uni (+44)</option>
+                        <option value="DE" data-code="+49">🇩🇪 Allemagne (+49)</option>
+                        <option value="IT" data-code="+39">🇮🇹 Italie (+39)</option>
+                        <option value="ES" data-code="+34">🇪🇸 Espagne (+34)</option>
+                        <option value="BE" data-code="+32">🇧🇪 Belgique (+32)</option>
+                        <option value="CH" data-code="+41">🇨🇭 Suisse (+41)</option>
+                        <option value="CA" data-code="+1">🇨🇦 Canada (+1)</option>
+                    </select>
+                </div>
+
+                <!-- Téléphone -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="phone-label">Téléphone</label>
+                    <input type="tel" id="reg-phone"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="+212 6 XX XX XX XX" required>
+                </div>
+
+                <!-- Mot de passe -->
+                <div>
+                    <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-password">Mot de passe</label>
+                    <input type="password" id="reg-password-input"
+                        class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                        focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                        placeholder="••••••••" required>
+                </div>
+
+
+
+                <!-- Terms -->
+                <div class="col-span-full flex items-center gap-3 mt-2">
+                    <input type="checkbox" id="reg-terms-checkbox"
+                        class="w-4 h-4 text-kree-blue rounded border-gray-300 focus:ring-kree-orange" required>
+                    <label for="reg-terms" class="text-sm text-gray-600">
+                        <span id="reg-terms">J'accepte les</span> <a href="#" class="text-kree-blue hover:underline" id="reg-terms-link">conditions générales</a>
+                    </label>
+                </div>
+
+                <!-- Button -->
+                <div class="col-span-full">
+                    <button type="submit"
+                        class="w-full bg-kree-orange text-white font-bold py-4 rounded-xl hover:bg-[#e55a00]
+                        transition-colors shadow-lg shadow-orange-500/20 liquid-effect" id="reg-submit">
+                        Créer mon compte
+                    </button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+   <!-- DASHBOARD MODAL -->
+   <div id="dashboard-modal" class="fixed inset-0 z-[55] hidden flex items-center justify-end">
+       <div class="absolute inset-0 bg-kree-dark/50 backdrop-blur-sm" onclick="closeDashboard()"></div>
+       <div class="relative w-full max-w-2xl glass-effect h-full shadow-2xl overflow-hidden flex flex-col animate-fade-in border-l border-white/20">
+           <div class="p-6 border-b border-gray-100/50 flex justify-between items-center bg-gray-50/50">
+               <div>
+                   <h2 class="text-2xl font-black text-kree-dark">Mon Tableau de Bord</h2>
+                   <p class="text-sm text-gray-500">Vos demandes en cours</p>
+               </div>
+               <button onclick="closeDashboard()" class="p-2 hover:bg-gray-200/50 rounded-full transition-colors glass-effect">
+                   <i data-lucide="x" class="w-6 h-6 text-gray-400"></i>
+               </button>
+           </div>
+           <div id="dashboard-content" class="flex-grow overflow-y-auto p-6 space-y-4 bg-gray-50/30"></div>
+           <div class="p-6 border-t border-gray-100/50 glass-effect flex items-center justify-between shadow-[0_-5px_20px_rgba(0,0,0,0.05)]">
+               <div class="flex items-center gap-3">
+                   <div class="w-10 h-10 rounded-full bg-kree-dark text-white flex items-center justify-center font-bold glass-dark"><i data-lucide="user" class="w-5 h-5"></i></div>
+                   <div><p class="font-bold text-kree-dark" id="user-name">Client</p><p class="text-xs text-gray-500" id="user-email"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ef8c83868a819baf8a978e829f838ac18c8082">tazireda.pro@gmail.com</a></p></div>
+               </div>
+               <button onclick="logout()" class="text-red-500 text-sm font-bold hover:bg-red-50/50 px-4 py-2 rounded-lg transition-colors glass-effect">Déconnexion</button>
+           </div>
+       </div>
+   </div>
+
+   <!-- WhatsApp Chat Modal -->
+   <div id="whatsapp-modal" class="fixed inset-0 z-[70] hidden flex items-end justify-end p-4 md:p-6 pointer-events-none">
+       <div class="absolute inset-0" onclick="closeWhatsAppModal()"></div>
+       
+       <!-- Chat Container -->
+       <div class="relative w-full max-w-md h-[600px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto animate-fade-in border border-gray-200">
+           
+           <!-- Chat Header -->
+           <div class="bg-green-500 text-white p-4 flex items-center gap-3">
+               <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                   <i data-lucide="message-circle" class="w-5 h-5"></i>
+               </div>
+               <div class="flex-1">
+                   <h3 class="font-bold">Assistant KREE</h3>
+                   <p class="text-xs text-white/80 opacity-90">En ligne • Réponse immédiate</p>
+               </div>
+               <div class="flex gap-2">
+                   <button onclick="minimizeChat()" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                       <i data-lucide="minus" class="w-4 h-4"></i>
+                   </button>
+                   <button onclick="closeWhatsAppModal()" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                       <i data-lucide="x" class="w-4 h-4"></i>
+                   </button>
+               </div>
+           </div>
+
+           <!-- Chat Messages -->
+           <div id="whatsapp-chat" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 custom-scroll">
+               
+               <!-- Message automatique de bienvenue -->
+               <div class="flex justify-start">
+                   <div class="max-w-[80%] bg-white rounded-2xl rounded-tl-none p-4 shadow-sm border border-gray-100">
+                       <p class="text-sm text-gray-800">👋 Bonjour ! Je suis l'assistant KREE. Je peux vous aider avec :</p>
+                       <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                           <li>• Informations sur la location longue durée</li>
+                           <li>• Tarifs et disponibilités</li>
+                           <li>• Documents nécessaires</li>
+                           <li>• Support technique</li>
+                       </ul>
+                       <span class="text-xs text-gray-500 mt-2 block">Tapez votre question...</span>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Typing Indicator -->
+           <div id="typing-indicator" class="hidden px-4 py-2">
+               <div class="flex items-center gap-2 text-gray-500">
+                   <div class="flex gap-1">
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                   </div>
+                   <span class="text-xs">Assistant KREE écrit...</span>
+               </div>
+           </div>
+
+           <!-- Chat Input -->
+           <div class="border-t border-gray-200 p-4 bg-white">
+               <div class="flex gap-2">
+                   <input 
+                       type="text" 
+                       id="whatsapp-input" 
+                       placeholder="Posez votre question..." 
+                       class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                       onkeypress="handleWhatsAppInput(event)"
+                   >
+                   <button onclick="sendWhatsAppMessage()" class="bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
+                       <i data-lucide="send" class="w-5 h-5"></i>
+                   </button>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- WhatsApp Float Button -->
+   <a href="javascript:void(0)" 
+      onclick="openWhatsAppModal()"
+      class="whatsapp-float" 
+      title="Chattez avec notre assistant">
+       <i data-lucide="message-circle" class="w-8 h-8"></i>
+   </a>
+
+   <!-- FOOTER -->
+   <footer class="bg-kree-dark text-white">
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <!-- Main Footer Content -->
+           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+               
+               <!-- Logo & Description -->
+               <div class="lg:col-span-2">
+                   <div class="flex items-center gap-3 mb-6" style="direction: ltr;">
+                       <div class="flex flex-col leading-none">
+                           <div class="flex items-baseline tracking-tighter">
+                               <span class="text-[28px] md:text-[32px] font-black text-kree-orange mr-[-2px] no-translate">K</span>
+                               <span class="text-[28px] md:text-[32px] font-black text-white tracking-wide no-translate">REE</span>
+                           </div>
+                           <span class="text-[7px] md:text-[8px] font-medium tracking-[0.4em] text-white/60 ml-1 no-translate">RENTAL CARS</span>
+                       </div>
+                   </div>
+                   <p class="text-gray-300 text-lg mb-6 max-w-md" data-translate="Leader marocain de la location longue durée">
+                       Leader marocain de la location longue durée. Nous révolutionnons votre expérience de mobilité avec des solutions sur mesure.
+                   </p>
+                   
+                   <!-- Social Media -->
+                   <div class="flex items-center gap-4">
+                       <span class="text-white/70 text-sm font-medium" data-translate="Suivez-nous">Suivez-nous :</span>
+                       <div class="flex gap-3">
+                           <a href="https://www.instagram.com/kree_ma/" target="_blank" class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl">
+                               <i data-lucide="instagram" class="w-5 h-5 text-white"></i>
+                           </a>
+                           <a href="https://facebook.com/kreemaroc" target="_blank" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl">
+                               <i data-lucide="facebook" class="w-5 h-5 text-white"></i>
+                           </a>
+                           <a href="https://wa.me/+212697278436?text=Bonjour%2C%20je%20souhaite%20des%20informations%20sur%20vos%20services%20de%20location." target="_blank" class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl">
+                               <i data-lucide="message-circle" class="w-5 h-5 text-white"></i>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Quick Links -->
+               <div>
+                   <h3 class="text-lg font-bold mb-6 text-kree-orange" data-translate="Navigation">Navigation</h3>
+                   <ul class="space-y-3">
+                       <li><button onclick="showSection('home')" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="Accueil">Accueil</button></li>
+                       <li><button onclick="showSection('about')" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="À propos">À propos</button></li>
+                       <li><a href="partenaires.html" class="text-gray-300 hover:text-kree-orange transition-colors flex items-center gap-2" data-translate="Espace Partenaire">Espace Partenaire <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+                       <li><button onclick="openAuthModal()" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="Espace Client">Espace Client</button></li>
+                   </ul>
+               </div>
+
+               <!-- Contact Info -->
+               <div>
+                   <h3 class="text-lg font-bold mb-6 text-kree-orange" data-translate="Contact">Contact</h3>
+                   <ul class="space-y-4">
+                       <li class="flex items-start gap-3">
+                           <i data-lucide="map-pin" class="w-5 h-5 text-kree-blue mt-0.5 flex-shrink-0"></i>
+                           <div class="text-gray-300 text-sm">
+                               <p>Mohammedia, Maroc </p>
+                               <p>Marrakech, Maroc</p>
+                           </div>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="phone" class="w-5 h-5 text-kree-blue flex-shrink-0"></i>
+                           <div class="text-gray-300 text-sm">
+                               <p> 00212697278436</p>
+                              
+                           </div>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="mail" class="w-5 h-5 text-kree-blue flex-shrink-0"></i>
+                           <div class="text-gray-300 text-sm">
+                               <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781b17160c191b0c38130a1d1d561519"><span class="__cf_email__" data-cfemail="9beffae1f2e9fefffab5ebe9f4dbfcf6faf2f7b5f8f4f6">tazireda.pro@gmail.com</span></a></p>
+                           </div>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+
+         
+       </div>
+
+       <!-- Bottom Bar -->
+       <div class="border-t border-white/10 bg-kree-dark/50">
+           <div class="max-w-7xl mx-auto px-4 py-6">
+               <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                   <div class="text-gray-400 text-sm">
+                       © 2025 KREE. Tous droits réservés. | Leader de la LLD au Maroc
+                   </div>
+                   <div class="flex items-center gap-6 text-sm">
+                       <a href="#" class="text-gray-400 hover:text-kree-orange transition-colors">Mentions légales</a>
+                       <a href="#" class="text-gray-400 hover:text-kree-orange transition-colors">Politique de confidentialité</a>
+                       <a href="#" class="text-gray-400 hover:text-kree-orange transition-colors">CGV</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+   <!-- SCRIPT -->
+   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+   <script>
+       // SYSTÈME DE TRADUCTION
+     // SYSTÈME DE TRADUCTION - VERSION CORRIGÉE
+const translations = {
+    'fr': {
+        // Navigation
+        'Accueil': 'Accueil',
+        'À propos': 'À propos',
+        'Espace Partenaire': 'Espace Partenaire',
+        'Espace Client': 'Espace Client',
+        'Mon Espace': 'Mon Espace',
+        
+        // Section Hero
+        'Leader de la LLD au Maroc': 'Leader de la LLD au Maroc',
+        'La liberté': 'La liberté',
+        'sur mesure.': 'sur mesure.',
+        'Configurez votre loyer en temps réel': 'Configurez votre loyer en temps réel. Choisissez la durée, le kilométrage et repartez avec votre véhicule premium sous 48h.',
+        
+        // Configurateur
+        'Configurateur': 'Configurateur',
+        'Personnalisez votre offre': 'Personnalisez votre offre',
+        'Entreprise (HT)': 'Entreprise (HT)',
+        'Particulier (TTC)': 'Particulier (TTC)',
+        'Boîte de Vitesse': 'Boîte de Vitesse',
+        'Manuelle': 'Manuelle',
+        'Automatique': 'Automatique',
+        'Durée': 'Durée',
+        'Kilométrage': 'Kilométrage',
+        'Loyer mensuel (HT)': 'Loyer mensuel (HT)',
+        'Loyer mensuel (TTC)': 'Loyer mensuel (TTC)',
+        'SE CONNECTER': 'SE CONNECTER',
+        'BLOQUER CE TARIF': 'BLOQUER CE TARIF',
+        'Inclus TVA (20%)': 'Inclus TVA (20%)',
+        
+        // Véhicules
+        'CONFIGURER': 'CONFIGURER',
+        'À partir de': 'À partir de',
+        
+        // Auth Modal
+        'Pays': 'Pays',
+        'Sélectionner un pays': 'Sélectionner un pays',
+        'Téléphone': 'Téléphone',
+        'Prénom': 'Prénom',
+        'Nom': 'Nom',
+        'Email': 'Email',
+        'Mot de passe': 'Mot de passe',
+        'Confirmer': 'Confirmer',
+        'Créer mon compte': 'Créer mon compte',
+        'Bienvenue !': 'Bienvenue !',
+        'Accédez à votre espace client': 'Accédez à votre espace client',
+        'Se connecter': 'Se connecter',
+        'Créer un compte': 'Créer un compte',
+        'Inscrivez-vous en quelques secondes': 'Inscrivez-vous en quelques secondes',
+        'J\'accepte les': 'J\'accepte les',
+        'conditions générales': 'conditions générales',
+        'Connexion': 'Connexion',
+        'Inscription': 'Inscription',
+        
+        // À propos
+        'Notre Mission': 'Notre Mission',
+        'Nos Valeurs': 'Nos Valeurs',
+        'Excellence du service client': 'Excellence du service client',
+        'Transparence et confiance': 'Transparence et confiance',
+        'Innovation continue': 'Innovation continue',
+        'Respect de l\'environnement': 'Respect de l\'environnement',
+        'Contactez-nous': 'Contactez-nous',
+        'Adresse': 'Adresse',
+        
+        // Véhicules - Catégories
+        'Tous': 'Tous',
+        'Economique': 'Economique',
+        'Confort': 'Confort',
+        '7/9 Places': '7/9 Places',
+        'Utilitaire': 'Utilitaire',
+        'Luxe': 'Luxe',
+        
+        // Véhicules - Labels
+        'CONFIGURER': 'CONFIGURER',
+        'Aucun véhicule.': 'Aucun véhicule.',
+        'PREMIUM': 'PREMIUM',
+        'COLLECTION PRESTIGE': 'COLLECTION PRESTIGE',
+        
+        // Footer
+        'Navigation': 'Navigation',
+        'Contact': 'Contact',
+        'Suivez-nous': 'Suivez-nous'
+    },
+    'en': {
+        // Navigation
+        'Accueil': 'Home',
+        'À propos': 'About',
+        'Espace Partenaire': 'Partner Area',
+        'Espace Client': 'Client Area',
+        'Mon Espace': 'My Space',
+        
+        // Section Hero
+        'Leader de la LLD au Maroc': 'LLD Leader in Morocco',
+        'La liberté': 'Freedom',
+        'sur mesure.': 'on demand.',
+        'Configurez votre loyer en temps réel': 'Configure your rent in real time. Choose duration, mileage and drive away with your premium vehicle within 48h.',
+        
+        // Configurateur
+        'Configurateur': 'Configurator',
+        'Personnalisez votre offre': 'Customize your offer',
+        'Entreprise (HT)': 'Business (excl. tax)',
+        'Particulier (TTC)': 'Individual (incl. tax)',
+        'Boîte de Vitesse': 'Transmission',
+        'Manuelle': 'Manual',
+        'Automatique': 'Automatic',
+        'Durée': 'Duration',
+        'Kilométrage': 'Mileage',
+        'Loyer mensuel (HT)': 'Monthly rent (excl. tax)',
+        'Loyer mensuel (TTC)': 'Monthly rent (incl. tax)',
+        'SE CONNECTER': 'SIGN IN',
+        'BLOQUER CE TARIF': 'LOCK THIS PRICE',
+        'Inclus TVA (20%)': 'VAT included (20%)',
+        
+        // Véhicules
+        'CONFIGURER': 'CONFIGURE',
+        'À partir de': 'From',
+        
+        // Auth Modal
+        'Pays': 'Country',
+        'Sélectionner un pays': 'Select a country',
+        'Téléphone': 'Phone',
+        'Prénom': 'First Name',
+        'Nom': 'Last Name',
+        'Email': 'Email',
+        'Mot de passe': 'Password',
+        'Confirmer': 'Confirm',
+        'Créer mon compte': 'Create Account',
+        'Bienvenue !': 'Welcome!',
+        'Accédez à votre espace client': 'Access your client area',
+        'Se connecter': 'Sign In',
+        'Créer un compte': 'Create Account',
+        'Inscrivez-vous en quelques secondes': 'Sign up in seconds',
+        'J\'accepte les': 'I accept the',
+        'conditions générales': 'general terms',
+        'Connexion': 'Login',
+        'Inscription': 'Registration',
+        
+        // À propos
+        'Notre Mission': 'Our Mission',
+        'Nos Valeurs': 'Our Values',
+        'Excellence du service client': 'Customer service excellence',
+        'Transparence et confiance': 'Transparency and trust',
+        'Innovation continue': 'Continuous innovation',
+        'Respect de l\'environnement': 'Environmental respect',
+        'Contactez-nous': 'Contact Us',
+        'Adresse': 'Address',
+        
+        // Véhicules - Catégories
+        'Tous': 'All',
+        'Economique': 'Economy',
+        'Confort': 'Comfort',
+        '7/9 Places': '7/9 Seater',
+        'Utilitaire': 'Utility',
+        'Luxe': 'Luxury',
+        
+        // Véhicules - Labels
+        'CONFIGURER': 'CONFIGURE',
+        'Aucun véhicule.': 'No vehicles.',
+        'PREMIUM': 'PREMIUM',
+        'COLLECTION PRESTIGE': 'PRESTIGE COLLECTION',
+        
+        // Footer
+        'Navigation': 'Navigation',
+        'Contact': 'Contact',
+        'Suivez-nous': 'Follow us'
+    },
+    'ar': {
+        // Navigation
+        'Accueil': 'الرئيسية',
+        'À propos': 'حولنا',
+        'Espace Partenaire': 'مساحة الشريك',
+        'Espace Client': 'مساحة العميل',
+        'Mon Espace': 'مساحتي',
+        
+        // Section Hero
+        'Leader de la LLD au Maroc': 'الرائد في الإيجار طويل المدى بالمغرب',
+        'La liberté': 'الحرية',
+        'sur mesure.': 'حسب الطلب.',
+        'Configurez votre loyer en temps réel': 'قم بتكوين إيجارك في الوقت الفعلي. اختر المدة والكيلومترات وابرح بسيارتك الفاخرة خلال 48 ساعة.',
+        
+        // Configurateur
+        'Configurateur': 'المكون',
+        'Personnalisez votre offre': 'خصص عرضك',
+        'Entreprise (HT)': 'مؤسسة (بدون ضريبة)',
+        'Particulier (TTC)': 'فرد (بضريبة)',
+        'Boîte de Vitesse': 'ناقل الحركة',
+        'Manuelle': 'يدوية',
+        'Automatique': 'أوتوماتيكية',
+        'Durée': 'المدة',
+        'Kilométrage': 'الكيلومترات',
+        'Loyer mensuel (HT)': 'الإيجار الشهري (بدون ضريبة)',
+        'Loyer mensuel (TTC)': 'الإيجار الشهري (بضريبة)',
+        'SE CONNECTER': 'تسجيل الدخول',
+        'BLOQUER CE TARIF': 'حجز هذا السعر',
+        'Inclus TVA (20%)': 'شامل الضريبة (20%)',
+        
+        // Véhicules
+        'CONFIGURER': 'تكوين',
+        'À partir de': 'ابتداء من',
+        
+        // Auth Modal
+        'Pays': 'البلد',
+        'Sélectionner un pays': 'اختر البلد',
+        'Téléphone': 'الهاتف',
+        'Prénom': 'الاسم الأول',
+        'Nom': 'الاسم الأخير',
+        'Email': 'البريد الإلكتروني',
+        'Mot de passe': 'كلمة المرور',
+        'Confirmer': 'تأكيد',
+        'Créer mon compte': 'إنشاء حساب',
+        'Bienvenue !': 'مرحباً!',
+        'Accédez à votre espace client': 'الوصول إلى مساحة العميل',
+        'Se connecter': 'تسجيل الدخول',
+        'Créer un compte': 'إنشاء حساب',
+        'Inscrivez-vous en quelques secondes': 'سجل في ثوانٍ',
+        'J\'accepte les': 'أوافق على',
+        'conditions générales': 'الشروط العامة',
+        'Connexion': 'تسجيل الدخول',
+        'Inscription': 'تسجيل',
+        
+        // About
+        'À propos de KREE': 'حول KREE',
+        'Leader marocain de la location longue durée': 'الرائد المغربي في الإيجار طويل المدى',
+        'Notre Mission': 'مهمتنا',
+        'Nos Valeurs': 'قيمنا',
+        'Excellence du service client': 'تميز خدمة العملاء',
+        'Transparence et confiance': 'الشفافية والثقة',
+        'Innovation continue': 'الابتكار المستمر',
+        'Respect de l\'environnement': 'احترام البيئة',
+        'Contactez-nous': 'اتصل بنا',
+        'Adresse': 'العنوان',
+        'Années d\'expérience': 'سنوات الخبرة',
+        'Véhicules en flotte': 'المركبات في الأسطول',
+        'Clients satisfaits': 'العملاء الراضون',
+        'Support client': 'دعم العملاء',
+        'Chez KREE, nous révolutionnons': 'في KREE، نحن نحدث ثورة',
+        'Avec une flotte moderne': 'مع أسطول حديث',
+        
+        // Véhicules - Catégories
+        'Tous': 'جميع الفئات',
+        'Economique': 'اقتصادية',
+        'Confort': 'راحة',
+        '7/9 Places': '7/9 مقاعد',
+        'Utilitaire': 'نفعية',
+        'Luxe': 'فاخرة',
+        
+        // Véhicules - Labels
+        'À partir de': 'ابتداء من',
+        'CONFIGURER': 'تكوين',
+        'Aucun véhicule.': 'لا توجد مركبات.',
+        'PREMIUM': 'فاخرة',
+        'COLLECTION PRESTIGE': 'مجموعة برستيج',
+        
+        // Footer
+        'Navigation': 'التنقل',
+        'Contact': 'اتصل',
+        'Suivez-nous': 'تابعنا'
+    }
+};
+
+// Déclaration de la langue courante
+let currentLanguage = 'fr';
+
+// Helper function to translate text
+function t(key) {
+    const translation = translations[currentLanguage];
+    return translation && translation[key] ? translation[key] : key;
+}
+
+// Toggle Mobile Menu
+function toggleMobileMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('hidden');
+        // Recreate Lucide icons when menu is shown
+        if (!mobileMenu.classList.contains('hidden')) {
+            lucide.createIcons();
+        }
+    }
+}
+
+function changeLanguage(lang) {
+    currentLanguage = lang;
+    applyTranslations();
+    updateLanguageButtons();
+    updateCurrentLangDisplay();
+    
+    // Changer la direction du texte pour l'arabe
+    if (lang === 'ar') {
+        document.documentElement.dir = 'rtl';
+        document.documentElement.lang = 'ar';
+        document.body.classList.add('rtl');
+    } else {
+        document.documentElement.dir = 'ltr';
+        document.documentElement.lang = lang;
+        document.body.classList.remove('rtl');
+    }
+    
+    // Re-générer les filtres et véhicules avec les nouvelles traductions
+    renderFilters();
+    renderVehicles();
+    
+    // Recréer les icônes Lucide
+    lucide.createIcons();
+}
+
+function applyTranslations() {
+    const t = translations[currentLanguage];
+    
+    if (!t) return;
+    
+    // Traduire les éléments avec des data-translate
+    document.querySelectorAll('[data-translate]').forEach(element => {
+        const key = element.getAttribute('data-translate');
+        if (t[key]) {
+            element.textContent = t[key];
+        }
+    });
+    
+    // Traduire tous les h1, h2, h3, p, span, button, label qui contiennent du texte
+    const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span, button, label, li, div');
+    textElements.forEach(element => {
+        // Skip elements with no-translate class
+        if (element.classList.contains('no-translate')) return;
+        
+        if (element.children.length === 0 && element.textContent.trim()) {
+            const text = element.textContent.trim();
+            if (t[text]) {
+                element.textContent = t[text];
+            }
+        }
+    });
+    
+    // Traduire les éléments avec des IDs spécifiques
+    const elementsToTranslate = {
+        'nav-auth-text': 'Espace Client',
+        'nav-auth-text-mobile': 'Espace Client',
+        'current-lang': currentLanguage.toUpperCase(),
+        'country-label': 'Pays',
+        'phone-label': 'Téléphone',
+        'reg-firstname': 'Prénom',
+        'reg-lastname': 'Nom',
+        'reg-email': 'Email',
+        'reg-password': 'Mot de passe',
+        'reg-confirm': 'Confirmer',
+        'reg-terms': 'J\'accepte les',
+        'reg-terms-link': 'conditions générales',
+        'reg-submit': 'Créer mon compte',
+        'login-title': 'Bienvenue !',
+        'login-subtitle': 'Accédez à votre espace client',
+        'login-email': 'Email',
+        'login-password': 'Mot de passe',
+        'login-submit': 'Se connecter',
+        'register-title': 'Créer un compte',
+        'register-subtitle': 'Inscrivez-vous en quelques secondes',
+        'login-tab': 'Connexion',
+        'register-tab': 'Inscription',
+        'price-label': 'Loyer mensuel (HT)',
+        'conf-cta-text': 'SE CONNECTER'
+    };
+
+    Object.keys(elementsToTranslate).forEach(id => {
+        const element = document.getElementById(id);
+        if (element && t[elementsToTranslate[id]]) {
+            if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
+                element.placeholder = t[elementsToTranslate[id]];
+            } else if (element.tagName === 'LABEL') {
+                element.textContent = t[elementsToTranslate[id]];
+            } else {
+                element.textContent = t[elementsToTranslate[id]];
+            }
+        }
+    });
+
+    // Traduire les options du sélecteur de pays
+    const countrySelect = document.getElementById('reg-country');
+    if (countrySelect && t['Sélectionner un pays']) {
+        countrySelect.options[0].textContent = t['Sélectionner un pays'];
+    }
+    
+    // Traduire les boutons du configurateur
+    const configElements = {
+        'btn-business': 'Entreprise (HT)',
+        'btn-individual': 'Particulier (TTC)',
+        'btn-trans-man': 'Manuelle',
+        'btn-trans-auto': 'Automatique'
+    };
+    
+    Object.keys(configElements).forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            const span = element.querySelector('span');
+            if (span && t[configElements[id]]) {
+                span.textContent = t[configElements[id]];
+            }
+        }
+    });
+}
+
+function updateLanguageButtons() {
+    const langButtons = ['fr', 'en', 'ar'];
+    const currentLangBtn = document.getElementById('current-lang');
+    
+    if (currentLangBtn) {
+        currentLangBtn.textContent = currentLanguage.toUpperCase();
+    }
+    
+    langButtons.forEach(lang => {
+        const btn = document.getElementById(`lang-${lang}`);
+        if (btn) {
+            if (currentLanguage === lang) {
+                btn.className = 'w-full text-left px-4 py-2 text-kree-orange font-bold bg-gray-100 text-sm';
+            } else {
+                btn.className = 'w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-gray-700';
+            }
+        }
+    });
+}
+
+function updateCurrentLangDisplay() {
+    const currentLangElement = document.getElementById('current-lang');
+    if (currentLangElement) {
+        currentLangElement.textContent = currentLanguage.toUpperCase();
+    }
+}
+
+// Initialiser les traductions au chargement
+document.addEventListener('DOMContentLoaded', function() {
+    applyTranslations();
+    updateLanguageButtons();
+    updateCurrentLangDisplay();
+});
+
+// Fonction pour mettre à jour le placeholder du téléphone selon le pays sélectionné
+function updatePhonePlaceholder() {
+           const countrySelect = document.getElementById('reg-country');
+           const phoneInput = document.getElementById('reg-phone');
+           
+           if (countrySelect && phoneInput) {
+               const selectedOption = countrySelect.selectedOptions[0];
+               const phoneCode = selectedOption.getAttribute('data-code');
+               
+               if (phoneCode) {
+                   // Adapter le placeholder selon le code pays
+                   if (phoneCode === '+212') {
+                       phoneInput.placeholder = '+212 6 XX XX XX XX';
+                   } else if (phoneCode === '+33') {
+                       phoneInput.placeholder = '+33 X XX XX XX XX';
+                   } else if (phoneCode === '+1') {
+                       phoneInput.placeholder = '+1 (XXX) XXX-XXXX';
+                   } else if (phoneCode === '+44') {
+                       phoneInput.placeholder = '+44 X XXX XXXXXX';
+                   } else if (phoneCode === '+49') {
+                       phoneInput.placeholder = '+49 XXX XXXXXXX';
+                   } else if (phoneCode === '+39') {
+                       phoneInput.placeholder = '+39 XXX XXX XXXX';
+                   } else if (phoneCode === '+34') {
+                       phoneInput.placeholder = '+34 XXX XXX XXX';
+                   } else if (phoneCode === '+32') {
+                       phoneInput.placeholder = '+32 XXX XX XX XX';
+                   } else if (phoneCode === '+41') {
+                       phoneInput.placeholder = '+41 XX XXX XXXX';
+                   } else {
+                       phoneInput.placeholder = phoneCode + ' XXXXXXXX';
+                   }
+                   
+                   // Mettre à jour la valeur si elle existe déjà
+                   const currentValue = phoneInput.value;
+                   if (currentValue && !currentValue.startsWith(phoneCode)) {
+                       phoneInput.value = phoneCode + ' ' + currentValue.replace(/^\+\d+\s*/, '');
+                   } else if (!currentValue) {
+                       phoneInput.value = phoneCode + ' ';
+                   }
+               }
+           }
+       }
+
+       // Configuration des événements pour le sélecteur de pays
+       document.addEventListener('DOMContentLoaded', function() {
+           const countrySelect = document.getElementById('reg-country');
+           if (countrySelect) {
+               countrySelect.addEventListener('change', updatePhonePlaceholder);
+           }
+       });
+
+       // CONFIGURATION FLOTTE - Données mises à jour avec les nouvelles images
+       const VEHICLES = [
+           // ECONOMIQUE
+           { id: 1, name: "Renault Clio 5", category: "Economique", type: "Eco", image: "images/renault_clio_5_4.jpg", basePrice: 3500, fuel: "Diesel", gear: "Manuelle", allowBothGears: true },
+           { id: 2, name: "Changan Alsvin", category: "Economique", type: "Eco", image: "images/changan_alsvin_7.jpg", basePrice: 3200, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 3, name: "Renault Kardian", category: "Economique", type: "SUV", image: "images/renault_kardian_5.jpg", basePrice: 3900, fuel: "Diesel", gear: "Manuelle", allowBothGears: true },
+
+           // CONFORT
+           { id: 4, name: "Hyundai Tucson", category: "Confort", type: "SUV", image: "images/hyundai_tucson_4.jpg", basePrice: 6500, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 5, name: "Changan CS35 Plus", category: "Confort", type: "SUV", image: "images/changan_cs35_plus_2.webp", basePrice: 5500, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 6, name: "Changan CS55 Plus", category: "Confort", type: "SUV", image: "images/changan_cs55_plus_0.png", basePrice: 6500, fuel: "Essence", gear: "Auto", allowBothGears: false },
+           { id: 7, name: "Hyundai Accent 2025", category: "Confort", type: "Sedan", image: "images/hyundai_accent_2025_1.png", basePrice: 4900, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+
+           // 7/9 PLACES
+           { id: 8, name: "Dacia Lodgy", category: "7/9 Places", type: "Minivan", image: "images/dacia_lodgy_7.jpg", basePrice: 4200, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+           { id: 9, name: "Dacia Jogger", category: "7/9 Places", type: "Minivan", image: "images/dacia_jogger_3.png", basePrice: 4800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+           { id: 10, name: "Mercedes Classe V", category: "7/9 Places", type: "Luxe", image: "images/mercedes_classe_v_1.webp", basePrice: 18000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 11, name: "Hyundai Staria", category: "7/9 Places", type: "Luxe", image: "images/hyundai_staria_5.jpg", basePrice: 12000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+
+           // UTILITAIRE
+           { id: 12, name: "Dacia Dokker", category: "Utilitaire", type: "Van", image: "images/dacia_dokker_1.jpg", basePrice: 3800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+
+           // LUXE
+           { id: 13, name: "Mercedes Classe A AMG", category: "Luxe", type: "Sport", image: "images/mercedes_classe_a_amg_3.png", basePrice: 8500, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 14, name: "VW Touareg", category: "Luxe", type: "SUV", image: "images/vw_touareg_7.jpg", basePrice: 14000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
+           { id: 15, name: "Mercedes Classe S", category: "Luxe", type: "Limousine", image: "images/mercedes_classe_s_7.jpg", basePrice: 25000, fuel: "Diesel", gear: "Auto", allowBothGears: false }
+       ];
+
+       let state = { user: null, quotes: [], activeCategory: 'Tous', currentVehicle: null, duration: 24, mileage: 10000, clientType: 'business', transmission: 'Manuelle', currentSection: 'home' };
+
+       function init() { 
+           renderFilters(); 
+           renderVehicles(); 
+           lucide.createIcons();
+           initParallax();
+           updateAuthUI();
+       }
+
+       // Navigation entre sections
+       function showSection(sectionName) {
+           // Masquer toutes les sections
+           const sections = document.querySelectorAll('.section');
+           sections.forEach(section => section.classList.add('hidden'));
+           
+           // Afficher la section demandée
+           document.getElementById(sectionName + '-section').classList.remove('hidden');
+           state.currentSection = sectionName;
+           
+           // Si on retourne à l'accueil, réinitialiser l'état du configurateur
+           if (sectionName === 'home') {
+               closeConfigurator();
+           }
+           
+           lucide.createIcons();
+       }
+
+       // Gestion des onglets d'authentification
+       function switchAuthTab(tab) {
+           const loginTab = document.getElementById('login-tab');
+           const registerTab = document.getElementById('register-tab');
+           const loginForm = document.getElementById('login-form');
+           const registerForm = document.getElementById('register-form');
+           
+           if (tab === 'login') {
+               loginTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark';
+               registerTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500';
+               loginForm.classList.remove('hidden');
+               registerForm.classList.add('hidden');
+           } else {
+               registerTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark';
+               loginTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500';
+               registerForm.classList.remove('hidden');
+               loginForm.classList.add('hidden');
+           }
+       }
+       window.switchAuthTab = switchAuthTab;
+
+       // Initialisation de l'effet parallax
+       function initParallax() {
+           const parallaxSections = document.querySelectorAll('.parallax-section');
+           
+           window.addEventListener('scroll', () => {
+               const scrolled = window.pageYOffset;
+               
+               parallaxSections.forEach(section => {
+                   const bg = section.querySelector('.parallax-bg');
+                   if (bg) {
+                       const rate = scrolled * 0.5;
+                       bg.style.transform = `translateY(${rate}px)`;
+                   }
+               });
+           });
+       }
+
+       function renderFilters() {
+           const container = document.getElementById('filter-container');
+           const cats = ["Tous", "Economique", "Confort", "7/9 Places", "Utilitaire", "Luxe"];
+           container.innerHTML = cats.map(cat => `<button onclick="filterCategory('${cat}')" class="px-6 py-3 rounded-full text-sm font-bold whitespace-nowrap transition-all border ${state.activeCategory === cat ? 'bg-kree-dark text-white border-kree-dark shadow-lg scale-105' : 'bg-white/70 text-gray-500 border-gray-200/50 hover:border-kree-blue/50'} liquid-effect">${t(cat)}</button>`).join('');
+       }
+
+       function renderVehicles() {
+           const grid = document.getElementById('vehicle-grid');
+           const filtered = state.activeCategory === 'Tous' ? VEHICLES : VEHICLES.filter(v => v.category === state.activeCategory);
+          
+           if (filtered.length === 0) { grid.innerHTML = `<div class="col-span-full text-center py-20 text-gray-400">${t('Aucun véhicule.')}</div>`; return; }
+
+           grid.innerHTML = filtered.map(v => {
+               const isLuxe = v.category === 'Luxe' || (v.category === '7/9 Places' && v.basePrice > 10000);
+               return `
+               <div class="group glass-effect rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border ${isLuxe ? 'border-yellow-500/40 shadow-yellow-500/10' : 'border-gray-100/50'} hover:-translate-y-2 cursor-pointer liquid-effect" onclick="openConfigurator(${v.id})">
+                   <div class="aspect-[16/9] relative overflow-hidden bg-gray-100">
+                       ${isLuxe ? '<div class="absolute top-3 right-3 gold-gradient text-black text-[10px] font-black px-3 py-1.5 rounded-full shadow-lg z-10 flex items-center gap-1 tracking-wider"><i data-lucide="star" class="w-3 h-3"></i> ' + t('PREMIUM') + '</div>' : ''}
+                       <div class="absolute top-3 left-3 glass-dark text-white text-[10px] font-bold px-2.5 py-1.5 rounded-md z-10 uppercase tracking-widest shadow-md">${t(v.category)}</div>
+                       <img src="${v.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 car-shadow">
+                       <div class="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white via-white/60 to-transparent"></div>
+                   </div>
+                   <div class="p-6 relative -mt-6">
+                       <h3 class="text-xl font-black text-kree-dark mb-1 leading-tight">${v.name}</h3>
+                       <div class="flex gap-3 text-xs text-gray-500 font-bold uppercase mb-5"><span>${v.fuel}</span> • <span>${v.gear}</span></div>
+                       <div class="pt-4 border-t border-dashed border-gray-200/50 flex justify-between items-end">
+                           <div><p class="text-[10px] text-gray-400 font-bold uppercase mb-0.5">${t('À partir de')}</p><div class="text-2xl font-black ${isLuxe ? 'text-yellow-600' : 'text-kree-dark'}">${formatPrice(v.basePrice)}</div></div>
+                           <button class="w-full max-w-[140px] py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 transition-all duration-300 transform group-hover:scale-[1.02] shadow-md ${isLuxe ? 'gold-gradient text-black hover:shadow-yellow-500/30' : 'bg-kree-blue text-white hover:bg-[#004494]'} liquid-effect"><span>${t('CONFIGURER')}</span><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                       </div>
+                   </div>
+               </div>`
+           }).join('');
+           lucide.createIcons();
+       }
+
+       // ACTIONS
+       window.filterCategory = (cat) => { state.activeCategory = cat; renderFilters(); renderVehicles(); }
+      
+       window.openConfigurator = (id) => {
+           state.currentVehicle = VEHICLES.find(v => v.id === id);
+           state.duration = 24; state.mileage = 10000; state.clientType = 'business';
+           state.transmission = state.currentVehicle.allowBothGears ? 'Manuelle' : (state.currentVehicle.gear === 'Auto' ? 'Automatique' : 'Manuelle');
+          
+           document.getElementById('conf-image').src = state.currentVehicle.image;
+           document.getElementById('conf-name').innerText = state.currentVehicle.name;
+           document.getElementById('conf-category').innerText = state.currentVehicle.category;
+           document.getElementById('conf-fuel').innerText = state.currentVehicle.fuel;
+          
+           const isLuxe = state.currentVehicle.category === 'Luxe' || (state.currentVehicle.category === '7/9 Places' && state.currentVehicle.basePrice > 10000);
+           const badge = document.getElementById('conf-luxe-badge');
+           isLuxe ? badge.classList.remove('hidden') : badge.classList.add('hidden');
+          
+           updateConfiguratorUI();
+           document.getElementById('configurator-modal').classList.remove('hidden');
+       }
+       window.closeConfigurator = () => document.getElementById('configurator-modal').classList.add('hidden');
+
+       window.setClientType = (t) => { state.clientType = t; updateConfiguratorUI(); }
+       window.setDuration = (d) => { state.duration = d; updateConfiguratorUI(); }
+       window.setMileage = (m) => { state.mileage = m; updateConfiguratorUI(); }
+       window.setTransmission = (t) => { if(state.currentVehicle.allowBothGears) { state.transmission = t; updateConfiguratorUI(); } }
+
+       function updateConfiguratorUI() {
+           const isBiz = state.clientType === 'business';
+           const isLuxe = state.currentVehicle.category === 'Luxe' || (state.currentVehicle.category === '7/9 Places' && state.currentVehicle.basePrice > 10000);
+
+           // Client BTNs
+           document.getElementById('btn-business').className = `flex-1 py-3 rounded-lg text-sm font-bold transition-all ${isBiz ? 'glass-effect text-kree-dark shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:bg-gray-100/50'} liquid-effect`;
+           document.getElementById('btn-individual').className = `flex-1 py-3 rounded-lg text-sm font-bold transition-all ${!isBiz ? 'glass-effect text-kree-dark shadow-sm ring-1 ring-black/5' : 'text-gray-500 hover:bg-gray-100/50'} liquid-effect`;
+           document.getElementById('price-label').innerText = isBiz ? "Loyer mensuel (HT)" : "Loyer mensuel (TTC)";
+
+           // Transmision BTNs
+           const btnMan = document.getElementById('btn-trans-man');
+           const btnAuto = document.getElementById('btn-trans-auto');
+           const isAuto = state.transmission === 'Automatique';
+
+           if (state.currentVehicle.allowBothGears) {
+               btnMan.className = `flex-1 p-4 rounded-xl border-2 text-left transition-all cursor-pointer ${!isAuto ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 text-gray-500 hover:border-gray-300'} liquid-effect`;
+               btnAuto.className = `flex-1 p-4 rounded-xl border-2 text-left transition-all cursor-pointer ${isAuto ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 text-gray-500 hover:border-gray-300'} liquid-effect`;
+               document.getElementById('txt-trans-auto').innerText = "+ 400 DH/mois";
+               document.getElementById('txt-trans-man').innerText = "Standard";
+           } else {
+               const baseGear = state.currentVehicle.gear === 'Auto' ? 'Automatique' : 'Manuelle';
+               if (baseGear === 'Manuelle') {
+                   btnMan.className = `flex-1 p-4 rounded-xl border-2 border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue text-left transition-all liquid-effect`;
+                   btnAuto.className = `flex-1 p-4 rounded-xl border-2 border-gray-100 text-gray-300 bg-gray-50 text-left transition-all btn-disabled`;
+                   document.getElementById('txt-trans-auto').innerText = "Non disponible";
+               } else {
+                   btnAuto.className = `flex-1 p-4 rounded-xl border-2 border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue text-left transition-all liquid-effect`;
+                   btnMan.className = `flex-1 p-4 rounded-xl border-2 border-gray-100 text-gray-300 bg-gray-50 text-left transition-all btn-disabled`;
+                   document.getElementById('txt-trans-auto').innerText = "Standard";
+               }
+           }
+
+           // Options
+           document.getElementById('duration-options').innerHTML = [{v: 24, b: "Best Deal"}, {v: 12, b: "+20%"}, {v: 6, b: "+35%"}, {v: 1, b: "Spot"}].map(d =>
+               `<button onclick="setDuration(${d.v})" class="relative p-3 rounded-xl border-2 text-left transition-all flex flex-col justify-between h-24 ${state.duration === d.v ? 'border-kree-blue bg-blue-50 text-kree-blue ring-1 ring-kree-blue' : 'border-gray-100 bg-white/70 hover:border-gray-300'} liquid-effect"><span class="text-xl font-black">${d.v}<span class="text-xs ml-1">Mois</span></span><span class="text-[10px] font-bold bg-gray-100 px-2 py-0.5 rounded w-fit text-gray-600">${d.b}</span></button>`).join('');
+
+           document.getElementById('mileage-options').innerHTML = [10000, 20000, 30000].map(k =>
+               `<button onclick="setMileage(${k})" class="p-4 rounded-xl border-2 flex items-center justify-between transition-all ${state.mileage === k ? 'border-kree-blue bg-blue-50 text-kree-blue font-bold' : 'border-gray-100 text-gray-500'} liquid-effect"><span>${k/1000}k km/an</span></button>`).join('');
+
+           // CALCUL PRIX
+           let price = state.currentVehicle.basePrice;
+           if(state.duration === 12) price *= 1.20; else if(state.duration === 6) price *= 1.35; else if(state.duration === 1) price *= 1.50;
+          
+           if(state.mileage > 10000) {
+               const high = state.mileage === 30000;
+               const supp = (state.currentVehicle.type === "Eco" || state.currentVehicle.category === "Economique") ? (high ? 500 : 300) : (isLuxe ? (high ? 2500 : 1500) : (high ? 900 : 500));
+               price += supp;
+           }
+
+           if(state.currentVehicle.allowBothGears && state.transmission === 'Automatique') price += 400;
+           if(state.clientType === 'individual') price *= 1.20;
+
+           document.getElementById('conf-price').innerText = formatPrice(Math.round(price));
+          
+           // CTA
+           const ctaBtn = document.getElementById('conf-cta-btn');
+           const ctaText = document.getElementById('conf-cta-text');
+           ctaText.innerText = state.user ? "BLOQUER CE TARIF" : "SE CONNECTER";
+           ctaBtn.className = isLuxe ? "h-16 px-10 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-3 w-full md:w-auto gold-gradient text-black hover:shadow-yellow-500/30 liquid-effect" : "h-16 px-10 rounded-2xl text-lg font-bold shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all flex items-center justify-center gap-3 w-full md:w-auto bg-kree-blue text-white hover:bg-[#004494] liquid-effect";
+          
+           // VAT Notice
+           const vat = document.getElementById('vat-notice');
+           !isBiz ? vat.classList.remove('hidden') : vat.classList.add('hidden');
+          
+           lucide.createIcons();
+       }
+
+       function formatPrice(p) { return new Intl.NumberFormat('fr-MA', { style: 'currency', currency: 'MAD', maximumFractionDigits: 0 }).format(p); }
+
+       // AUTH & NAVIGATION
+       window.openAuthModal = () => { document.getElementById('auth-modal').classList.remove('hidden'); switchAuthTab('login'); }
+       window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
+       
+async function simulateLogin() {
+    const email = document.getElementById('login-email-input').value.trim();
+    const password = document.getElementById('login-password-input').value.trim();
+
+    try {
+        const res = await fetch("http://localhost:2000/api/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            alert("❌ Email ou mot de passe incorrect");
+            return;
+        }
+
+        // Backend returns { success, message, data: { user, token, refreshToken } }
+        const user = data?.data?.user || null;
+        const token = data?.data?.token || null;
+        const refreshToken = data?.data?.refreshToken || null;
+
+        if (user) {
+            state.user = user; // update in-memory state
+            updateAuthUI();
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        if (token) localStorage.setItem('token', token);
+        if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
+
+        alert("✅ Connexion réussie !");
+window.location.href = "dashboard.html";        closeAuthModal();
+        
+        // Redirect to dashboard
+        setTimeout(() => {
+            openDashboard();
+        }, 500);
+
+    } catch (error) {
+        alert("⚠️ Erreur réseau : " + error.message);
+    }
+}
+
+async function simulateRegister() {
+    const firstname = document.getElementById('reg-firstname-input').value.trim();
+    const lastname  = document.getElementById('reg-lastname-input').value.trim();
+    const email     = document.getElementById('reg-email-input').value.trim();
+    const phone     = document.getElementById('reg-phone').value.trim();
+    const password  = document.getElementById('reg-password-input').value.trim();
+    const country   = document.getElementById('reg-country').value;
+
+    if (!country) {
+        alert("❌ Veuillez sélectionner un pays !");
+        return;
+    }
+
+    // Align keys with backend expected field names (firstName, lastName)
+    const body = {
+        firstName: firstname,
+        lastName: lastname,
+        email,
+        phone,
+        country,
+        password,
+        role: 'customer'
+    };
+
+    try {
+        const res = await fetch("http://localhost:2000/api/auth/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+            alert("❌ Erreur : " + data.message);
+            return;
+        }
+
+        // If backend returns created user and tokens, store them similarly to login
+        const user = data?.data?.user || null;
+        const token = data?.data?.token || null;
+        const refreshToken = data?.data?.refreshToken || null;
+
+        if (user) {
+            state.user = user;
+            updateAuthUI();
+            localStorage.setItem('user', JSON.stringify(user));
+        }
+        if (token) localStorage.setItem('token', token);
+        if (refreshToken) localStorage.setItem('refreshToken', refreshToken);
+
+        alert("✅ Compte créé avec succès !");
+        closeAuthModal();
+window.location.href = "dashboard.html";
+    } catch (error) {
+        alert("⚠️ Erreur réseau : " + error.message);
+    }
+}
+ 
+       window.logout = () => { state.user = null; updateAuthUI(); window.closeDashboard(); }
+      
+       function updateAuthUI() {
+           if (state.user) {
+               document.getElementById('nav-auth-btn').onclick = window.openDashboard;
+               document.getElementById('nav-auth-btn').classList.replace('bg-kree-orange', 'bg-kree-blue');
+               document.getElementById('nav-auth-text').innerText = "Mon Espace";
+           } else {
+               document.getElementById('nav-auth-btn').onclick = window.openAuthModal;
+               document.getElementById('nav-auth-btn').classList.replace('bg-kree-blue', 'bg-kree-orange');
+               document.getElementById('nav-auth-text').innerText = "Espace Client";
+           }
+           if(!document.getElementById('configurator-modal').classList.contains('hidden')) updateConfiguratorUI();
+       }
+
+       window.openDashboard = () => { 
+           // Mettre à jour les infos utilisateur
+           document.getElementById('user-name').innerText = state.user.name;
+           document.getElementById('user-email').innerText = state.user.email;
+           
+           renderDashboard(); 
+           document.getElementById('dashboard-modal').classList.remove('hidden'); 
+       }
+       window.closeDashboard = () => document.getElementById('dashboard-modal').classList.add('hidden');
+       window.handleConfigAction = () => state.user ? saveQuote() : (window.closeConfigurator(), window.openAuthModal());
+
+ window.saveQuote = async () => {
+    // Préparer les données pour l'API
+    const rawPrice = document.getElementById('conf-price').innerText || '';
+    // Parser la valeur numérique du prix formaté (ex: "1 200 MAD")
+    const numericPrice = parseInt(rawPrice.replace(/[^0-9]/g, ''), 10) || 0;
+
+    const now = new Date();
+    const end = new Date(now);
+    end.setMonth(end.getMonth() + Number(state.duration || 0));
+
+    const payload = {
+        vehicle: state.currentVehicle.id,
+        vehicleName: state.currentVehicle.name,
+        vehicleCategory: state.currentVehicle.category,
+        durationMonths: Number(state.duration || 0),
+        monthlyPrice: numericPrice,
+        mileage: Number(state.mileage || 0),
+        clientType: state.clientType,
+        transmission: state.transmission,
+        fuelType: state.currentVehicle.fuel,
+        location: { 
+            city: '' // Vous pouvez ajouter un champ pour la ville si nécessaire
+        },
+        status: 'pending',
+        // Informations additionnelles
+        additionalInfo: {
+            gearType: state.transmission,
+            hasBothGears: state.currentVehicle.allowBothGears,
+            basePrice: state.currentVehicle.basePrice,
+            calculatedPrice: numericPrice
+        }
+    };
+
+    try {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        
+        if (!token || !user._id) {
+            alert('Veuillez vous connecter pour sauvegarder votre demande');
+            window.closeConfigurator();
+            window.openAuthModal();
+            return;
+        }
+
+        // Envoyer à l'API backend
+        const res = await fetch('http://localhost:2000/api/requests', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(payload)
+        });
+
+        const responseData = await res.json();
+
+        if (!res.ok) {
+            throw new Error(responseData.message || 'Erreur lors de l\'envoi de la demande');
+        }
+
+        // Sauvegarder localement pour l'UX
+        const localQuote = {
+            id: responseData.data._id || Date.now(),
+            vehicle: state.currentVehicle,
+            price: document.getElementById('conf-price').innerText,
+            duration: state.duration,
+            mileage: state.mileage,
+            clientType: state.clientType,
+            transmission: state.transmission,
+            createdAt: new Date().toISOString(),
+            status: 'pending'
+        };
+        
+        state.quotes.unshift(localQuote);
+
+        // Afficher message de succès
+        alert('✅ Votre demande a été envoyée avec succès !');
+        
+        window.closeConfigurator();
+        window.openDashboard();
+
+    } catch (error) {
+        console.error('Erreur lors de l\'envoi de la demande:', error);
+        alert('❌ Erreur: ' + error.message);
+        
+        // Sauvegarder localement même en cas d'erreur réseau
+        const localQuote = {
+            id: Date.now(),
+            vehicle: state.currentVehicle,
+            price: document.getElementById('conf-price').innerText,
+            duration: state.duration,
+            mileage: state.mileage,
+            clientType: state.clientType,
+            transmission: state.transmission,
+            createdAt: new Date().toISOString(),
+            status: 'draft'
+        };
+        state.quotes.unshift(localQuote);
+        
+        window.closeConfigurator();
+        window.openDashboard();
+    }
+}
+async function loadUserRequests() {
+    try {
+        const token = localStorage.getItem('token');
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        
+        if (!token || !user._id) {
+            return [];
+        }
+
+        const res = await fetch('http://localhost:2000/api/requests/my-requests', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+
+        if (res.ok) {
+            const responseData = await res.json();
+            return responseData.data || [];
+        }
+        
+        return [];
+    } catch (error) {
+        console.error('Erreur lors du chargement des demandes:', error);
+        return [];
+    }
+}
+ async function renderDashboard() {
+    const container = document.getElementById('dashboard-content');
+    
+    // Charger les demandes depuis l'API
+    const apiRequests = await loadUserRequests();
+    
+    // Fusionner avec les demandes locales (pour la rétrocompatibilité)
+    if (apiRequests.length > 0) {
+        state.quotes = apiRequests.map(req => ({
+            id: req._id,
+            vehicle: {
+                id: req.vehicle,
+                name: req.vehicleName,
+                category: req.vehicleCategory,
+                image: getVehicleImage(req.vehicleCategory, req.vehicleName),
+                fuel: req.fuelType
+            },
+            price: formatPrice(req.monthlyPrice),
+            duration: req.durationMonths,
+            mileage: req.mileage,
+            clientType: req.clientType,
+            transmission: req.transmission,
+            status: req.status,
+            createdAt: req.createdAt
+        }));
+    }
+
+    if (!state.quotes.length) { 
+        container.innerHTML = `
+            <div class="text-center text-gray-500 py-10">
+                <i data-lucide="file-text" class="w-12 h-12 mx-auto mb-4 text-gray-300"></i>
+                <p>Aucune demande sauvegardée.</p>
+                <p class="text-sm">Configurez un véhicule pour créer votre première demande.</p>
+            </div>
+        `; 
+        return; 
+    }
+    
+    container.innerHTML = state.quotes.map(q => `
+        <div class="border border-gray-100/50 rounded-xl p-4 flex gap-4 items-center glass-effect shadow-sm mb-3">
+            <img src="${q.vehicle.image}" class="w-24 h-16 object-cover rounded-lg bg-gray-100">
+            <div class="flex-grow">
+                <h4 class="font-bold text-kree-dark">${q.vehicle.name}</h4>
+                <p class="text-xs text-gray-500">
+                    ${q.duration} Mois • ${q.mileage/1000}k km • ${q.clientType} • ${q.transmission}
+                </p>
+                <p class="text-kree-blue font-bold text-sm mt-1">${q.price} / mois</p>
+                <div class="flex items-center gap-2 mt-2">
+                    <span class="text-xs px-2 py-1 rounded-full ${
+                        q.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                        q.status === 'approved' ? 'bg-green-100 text-green-800' :
+                        q.status === 'rejected' ? 'bg-red-100 text-red-800' :
+                        'bg-gray-100 text-gray-800'
+                    }">
+                        ${getStatusText(q.status)}
+                    </span>
+                    <span class="text-xs text-gray-500">${new Date(q.createdAt).toLocaleDateString()}</span>
+                </div>
+            </div>
+            <button onclick="removeQuote('${q.id}')" class="text-red-500 hover:bg-red-50 p-2 rounded-lg transition-colors">
+                <i data-lucide="trash-2" class="w-4 h-4"></i>
+            </button>
+        </div>
+    `).join('');
+    
+    lucide.createIcons();
+}
+
+// Helper function pour les statuts
+function getStatusText(status) {
+    const statusMap = {
+        'pending': 'En attente',
+        'approved': 'Approuvé',
+        'rejected': 'Rejeté',
+        'draft': 'Brouillon'
+    };
+    return statusMap[status] || status;
+}
+
+// Helper function pour les images des véhicules
+function getVehicleImage(category, name) {
+    // Logique pour déterminer l'image basée sur la catégorie et le nom
+    // Vous pouvez adapter cette fonction selon vos besoins
+    const defaultImages = {
+        'Economique': 'images/renault_clio_5_4.jpg',
+        'Confort': 'images/hyundai_tucson_4.jpg',
+        '7/9 Places': 'images/dacia_lodgy_7.jpg',
+        'Utilitaire': 'images/dacia_dokker_1.jpg',
+        'Luxe': 'images/mercedes_classe_a_amg_3.png'
+    };
+    return defaultImages[category] || 'images/default-vehicle.jpg';
+}
+   window.removeQuote = async (id) => {
+    try {
+        const token = localStorage.getItem('token');
+        
+        // Supprimer de l'API si c'est une demande distante
+        if (typeof id === 'string' && id.length > 10) { // ID MongoDB
+            const res = await fetch(`http://localhost:2000/api/requests/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (!res.ok) {
+                throw new Error('Erreur lors de la suppression');
+            }
+        }
+        
+        // Supprimer localement
+        state.quotes = state.quotes.filter(q => q.id !== id);
+        renderDashboard();
+        
+    } catch (error) {
+        console.error('Erreur suppression:', error);
+        alert('Erreur lors de la suppression de la demande');
+    }
+}
+       // WhatsApp Chat Functionality
+       let whatsappState = {
+           isOpen: false,
+           isMinimized: false,
+           messages: []
+       };
+
+       // Base de connaissances du chatbot
+       const chatbotKnowledge = {
+           'bonjour': 'Bonjour ! 👋 Je suis l\'assistant KREE. Comment puis-je vous aider aujourd\'hui ?',
+           'salut': 'Salut ! 😊 Je suis là pour répondre à vos questions sur la location longue durée.',
+           'catalogue': 'Nous avons 5 catégories de véhicules : Économique (à partir de 3.200 DH/mois), Confort, 7/9 Places, Utilitaire et Luxe. Quelle catégorie vous intéresse ?',
+           'prix': 'Nos tarifs démarrent à 3.200 DH/mois pour les véhicules économiques. Le prix exact dépend du modèle, de la durée (12-60 mois) et du kilométrage.',
+           'tarif': 'Les tarifs varient selon le véhicule : Économique (3.200-4.500 DH), Confort (4.900-7.500 DH), Luxe (8.500-25.000 DH). Utilisez notre configurateur pour un devis précis !',
+           'disponibilité': 'La plupart de nos véhicules sont disponibles sous 48h. Les modèles premium peuvent nécessiter 3-5 jours.',
+           'document': 'Pour une location LLD, il vous faut : CIN valide, permis de conduire marocain, et justificatif de domicile de moins de 3 mois.',
+           'durée': 'Nous proposons des contrats de 12 à 60 mois. La durée recommandée est de 24 mois pour le meilleur rapport qualité-prix.',
+           'kilométrage': 'Choisissez votre kilométrage annuel : 10.000 km (standard), 20.000 km (+300-900 DH/mois), 30.000 km (+500-1.500 DH/mois).',
+           'assurance': 'Tous nos contrats incluent une assurance tous risques avec assistance 24h/24 et 7j/7.',
+           'entretien': 'L\'entretien courant est inclus dans tous nos contrats LLD : vidanges, freins, pneus et révisions périodiques.',
+           'carburant': 'Nous avons des véhicules diesel (économique) et essence. Le carburant reste à votre charge.',
+           'entreprise': 'Pour les entreprises : facturation HT, déduction TVA possible, et gestion simplifiée de flotte automobile.',
+           'particulier': 'Pour les particuliers : forfaits TTC tout compris, sans frais cachés.',
+           'livraison': 'Livraison gratuite dans tout le Maroc pour les contrats de 24 mois et plus.',
+           'maroc': 'Nous couvrons tout le territoire marocain avec des agences à Casablanca, Rabat, Marrakech et Tanger.',
+           'merci': 'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions.',
+           'au revoir': 'À bientôt ! N\'oubliez pas de visiter notre configurateur en ligne pour un devis personnalisé. 🚗',
+           'aide': 'Je peux vous aider avec : informations sur les véhicules, tarifs, documents nécessaires, processus de location. Que souhaitez-vous savoir ?',
+           'contact': '📞 Appelez-nous au +212 5 22 XX XX XX\n📧 Email : contact@kree.ma\n📍 Casablanca : 123 Avenue Mohammed V',
+           'urgence': 'Pour une assistance urgente 24h/24 : +212 6 12 XX XX XX (panne, accident, dépannage)',
+           'configurateur': 'Notre configurateur en ligne vous permet de personnaliser votre véhicule, durée et kilométrage pour obtenir un devis instantané !',
+           'llc': 'La Location Longue Durée (LLD) vous offre : véhicule neuf, entretien inclus, assurance tous risques, et assistance 24/7. C\'est la solution de mobilité la plus complète !'
+       };
+
+       // Fonctions du chatbot
+       window.openWhatsAppModal = function() {
+           const modal = document.getElementById('whatsapp-modal');
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           modal.classList.remove('hidden');
+           floatButton.style.display = 'none'; // Cache l'icône
+           whatsappState.isOpen = true;
+           whatsappState.isMinimized = false;
+           
+           setTimeout(() => {
+               document.getElementById('whatsapp-input').focus();
+           }, 300);
+           
+           lucide.createIcons();
+       }
+
+       window.closeWhatsAppModal = function() {
+           const modal = document.getElementById('whatsapp-modal');
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           modal.classList.add('hidden');
+           floatButton.style.display = 'flex'; // Réaffiche l'icône
+           whatsappState.isOpen = false;
+       }
+
+       window.minimizeChat = function() {
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           whatsappState.isMinimized = !whatsappState.isMinimized;
+           const chatContainer = document.querySelector('#whatsapp-modal > div > div');
+           
+           if (whatsappState.isMinimized) {
+               chatContainer.classList.add('h-16');
+               document.getElementById('whatsapp-chat').classList.add('hidden');
+               document.querySelector('#whatsapp-modal .border-t').classList.add('hidden');
+               floatButton.style.display = 'flex'; // Réaffiche l'icône quand minimisé
+           } else {
+               chatContainer.classList.remove('h-16');
+               document.getElementById('whatsapp-chat').classList.remove('hidden');
+               document.querySelector('#whatsapp-modal .border-t').classList.remove('hidden');
+               floatButton.style.display = 'none'; // Cache l'icône quand déminimisé
+           }
+       }
+
+       window.handleWhatsAppInput = function(event) {
+           if (event.key === 'Enter') {
+               sendWhatsAppMessage();
+           }
+       }
+
+       window.sendWhatsAppMessage = function() {
+           const input = document.getElementById('whatsapp-input');
+           const message = input.value.trim();
+           
+           if (!message) return;
+           
+           addMessage(message, 'user');
+           input.value = '';
+           
+           // Réponse du chatbot
+           setTimeout(() => {
+               const response = getChatbotResponse(message);
+               addMessage(response, 'bot');
+           }, 1000);
+       }
+
+       function addMessage(text, sender) {
+           const chat = document.getElementById('whatsapp-chat');
+           const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+           
+           const messageDiv = document.createElement('div');
+           messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+           
+           messageDiv.innerHTML = `
+               <div class="max-w-[80%] ${sender === 'user' ? 'bg-green-500 text-white rounded-2xl rounded-br-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm border border-gray-100'} p-4">
+                   <p class="text-sm whitespace-pre-line">${text}</p>
+                   <span class="text-xs ${sender === 'user' ? 'text-white/70' : 'text-gray-500'} mt-1 block">${time}</span>
+               </div>
+           `;
+           
+           chat.appendChild(messageDiv);
+           chat.scrollTop = chat.scrollHeight;
+           
+           // Sauvegarder le message
+           whatsappState.messages.push({ text, sender, time });
+       }
+
+       function getChatbotResponse(userMessage) {
+           const lowerMessage = userMessage.toLowerCase();
+           
+           // Recherche de correspondance dans la base de connaissances
+           for (const [key, response] of Object.entries(chatbotKnowledge)) {
+               if (lowerMessage.includes(key)) {
+                   return response;
+               }
+           }
+           
+           // Réponses par défaut selon le type de question
+           if (lowerMessage.includes('?')) {
+               return 'Je comprends votre question ! Pour une réponse précise, je vous recommande de :\n\n• Consulter notre configurateur en ligne\n• Nous appeler au +212 5 22 XX XX XX\n• Visiter notre showroom à Casablanca\n\nY a-t-il autre chose que je puisse vous expliquer ?';
+           }
+           
+           if (lowerMessage.includes('véhicule') || lowerMessage.includes('voiture') || lowerMessage.includes('auto')) {
+               return 'Nous avons un large choix de véhicules ! 🚗\n\n• Économique : Clio, Alsvin, Kardian\n• Confort : Tucson, CS35/55 Plus\n• 7/9 Places : Lodgy, Jogger, Classe V\n• Luxe : Mercedes, VW Touareg\n\nQuel type de véhicule recherchez-vous ?';
+           }
+           
+           return 'Je ne suis pas sûr de comprendre. 🤔\n\nJe peux vous aider avec :\n• Les tarifs et modèles de véhicules\n• Les documents nécessaires\n• Le processus de location\n• L\'assistance technique\n\nPouvez-vous reformuler votre question ?';
+       }
+
+       // Initialisation
+       document.addEventListener('DOMContentLoaded', function() {
+           init();
+           applyTranslations();
+           updateLanguageButtons();
+           updatePhonePlaceholder();
+       });
+   </script>
+</body>
+</html>
