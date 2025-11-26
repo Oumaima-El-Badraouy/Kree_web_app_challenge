@@ -53,8 +53,7 @@
      "sameAs": [
      "https://www.instagram.com/kree_ma/",
        "https://www.facebook.com/kreemaroc",
-       "https://wa.me/00212697278436
-"
+       "https://wa.me/00212697278436"
      ]
    }
    </script>
@@ -79,7 +78,7 @@
    </script>
    <script src="https://cdn.tailwindcss.com"></script>
    <script src="https://unpkg.com/lucide@latest"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
    <style>
        body { 
@@ -251,11 +250,20 @@
         À propos
     </button>
 
-    <a href="partenaires.html" 
-        class="text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
-        <span data-translate="Espace Partenaire">Espace Partenaire</span>
-        <i data-lucide="external-link" class="w-4 h-4"></i>
-    </a>
+    <button onclick="showSection('app')" 
+        class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+        data-translate="App Mobile">
+        App Mobile
+    </button>
+
+   <a href="Partenaire.html"
+   target="_blank"
+   rel="noopener noreferrer"
+   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
+    <span data-translate="Devenir Partenaire">Devenir Partenaire</span>
+    <i data-lucide="external-link" class="w-4 h-4"></i>
+</a>
+
 
    <!-- 🌍 Dropdown Traduction -->
 <div class="relative group">
@@ -299,9 +307,15 @@
                    À propos
                </button>
 
-               <a href="partenaires.html" 
+               <button onclick="showSection('app'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="App Mobile">
+                   App Mobile
+               </button>
+
+               <a  href="Partenaire.html" target="_blank"
                    class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
-                   <span data-translate="Espace Partenaire">Espace Partenaire</span>
+                   <span data-translate="Devenir Partenaire">Devenir Partenaire</span>
                    <i data-lucide="external-link" class="w-4 h-4"></i>
                </a>
 
@@ -444,6 +458,103 @@
                        <h3 class="font-bold text-kree-dark mb-2" data-translate="Email">Email</h3>
                        <p class="text-gray-600"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a0c3cfcdcdc5d2c3c9c1cce0cbd2c5c58ecdc1"><span class="__cf_email__" data-cfemail="a0d4c1dac9d2c5c4c18ed0d2cfe0c7cdc1c9cc8ec3cfcd">tazireda.pro@gmail.com</span></a></p>
                    </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- SECTION APP MOBILE CLIENT -->
+   <div id="app-section" class="section hidden">
+       <div class="bg-kree-dark py-20">
+           <div class="max-w-7xl mx-auto px-4 text-center">
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8">
+                   <span data-translate="App Mobile KREE">App Mobile</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500">K<span class="text-transparent bg-clip-text bg-white">REE</span></span> 
+               </h1>
+               <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="Votre mobilité dans votre poche">
+                   Gérez vos locations, suivez vos véhicules et accédez à nos services en temps réel.
+               </p>
+           </div>
+       </div>
+
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <!-- Présentation App -->
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+               <div>
+                   <h2 class="text-3xl font-black text-kree-dark mb-6" data-translate="Téléchargez l'App KREE">Téléchargez l'App KREE</h2>
+                   <p class="text-gray-600 text-lg mb-6" data-translate="L'application qui simplifie votre mobilité">
+                       L'application KREE met la puissance de notre service de location longue durée dans votre poche. 
+                       Réservez, gérez et suivez vos véhicules en toute simplicité.
+                   </p>
+                   <ul class="space-y-4 mb-8">
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Réservation en temps réel">Réservation en temps réel</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Gestion de vos contrats">Gestion de vos contrats</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Support client 24/7">Support client 24/7</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Notifications personnalisées">Notifications personnalisées</span>
+                       </li>
+                   </ul>
+               </div>
+               <div class="relative">
+                   <div class="glass-effect rounded-2xl p-8 text-center">
+                       <div class="w-32 h-32 bg-kree-blue/10 rounded-3xl flex items-center justify-center mx-auto mb-6">
+                           <i data-lucide="smartphone" class="w-16 h-16 text-kree-blue"></i>
+                       </div>
+                       <h3 class="text-2xl font-bold text-kree-dark mb-4" data-translate="Disponible maintenant">Disponible maintenant</h3>
+                       <p class="text-gray-600 mb-6" data-translate="Téléchargez gratuitement sur">
+                           Téléchargez gratuitement sur l'App Store et Google Play
+                       </p>
+                       <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                           <a href="#" class="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all liquid-effect">
+                               <i data-lucide="apple" class="w-6 h-6"></i>
+                               <div class="text-left">
+                                   <div class="text-xs" data-translate="Télécharger sur">Télécharger sur</div>
+                                   <div class="font-bold">App Store</div>
+                               </div>
+                           </a>
+                           <a href="#" class="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all liquid-effect">
+                               <i data-lucide="play" class="w-6 h-6"></i>
+                               <div class="text-left">
+                                   <div class="text-xs" data-translate="Disponible sur">Disponible sur</div>
+                                   <div class="font-bold">Google Play</div>
+                               </div>
+                           </a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Fonctionnalités -->
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <div class="w-16 h-16 bg-kree-orange/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                       <i data-lucide="calendar" class="w-8 h-8 text-kree-orange"></i>
+                   </div>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Réservation instantanée">Réservation instantanée</h3>
+                   <p class="text-gray-600" data-translate="Réservez votre véhicule en quelques clics">Réservez votre véhicule en quelques clics, 24h/24 et 7j/7.</p>
+               </div>
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <div class="w-16 h-16 bg-kree-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                       <i data-lucide="file-text" class="w-8 h-8 text-kree-blue"></i>
+                   </div>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Gestion des documents">Gestion des documents</h3>
+                   <p class="text-gray-600" data-translate="Accédez à tous vos contrats">Accédez à tous vos contrats et documents en un seul endroit.</p>
+               </div>
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <div class="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                       <i data-lucide="headphones" class="w-8 h-8 text-green-500"></i>
+                   </div>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Support intégré">Support intégré</h3>
+                   <p class="text-gray-600" data-translate="Contactez notre équipe">Contactez notre équipe de support directement depuis l'app.</p>
                </div>
            </div>
        </div>
@@ -846,7 +957,8 @@
                    <ul class="space-y-3">
                        <li><button onclick="showSection('home')" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="Accueil">Accueil</button></li>
                        <li><button onclick="showSection('about')" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="À propos">À propos</button></li>
-                       <li><a href="partenaires.html" class="text-gray-300 hover:text-kree-orange transition-colors flex items-center gap-2" data-translate="Espace Partenaire">Espace Partenaire <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
+                       <li><button onclick="showSection('app')" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="App Mobile">App Mobile</button></li>
+                       <li><a href="Partenaire.html" class="text-gray-300 hover:text-kree-orange transition-colors flex items-center gap-2" data-translate="Devenir Partenaire">Devenir Partenaire <i data-lucide="external-link" class="w-3 h-3"></i></a></li>
                        <li><button onclick="openAuthModal()" class="text-gray-300 hover:text-kree-orange transition-colors" data-translate="Espace Client">Espace Client</button></li>
                    </ul>
                </div>
@@ -902,14 +1014,14 @@
    <!-- SCRIPT -->
    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
    <script>
-       // SYSTÈME DE TRADUCTION
-     // SYSTÈME DE TRADUCTION - VERSION CORRIGÉE
+       // SYSTÈME DE TRADUCTION - VERSION CORRIGÉE
 const translations = {
     'fr': {
         // Navigation
         'Accueil': 'Accueil',
         'À propos': 'À propos',
-        'Espace Partenaire': 'Espace Partenaire',
+        'App Mobile': 'App Mobile',
+        'Devenir Partenaire': 'Devenir Partenaire',
         'Espace Client': 'Espace Client',
         'Mon Espace': 'Mon Espace',
         
@@ -918,6 +1030,24 @@ const translations = {
         'La liberté': 'La liberté',
         'sur mesure.': 'sur mesure.',
         'Configurez votre loyer en temps réel': 'Configurez votre loyer en temps réel. Choisissez la durée, le kilométrage et repartez avec votre véhicule premium sous 48h.',
+        
+        // App Mobile Section
+        'App Mobile KREE': 'App Mobile',
+        'Votre mobilité dans votre poche': 'Votre mobilité dans votre poche',
+        'Téléchargez l\'App KREE': 'Téléchargez l\'App KREE',
+        'L\'application qui simplifie votre mobilité': 'L\'application qui simplifie votre mobilité',
+        'Réservation en temps réel': 'Réservation en temps réel',
+        'Gestion de vos contrats': 'Gestion de vos contrats',
+        'Support client 24/7': 'Support client 24/7',
+        'Notifications personnalisées': 'Notifications personnalisées',
+        'Disponible maintenant': 'Disponible maintenant',
+        'Téléchargez gratuitement sur': 'Téléchargez gratuitement sur',
+        'Réservation instantanée': 'Réservation instantanée',
+        'Réservez votre véhicule en quelques clics': 'Réservez votre véhicule en quelques clics',
+        'Gestion des documents': 'Gestion des documents',
+        'Accédez à tous vos contrats': 'Accédez à tous vos contrats et documents en un seul endroit',
+        'Support intégré': 'Support intégré',
+        'Contactez notre équipe': 'Contactez notre équipe de support directement depuis l\'app',
         
         // Configurateur
         'Configurateur': 'Configurateur',
@@ -992,7 +1122,8 @@ const translations = {
         // Navigation
         'Accueil': 'Home',
         'À propos': 'About',
-        'Espace Partenaire': 'Partner Area',
+        'App Mobile': 'Mobile App',
+        'Devenir Partenaire': 'Partner Area',
         'Espace Client': 'Client Area',
         'Mon Espace': 'My Space',
         
@@ -1001,6 +1132,24 @@ const translations = {
         'La liberté': 'Freedom',
         'sur mesure.': 'on demand.',
         'Configurez votre loyer en temps réel': 'Configure your rent in real time. Choose duration, mileage and drive away with your premium vehicle within 48h.',
+        
+        // App Mobile Section
+        'App Mobile KREE': 'Mobile App',
+        'Votre mobilité dans votre poche': 'Your mobility in your pocket',
+        'Téléchargez l\'App KREE': 'Download KREE App',
+        'L\'application qui simplifie votre mobilité': 'The app that simplifies your mobility',
+        'Réservation en temps réel': 'Real-time booking',
+        'Gestion de vos contrats': 'Contract management',
+        'Support client 24/7': '24/7 customer support',
+        'Notifications personnalisées': 'Personalized notifications',
+        'Disponible maintenant': 'Available now',
+        'Téléchargez gratuitement sur': 'Download for free on',
+        'Réservation instantanée': 'Instant booking',
+        'Réservez votre véhicule en quelques clics': 'Book your vehicle in a few clicks',
+        'Gestion des documents': 'Document management',
+        'Accédez à tous vos contrats': 'Access all your contracts and documents in one place',
+        'Support intégré': 'Integrated support',
+        'Contactez notre équipe': 'Contact our support team directly from the app',
         
         // Configurateur
         'Configurateur': 'Configurator',
@@ -1075,7 +1224,8 @@ const translations = {
         // Navigation
         'Accueil': 'الرئيسية',
         'À propos': 'حولنا',
-        'Espace Partenaire': 'مساحة الشريك',
+        'App Mobile': 'التطبيق',
+        'Devenir Partenaire': 'مساحة الشريك',
         'Espace Client': 'مساحة العميل',
         'Mon Espace': 'مساحتي',
         
@@ -1084,6 +1234,24 @@ const translations = {
         'La liberté': 'الحرية',
         'sur mesure.': 'حسب الطلب.',
         'Configurez votre loyer en temps réel': 'قم بتكوين إيجارك في الوقت الفعلي. اختر المدة والكيلومترات وابرح بسيارتك الفاخرة خلال 48 ساعة.',
+        
+        // App Mobile Section
+        'App Mobile KREE': 'التطبيق',
+        'Votre mobilité dans votre poche': 'تنقلاتك في جيبك',
+        'Téléchargez l\'App KREE': 'حمّل تطبيق KREE',
+        'L\'application qui simplifie votre mobilité': 'التطبيق الذي يبسط تنقلاتك',
+        'Réservation en temps réel': 'حجز فوري',
+        'Gestion de vos contrats': 'إدارة عقودك',
+        'Support client 24/7': 'دعم العملاء 24/7',
+        'Notifications personnalisées': 'إشعارات مخصصة',
+        'Disponible maintenant': 'متاح الآن',
+        'Téléchargez gratuitement sur': 'حمّل مجاناً من',
+        'Réservation instantanée': 'حجز فوري',
+        'Réservez votre véhicule en quelques clics': 'احجز مركبتك ببضع نقرات',
+        'Gestion des documents': 'إدارة المستندات',
+        'Accédez à tous vos contrats': 'الوصول إلى جميع عقودك ومستنداتك في مكان واحد',
+        'Support intégré': 'دعم مدمج',
+        'Contactez notre équipe': 'اتصل بفريق الدعم مباشرة من التطبيق',
         
         // Configurateur
         'Configurateur': 'المكون',
@@ -1405,7 +1573,7 @@ function updatePhonePlaceholder() {
 
            // 7/9 PLACES
            { id: 8, name: "Dacia Lodgy", category: "7/9 Places", type: "Minivan", image: "images/dacia_lodgy_7.jpg", basePrice: 4200, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
-           { id: 9, name: "Dacia Jogger", category: "7/9 Places", type: "Minivan", image: "images/dacia_jogger_3.png", basePrice: 4800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
+           { id: 9, name: "Dacia Jogger", category: "7/9 Places", type: "Minivan", image: "images/gray-cargo-van-driving-rainy-highway-delivery-rain.jpg", basePrice: 4800, fuel: "Diesel", gear: "Manuelle", allowBothGears: false },
            { id: 10, name: "Mercedes Classe V", category: "7/9 Places", type: "Luxe", image: "images/mercedes_classe_v_1.webp", basePrice: 18000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
            { id: 11, name: "Hyundai Staria", category: "7/9 Places", type: "Luxe", image: "images/hyundai_staria_5.jpg", basePrice: 12000, fuel: "Diesel", gear: "Auto", allowBothGears: false },
 

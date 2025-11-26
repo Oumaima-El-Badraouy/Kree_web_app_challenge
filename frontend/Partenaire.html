@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+   <!-- SEO Meta Tags -->
+   <title>KREE | Leader de la Location Longue Durée au Maroc - LLD Vehicules</title>
+   <meta name="description" content="KREE est le leader marocain de la location longue durée. Flotte premium, devis instantané, service 24/7. Découvrez notre catalogue de véhicules pour entreprises et particuliers.">
+   <meta name="keywords" content="location longue durée, LLD Maroc, location vehicule Casablanca, flotte entreprise, leasing automobile, KREE Maroc, location voiture, vehicule de prestige">
+   <meta name="author" content="KREE - Leader LLD Maroc">
+   
+   <!-- Open Graph / Facebook -->
+   <meta property="og:type" content="website">
+   <meta property="og:url" content="https://kree.ma/">
+   <meta property="og:title" content="KREE | Leader de la Location Longue Durée au Maroc">
+   <meta property="og:description" content="Libérez le potentiel de votre agence avec KREE. Découvrez notre flotte premium et configurez votre loyer en temps réel.">
+   <meta property="og:image" content="https://kree.ma/images/og-image.jpg">
+   <meta property="og:locale" content="fr_FR">
+   
+   <!-- Twitter -->
+   <meta property="twitter:card" content="summary_large_image">
+   <meta property="twitter:url" content="https://kree.ma/">
+   <meta property="twitter:title" content="KREE | Leader de la Location Longue Durée au Maroc">
+   <meta property="twitter:description" content="Libérez le potentiel de votre agence avec KREE. Découvrez notre flotte premium et configurez votre loyer en temps réel.">
+   <meta property="twitter:image" content="https://kree.ma/images/og-image.jpg">
+   
+   <!-- Canonical URL -->
+   <link rel="canonical" href="https://kree.ma/">
+   
+   <!-- Structured Data JSON-LD -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Organization",
+     "name": "KREE",
+     "description": "Leader de la Location Longue Durée au Maroc",
+     "url": "https://kree.ma",
+     "logo": "https://kree.ma/images/logo.png",
+     "contactPoint": {
+       "@type": "ContactPoint",
+       "telephone": "+212-5-22-000-000",
+       "contactType": "customer service",
+       "availableLanguage": "French"
+     },
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "123 Avenue Mohammed V",
+       "addressLocality": "Casablanca",
+       "addressCountry": "MA",
+       "postalCode": "20000"
+     },
+     "sameAs": [
+     "https://www.instagram.com/kree_ma/",
+       "https://www.facebook.com/kreemaroc",
+       "https://wa.me/00212697278436"
+     ]
+   }
+   </script>
+   
+   <!-- Vehicle Structured Data -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "Service",
+     "name": "Location Longue Durée de Véhicules",
+     "description": "Services de location longue durée pour entreprises et particuliers au Maroc",
+     "provider": {
+       "@type": "Organization",
+       "name": "KREE"
+     },
+     "areaServed": {
+       "@type": "Country",
+       "name": "Morocco"
+     },
+     "serviceType": "Vehicle Rental"
+   }
+   </script>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <script src="https://unpkg.com/lucide@latest"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+   <style>
+       body { 
+           font-family: 'Inter', sans-serif; 
+           overflow-x: hidden;
+       }
+       .no-scrollbar::-webkit-scrollbar { display: none; }
+       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+       .custom-scroll::-webkit-scrollbar { width: 6px; }
+       .custom-scroll::-webkit-scrollbar-track { background: #f1f1f1; }
+       .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+       .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+       .btn-disabled { opacity: 0.5; cursor: not-allowed; filter: grayscale(100%); }
+      
+       .car-shadow {
+           box-shadow: inset 0 -20px 60px -10px rgba(0,0,0,0.4);
+       }
+       .gold-gradient {
+           background: linear-gradient(135deg, #FFD700 0%, #FDB931 100%);
+       }
+       
+       /* Effets parallax */
+       .parallax-section {
+           position: relative;
+           overflow: hidden;
+       }
+       .parallax-bg {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 160%;
+           z-index: -1;
+           transform: translateZ(0);
+           will-change: transform;
+       }
+       
+       /* Effets glass iOS */
+       .glass-effect {
+           background: rgba(255, 255, 255, 0.25);
+           backdrop-filter: blur(20px);
+           -webkit-backdrop-filter: blur(20px);
+           border: 1px solid rgba(255, 255, 255, 0.18);
+       }
+       .glass-dark {
+           background: rgba(0, 26, 51, 0.7);
+           backdrop-filter: blur(20px);
+           -webkit-backdrop-filter: blur(20px);
+           border: 1px solid rgba(255, 255, 255, 0.1);
+       }
+       
+       /* Animations fluides */
+       .smooth-transition {
+           transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+       }
+       .float-animation {
+           animation: float 6s ease-in-out infinite;
+       }
+       @keyframes float {
+           0%, 100% { transform: translateY(0); }
+           50% { transform: translateY(-10px); }
+       }
+       
+       /* Effet de liquide */
+       .liquid-effect {
+           position: relative;
+           overflow: hidden;
+       }
+       .liquid-effect::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+           transition: left 0.7s;
+       }
+       .liquid-effect:hover::before {
+           left: 100%;
+       }
+
+       /* Styles pour la traduction arabe */
+       [dir="rtl"] {
+           text-align: right;
+       }
+       
+       [dir="rtl"] .nav-menu {
+           direction: rtl;
+       }
+       
+       [dir="rtl"] .language-selector {
+           direction: rtl;
+       }
+
+       /* Styles WhatsApp Chat */
+       .whatsapp-float {
+           position: fixed;
+           width: 60px;
+           height: 60px;
+           bottom: 35px;
+           right: 50px; 
+           background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+           color: #FFF;
+           border-radius: 50%;
+           font-size: 30px;
+           box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+           z-index: 1000;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+           cursor: pointer;
+           animation: pulse-green 2s infinite;
+       }
+
+       .whatsapp-float:hover {
+           transform: scale(1.1) rotate(5deg);
+           box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+       }
+
+       @keyframes pulse-green {
+           0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+           70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+           100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+       }
+   </style>
+
+   <script>
+       tailwind.config = {
+           theme: {
+               extend: {
+                   colors: {
+                       kree: { blue: '#0056b3', dark: '#001A33', orange: '#FF6600' }
+                   }
+               }
+           }
+       }
+   </script>
+</head>
+<body class="bg-white text-gray-900">
+
+   <!-- NAVBAR -->
+   <nav class="glass-dark bg-kree-dark border-b border-white/5 sticky top-0 z-40 shadow-xl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div class="flex justify-between h-20 items-center">
+               <div class="flex items-center">
+                   <div class="flex flex-col leading-none select-none group cursor-pointer" onclick="showSection('home')" style="direction: ltr;">
+                       <div class="flex items-baseline tracking-tighter transition-transform duration-300 group-hover:scale-105 origin-left">
+                           <span class="text-[32px] md:text-[40px] font-black text-kree-orange mr-[-2px] no-translate">K</span>
+                           <span class="text-[32px] md:text-[40px] font-black text-white tracking-wide no-translate">REE</span>
+                       </div>
+                       <span class="text-[8px] md:text-[9px] font-medium tracking-[0.4em] text-white/60 ml-1 mt-[-2px] no-translate">RENTAL CARS</span>
+                   </div>
+               </div>
+               
+               <!-- Menu Navigation Centré Desktop -->
+               <div class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
+                   <button onclick="showSection('home')" 
+                       class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                       data-translate="Accueil">
+                       Accueil
+                   </button>
+
+                   <button onclick="showSection('about')" 
+                       class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                       data-translate="À propos">
+                       À propos
+                   </button>
+
+                   <button onclick="showSection('agencies')" 
+                       class="text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                       data-translate="Agences">
+                       Agences
+                   </button>
+
+                   <a href="index.html"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
+                       <span data-translate="Voir l'Espace client">Voir l'Espace client</span>
+                       <i data-lucide="external-link" class="w-4 h-4"></i>
+                   </a>
+
+                   <!-- 🌍 Dropdown Traduction -->
+                   <div class="relative group">
+                       <button 
+                           class="flex items-center gap-1 text-white font-medium px-4 py-2 rounded-lg hover:bg-white/10 transition-all select-none">
+                           <i data-lucide="globe" class="w-5 h-5"></i>
+                           <span id="current-lang">FR</span>
+                           <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                       </button>
+
+                       <!-- Menu -->
+                       <div class="absolute right-0 mt-2 w-32 bg-white rounded-xl shadow-lg py-2 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50 border border-gray-200">
+                           <button onclick="changeLanguage('fr')" id="lang-fr" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇫🇷 Français</button>
+                           <button onclick="changeLanguage('en')" id="lang-en" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇬🇧 English</button>
+                           <button onclick="changeLanguage('ar')" id="lang-ar" class="w-full text-left px-4 py-2 hover:bg-gray-100 text-sm">🇲🇦 العربية</button>
+                       </div>
+                   </div>
+               </div>
+
+               <!-- Burger Menu Mobile -->
+               <button id="burger-menu-btn" onclick="toggleMobileMenu()" class="md:hidden text-white hover:text-kree-orange transition-colors">
+                   <i data-lucide="menu" class="w-6 h-6"></i>
+               </button>
+               
+               <button id="nav-auth-btn" onclick="openAuthModal()" class="bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-kree-blue transition-all flex items-center gap-2 transform hover:-translate-y-0.5 liquid-effect hidden md:flex">
+                   <i data-lucide="user" class="w-4 h-4"></i> <span id="nav-auth-text">Connexion</span>
+               </button>
+           </div>
+
+           <!-- Mobile Menu Dropdown -->
+           <div id="mobile-menu" class="hidden pb-4 border-t border-white/10 md:hidden">
+               <button onclick="showSection('home'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="Accueil">
+                   Accueil
+               </button>
+
+               <button onclick="showSection('about'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="À propos">
+                   À propos
+               </button>
+
+               <button onclick="showSection('agencies'); toggleMobileMenu()" 
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium px-4 py-2 rounded-lg hover:bg-white/10" 
+                   data-translate="Agences">
+                   Agences
+               </button>
+
+               <a href="index.html" target="_blank"
+                   class="w-full text-left text-white hover:text-kree-orange transition-colors font-medium flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/10">
+                   <span data-translate="Voir l'Espace client">Voir l'Espace client</span>
+                   <i data-lucide="external-link" class="w-4 h-4"></i>
+               </a>
+
+               <!-- Language Selection Mobile -->
+               <div class="px-4 py-2">
+                   <p class="text-white/60 text-xs font-medium mb-2" data-translate="Langue">Langue</p>
+                   <div class="flex gap-2">
+                       <button onclick="changeLanguage('fr'); toggleMobileMenu()" id="lang-fr-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇫🇷 FR</button>
+                       <button onclick="changeLanguage('en'); toggleMobileMenu()" id="lang-en-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇬🇧 EN</button>
+                       <button onclick="changeLanguage('ar'); toggleMobileMenu()" id="lang-ar-mobile" class="flex-1 px-3 py-2 bg-white/10 hover:bg-white/20 text-sm text-white rounded-lg transition-colors">🇲🇦 AR</button>
+                   </div>
+               </div>
+
+               <!-- Auth Button Mobile -->
+               <button id="nav-auth-btn-mobile" onclick="openAuthModal(); toggleMobileMenu()" class="w-full mt-3 bg-orange-600 text-white px-4 py-2.5 rounded-full text-sm font-bold hover:bg-kree-blue transition-all flex items-center justify-center gap-2 mx-4">
+                   <i data-lucide="user" class="w-4 h-4"></i> <span id="nav-auth-text-mobile">Voir l'Espace client</span>
+               </button>
+           </div>
+       </div>
+   </nav>
+
+   <!-- SECTION HOME -->
+   <div id="home-section" class="section">
+       <!-- HERO avec parallax -->
+       <div class="relative bg-kree-dark overflow-hidden py-20 md:py-28 parallax-section">
+           <div class="parallax-bg bg-gradient-to-br from-kree-dark via-kree-blue/30 to-kree-orange/20"></div>
+           <div class="max-w-7xl mx-auto px-4 relative z-10">
+               <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass-effect text-kree-orange text-xs font-bold uppercase tracking-wider mb-6 animate-fade-in float-animation">
+                   <i data-lucide="star" class="w-3 h-3 fill-current"></i> <span data-translate="Leader de la LLD au Maroc">Leader de la LLD au Maroc</span>
+               </div>
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8 animate-fade-in">
+                   <span data-translate="La liberté">Libérez le potentiel</span>
+                   <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500" data-translate="sur mesure.">de votre agence.</span>
+               </h1>
+
+               <p class="text-lg text-gray-300 mb-10 max-w-xl animate-fade-in" 
+                  data-translate="Configurez votre loyer en temps réel">
+                   Gérez votre flotte en temps réel : définissez vos tarifs, vos disponibilités, vos règles de location et attirez davantage de clients en quelques clics.
+               </p>
+
+               <!-- Floating elements pour effet iOS -->
+               <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-kree-orange/10 blur-3xl"></div>
+               <div class="absolute -bottom-10 left-1/4 w-60 h-60 rounded-full bg-kree-blue/10 blur-3xl"></div>
+           </div>
+       </div>
+
+       <!-- CONTENU PRINCIPAL HOME -->
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <div class="text-center mb-16">
+               <h2 class="text-4xl font-black text-kree-dark mb-6" data-translate="Notre flotte premium">Notre flotte premium</h2>
+               <p class="text-gray-600 text-lg max-w-2xl mx-auto" data-translate="Découvrez notre sélection de véhicules">
+                   Découvrez notre sélection de véhicules adaptés à tous vos besoins professionnels et personnels.
+               </p>
+           </div>
+
+           <!-- Filtres -->
+           <div id="filter-container" class="flex gap-4 mb-12 overflow-x-auto no-scrollbar pb-4"></div>
+
+           <!-- Grille des véhicules -->
+           <div id="vehicle-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+       </div>
+   </div>
+
+   <!-- SECTION À PROPOS -->
+   <div id="about-section" class="section hidden">
+       <div class="bg-kree-dark py-20">
+           <div class="max-w-7xl mx-auto px-4 text-center">
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8">
+                   <span data-translate="À propos de KREE">À propos de</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500">K<span class="text-transparent bg-clip-text bg-white">REE</span></span> 
+               </h1>
+               <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="Leader marocain de la location longue durée">
+                   Leader marocain de la location longue durée, nous accompagnons les entreprises et les particuliers dans leurs projets de mobilité.
+               </p>
+           </div>
+       </div>
+
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <!-- Stats -->
+           <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-16">
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-blue mb-2">10+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Années d'expérience">Années d'expérience</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-orange mb-2">5000+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Véhicules en flotte">Véhicules en flotte</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-blue mb-2">1500+</div>
+                   <div class="text-gray-600 font-medium" data-translate="Clients satisfaits">Clients satisfaits</div>
+               </div>
+               <div class="text-center glass-effect p-8 rounded-2xl">
+                   <div class="text-4xl font-black text-kree-orange mb-2">24/7</div>
+                   <div class="text-gray-600 font-medium" data-translate="Support client">Support client</div>
+               </div>
+           </div>
+
+           <!-- Notre Mission -->
+           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+               <div>
+                   <h2 class="text-3xl font-black text-kree-dark mb-6" data-translate="Notre Mission">Notre Mission</h2>
+                   <p class="text-gray-600 text-lg mb-6" data-translate="Chez KREE, nous révolutionnons">
+                       Chez KREE, nous révolutionnons la mobilité au Maroc en proposant des solutions de location longue durée adaptées aux besoins de chacun. 
+                       Notre expertise et notre commitment font de nous le partenaire de confiance pour tous vos projets automobiles.
+                   </p>
+                   <p class="text-gray-600 text-lg" data-translate="Avec une flotte moderne">
+                       Avec une flotte moderne et un service client exceptionnel, nous nous engageons à vous offrir une expérience de location sans tracas.
+                   </p>
+               </div>
+               <div class="glass-effect p-8 rounded-2xl">
+                   <h3 class="text-xl font-bold text-kree-dark mb-4" data-translate="Nos Valeurs">Nos Valeurs</h3>
+                   <ul class="space-y-4">
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Excellence du service client">Excellence du service client</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Transparence et confiance">Transparence et confiance</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Innovation continue">Innovation continue</span>
+                       </li>
+                       <li class="flex items-center gap-3">
+                           <i data-lucide="check-circle" class="w-5 h-5 text-kree-blue"></i>
+                           <span data-translate="Respect de l'environnement">Respect de l'environnement</span>
+                       </li>
+                   </ul>
+               </div>
+           </div>
+
+           <!-- Contact -->
+           <div class="glass-effect p-8 rounded-2xl text-center">
+               <h2 class="text-2xl font-black text-kree-dark mb-6" data-translate="Contactez-nous">Contactez-nous</h2>
+               <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                   <div>
+                       <i data-lucide="map-pin" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Adresse">Adresse</h3>
+                       <p class="text-gray-600">Mohammedia, Maroc  /<br>Marrakech, Maroc</p>
+                   </div>
+                   <div>
+                       <i data-lucide="phone" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Téléphone">Téléphone</h3>
+                       <p class="text-gray-600">00212697278436</p>
+                   </div>
+                   <div>
+                       <i data-lucide="mail" class="w-8 h-8 text-kree-blue mx-auto mb-4"></i>
+                       <h3 class="font-bold text-kree-dark mb-2" data-translate="Email">Email</h3>
+                       <p class="text-gray-600">contact@kree.ma</p>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- SECTION AGENCES -->
+   <div id="agencies-section" class="section hidden">
+       <div class="bg-kree-dark py-20">
+           <div class="max-w-7xl mx-auto px-4 text-center">
+               <h1 class="text-5xl md:text-7xl font-black text-white leading-tight mb-8">
+                   <span data-translate="Nos Agences">Nos Agences</span> <span class="text-transparent bg-clip-text bg-gradient-to-r from-kree-orange to-yellow-500">K<span class="text-transparent bg-clip-text bg-white">REE</span></span> 
+               </h1>
+               <p class="text-xl text-gray-300 max-w-3xl mx-auto" data-translate="Réseau national de locations">
+                   Découvrez notre réseau d'agences à travers le Maroc pour un service de proximité.
+               </p>
+           </div>
+       </div>
+
+       <div class="max-w-7xl mx-auto px-4 py-16">
+           <!-- Téléchargement App Mobile -->
+           <div class="glass-effect rounded-2xl p-8 mb-16 text-center">
+               <h2 class="text-3xl font-black text-kree-dark mb-4" data-translate="Téléchargez notre App">Téléchargez notre App</h2>
+               <p class="text-gray-600 mb-6 max-w-2xl mx-auto" data-translate="Gérez vos locations en toute simplicité">
+                   Gérez vos locations, suivez vos véhicules et accédez à nos services en temps réel avec l'application mobile KREE Partenaire.
+               </p>
+               <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                   <a href="#" class="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all">
+                       <i data-lucide="apple" class="w-6 h-6"></i>
+                       <div class="text-left">
+                           <div class="text-xs" data-translate="Télécharger sur">Télécharger sur</div>
+                           <div class="font-bold">App Store</div>
+                       </div>
+                   </a>
+                   <a href="#" class="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800 transition-all">
+                       <i data-lucide="play" class="w-6 h-6"></i>
+                       <div class="text-left">
+                           <div class="text-xs" data-translate="Disponible sur">Disponible sur</div>
+                           <div class="font-bold">Google Play</div>
+                       </div>
+                   </a>
+               </div>
+           </div>
+
+           <!-- Agences -->
+           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <i data-lucide="building" class="w-12 h-12 text-kree-blue mx-auto mb-4"></i>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Siège principal">Siège principal</h3>
+                   <p class="text-gray-600 mb-4">Casablanca</p>
+                   <p class="text-sm text-gray-500">123 Avenue Mohammed V</p>
+               </div>
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <i data-lucide="map-pin" class="w-12 h-12 text-kree-orange mx-auto mb-4"></i>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Agence capitale">Agence capitale</h3>
+                   <p class="text-gray-600 mb-4">Rabat</p>
+                   <p class="text-sm text-gray-500">Avenue Hassan II</p>
+               </div>
+               <div class="glass-effect p-6 rounded-2xl text-center">
+                   <i data-lucide="palmtree" class="w-12 h-12 text-kree-blue mx-auto mb-4"></i>
+                   <h3 class="text-xl font-bold text-kree-dark mb-2" data-translate="Agence touristique">Agence touristique</h3>
+                   <p class="text-gray-600 mb-4">Marrakech</p>
+                   <p class="text-sm text-gray-500">Gueliz Centre</p>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- AUTH MODAL -->
+   <div id="auth-modal" class="fixed inset-0 z-[60] hidden flex items-center justify-center p-4">
+       <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeAuthModal()"></div>
+
+       <div class="relative glass-effect w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden animate-fade-in border border-white/10 p-10">
+
+           <!-- TABS -->
+           <div class="flex justify-center mb-10 bg-gray-100/40 p-1.5 rounded-xl w-full max-w-xs mx-auto">
+               <button onclick="switchAuthTab('login')" 
+                   id="login-tab"
+                   class="flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark shadow-sm">
+                   Connexion
+               </button>
+
+               <button onclick="switchAuthTab('register')" 
+                   id="register-tab"
+                   class="flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500 hover:bg-gray-100/40">
+                   Inscription
+               </button>
+           </div>
+
+           <!-- LOGIN FORM -->
+           <div id="login-form">
+               <h2 class="text-3xl font-black text-center text-kree-dark mb-2" id="login-title">Bienvenue !</h2>
+               <p class="text-center text-gray-500 mb-8" id="login-subtitle">Accédez à L'espace Partenaire</p>
+
+               <form class="space-y-6 max-w-md mx-auto" onsubmit="event.preventDefault(); simulateLogin();">
+                   
+                   <!-- Email -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="login-email">Email</label>
+                       <input type="email" id="login-email-input"
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="email@kree.ma" required>
+                   </div>
+
+                   <!-- Password -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="login-password">Mot de passe</label>
+                       <input type="password" id="login-password-input"
+                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="••••••••" required>
+                   </div>
+
+                   <!-- Submit -->
+                   <button type="submit"
+                       class="w-full bg-kree-blue text-white font-bold py-4 rounded-xl hover:bg-blue-700
+                       transition-colors shadow-lg shadow-blue-500/20 liquid-effect" id="login-submit">
+                       Se connecter
+                   </button>
+
+               </form>
+           </div>
+
+           <!-- REGISTER FORM -->
+           <div id="register-form" class="hidden">
+
+               <h2 class="text-3xl font-black text-center text-kree-dark mb-2" id="register-title">Créer un compte</h2>
+               <p class="text-center text-gray-500 mb-8" id="register-subtitle">Inscrivez-vous en quelques secondes</p>
+
+               <!-- 2 Columns Only -->
+               <form class="grid grid-cols-1 md:grid-cols-2 gap-6" 
+                     onsubmit="event.preventDefault(); simulateRegister();">
+
+                   <!-- Prénom -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-firstname">Prénom</label>
+                       <input type="text" id="reg-firstname-input"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="Oumaima" required>
+                   </div>
+
+                   <!-- Nom -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-lastname">Nom</label>
+                       <input type="text" id="reg-lastname-input"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="El Badraouy" required>
+                   </div>
+
+                   <!-- Email -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-email">Email</label>
+                       <input type="email" id="reg-email-input"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="contact@email.com" required>
+                   </div>
+
+                   <!-- Pays -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="country-label">Pays</label>
+                       <select id="reg-country" 
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           required>
+                           <option value="">Sélectionner un pays</option>
+                           <option value="MA" data-code="+212">🇲🇦 Maroc (+212)</option>
+                           <option value="FR" data-code="+33">🇫🇷 France (+33)</option>
+                           <option value="US" data-code="+1">🇺🇸 États-Unis (+1)</option>
+                           <option value="GB" data-code="+44">🇬🇧 Royaume-Uni (+44)</option>
+                           <option value="DE" data-code="+49">🇩🇪 Allemagne (+49)</option>
+                           <option value="IT" data-code="+39">🇮🇹 Italie (+39)</option>
+                           <option value="ES" data-code="+34">🇪🇸 Espagne (+34)</option>
+                           <option value="BE" data-code="+32">🇧🇪 Belgique (+32)</option>
+                           <option value="CH" data-code="+41">🇨🇭 Suisse (+41)</option>
+                           <option value="CA" data-code="+1">🇨🇦 Canada (+1)</option>
+                       </select>
+                   </div>
+
+                   <!-- Téléphone -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="phone-label">Téléphone</label>
+                       <input type="tel" id="reg-phone"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="+212 6 XX XX XX XX" required>
+                   </div>
+
+                   <!-- Mot de passe -->
+                   <div>
+                       <label class="block text-xs font-bold text-gray-700 uppercase mb-1" id="reg-password">Mot de passe</label>
+                       <input type="password" id="reg-password-input"
+                           class="w-full px-3 py-2 md:px-4 md:py-3 rounded-xl border border-gray-200 focus:border-kree-orange 
+                           focus:ring-2 focus:ring-kree-orange/20 outline-none transition-all glass-effect"
+                           placeholder="••••••••" required>
+                   </div>
+
+                   <!-- Terms -->
+                   <div class="col-span-full flex items-center gap-3 mt-2">
+                       <input type="checkbox" id="reg-terms-checkbox"
+                           class="w-4 h-4 text-kree-blue rounded border-gray-300 focus:ring-kree-orange" required>
+                       <label for="reg-terms" class="text-sm text-gray-600">
+                           <span id="reg-terms">J'accepte les</span> <a href="#" class="text-kree-blue hover:underline" id="reg-terms-link">conditions générales</a>
+                       </label>
+                   </div>
+
+                   <!-- Button -->
+                   <div class="col-span-full">
+                       <button type="submit"
+                           class="w-full bg-kree-orange text-white font-bold py-4 rounded-xl hover:bg-[#e55a00]
+                           transition-colors shadow-lg shadow-orange-500/20 liquid-effect" id="reg-submit">
+                           Créer mon compte
+                       </button>
+                   </div>
+
+               </form>
+           </div>
+
+       </div>
+   </div>
+
+   <!-- WhatsApp Chat Modal -->
+   <div id="whatsapp-modal" class="fixed inset-0 z-[70] hidden flex items-end justify-end p-4 md:p-6 pointer-events-none">
+       <div class="absolute inset-0" onclick="closeWhatsAppModal()"></div>
+       
+       <!-- Chat Container -->
+       <div class="relative w-full max-w-md h-[600px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col pointer-events-auto animate-fade-in border border-gray-200">
+           
+           <!-- Chat Header -->
+           <div class="bg-green-500 text-white p-4 flex items-center gap-3">
+               <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                   <i data-lucide="message-circle" class="w-5 h-5"></i>
+               </div>
+               <div class="flex-1">
+                   <h3 class="font-bold">Assistant KREE</h3>
+                   <p class="text-xs text-white/80 opacity-90">En ligne • Réponse immédiate</p>
+               </div>
+               <div class="flex gap-2">
+                   <button onclick="minimizeChat()" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                       <i data-lucide="minus" class="w-4 h-4"></i>
+                   </button>
+                   <button onclick="closeWhatsAppModal()" class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded-full transition-colors">
+                       <i data-lucide="x" class="w-4 h-4"></i>
+                   </button>
+               </div>
+           </div>
+
+           <!-- Chat Messages -->
+           <div id="whatsapp-chat" class="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 custom-scroll">
+               
+               <!-- Message automatique de bienvenue -->
+               <div class="flex justify-start">
+                   <div class="max-w-[80%] bg-white rounded-2xl rounded-tl-none p-4 shadow-sm border border-gray-100">
+                       <p class="text-sm text-gray-800">👋 Bonjour ! Je suis l'assistant KREE. Je peux vous aider avec :</p>
+                       <ul class="text-sm text-gray-600 mt-2 space-y-1">
+                           <li>• Informations sur la location longue durée</li>
+                           <li>• Tarifs et disponibilités</li>
+                           <li>• Documents nécessaires</li>
+                           <li>• Support technique</li>
+                       </ul>
+                       <span class="text-xs text-gray-500 mt-2 block">Tapez votre question...</span>
+                   </div>
+               </div>
+           </div>
+
+           <!-- Typing Indicator -->
+           <div id="typing-indicator" class="hidden px-4 py-2">
+               <div class="flex items-center gap-2 text-gray-500">
+                   <div class="flex gap-1">
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                       <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                   </div>
+                   <span class="text-xs">Assistant KREE écrit...</span>
+               </div>
+           </div>
+
+           <!-- Chat Input -->
+           <div class="border-t border-gray-200 p-4 bg-white">
+               <div class="flex gap-2">
+                   <input 
+                       type="text" 
+                       id="whatsapp-input" 
+                       placeholder="Posez votre question..." 
+                       class="flex-1 px-4 py-3 rounded-xl border border-gray-200 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 outline-none transition-all"
+                       onkeypress="handleWhatsAppInput(event)"
+                   >
+                   <button onclick="sendWhatsAppMessage()" class="bg-green-500 text-white p-3 rounded-xl hover:bg-green-600 transition-colors shadow-lg">
+                       <i data-lucide="send" class="w-5 h-5"></i>
+                   </button>
+               </div>
+           </div>
+       </div>
+   </div>
+
+   <!-- WhatsApp Float Button -->
+   <a href="javascript:void(0)" 
+      onclick="openWhatsAppModal()"
+      class="whatsapp-float" 
+      title="Chattez avec notre assistant">
+       <i data-lucide="message-circle" class="w-8 h-8"></i>
+   </a>
+
+   <!-- FOOTER -->
+   <footer>
+       <!-- Bottom Bar -->
+       <div class="border-t border-white/10 bg-kree-dark/50">
+           <div class="max-w-7xl h-[100px] mx-auto px-4 py-6">
+               <div class="flex flex-col md:flex-row justify-between items-center text-center gap-4">
+                   <div class="text-gray-100 text-sm">
+                       © 2025 KREE. Tous droits réservés. | Leader de la LLD au Maroc
+                   </div>
+                   <div class="flex items-center gap-6 text-sm">
+                       <a href="#" class="text-white hover:text-kree-orange transition-colors">Mentions légales</a>
+                       <a href="#" class="text-white hover:text-kree-orange transition-colors">Politique de confidentialité</a>
+                       <a href="#" class="text-white hover:text-kree-orange transition-colors">CGV</a>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </footer>
+
+   <!-- SCRIPT -->
+   <script>
+       // SYSTÈME DE TRADUCTION
+       const translations = {
+           'fr': {
+               // Navigation
+               'Accueil': 'Accueil',
+               'À propos': 'À propos',
+               'Agences': 'Agences',
+               "Voir l'Espace client": "Voir l'Espace client",
+               'Mon Espace': 'Mon Espace',
+               
+               // Section Hero
+               'Leader de la LLD au Maroc': 'Leader de la LLD au Maroc',
+               'La liberté': 'La liberté',
+               'sur mesure.': 'sur mesure.',
+               'Configurez votre loyer en temps réel': 'Configurez votre loyer en temps réel. Choisissez la durée, le kilométrage et repartez avec votre véhicule premium sous 48h.',
+               
+               // À propos
+               'Notre Mission': 'Notre Mission',
+               'Nos Valeurs': 'Nos Valeurs',
+               'Excellence du service client': 'Excellence du service client',
+               'Transparence et confiance': 'Transparence et confiance',
+               'Innovation continue': 'Innovation continue',
+               'Respect de l\'environnement': 'Respect de l\'environnement',
+               'Contactez-nous': 'Contactez-nous',
+               'Adresse': 'Adresse',
+               
+               // Agences
+               'Nos Agences': 'Nos Agences',
+               'Réseau national de locations': 'Réseau national de locations',
+               'Téléchargez notre App': 'Téléchargez notre App',
+               'Gérez vos locations en toute simplicité': 'Gérez vos locations en toute simplicité',
+               'Télécharger sur': 'Télécharger sur',
+               'Disponible sur': 'Disponible sur',
+               'Siège principal': 'Siège principal',
+               'Agence capitale': 'Agence capitale',
+               'Agence touristique': 'Agence touristique',
+               
+               // Footer
+               'Navigation': 'Navigation',
+               'Contact': 'Contact',
+               'Suivez-nous': 'Follow us'
+           },
+           'en': {
+               // Navigation
+               'Accueil': 'Home',
+               'À propos': 'About',
+               'Agences': 'Agencies',
+               "Voir l'Espace client": 'Partner Area',
+               'Mon Espace': 'My Space',
+               
+               // Section Hero
+               'Leader de la LLD au Maroc': 'LLD Leader in Morocco',
+               'La liberté': 'Freedom',
+               'sur mesure.': 'on demand.',
+               'Configurez votre loyer en temps réel': 'Configure your rent in real time. Choose duration, mileage and drive away with your premium vehicle within 48h.',
+               
+               // À propos
+               'Notre Mission': 'Our Mission',
+               'Nos Valeurs': 'Our Values',
+               'Excellence du service client': 'Customer service excellence',
+               'Transparence et confiance': 'Transparency and trust',
+               'Innovation continue': 'Continuous innovation',
+               'Respect de l\'environnement': 'Environmental respect',
+               'Contactez-nous': 'Contact Us',
+               'Adresse': 'Address',
+               
+               // Agences
+               'Nos Agences': 'Our Agencies',
+               'Réseau national de locations': 'National rental network',
+               'Téléchargez notre App': 'Download our App',
+               'Gérez vos locations en toute simplicité': 'Manage your rentals with ease',
+               'Télécharger sur': 'Download on',
+               'Disponible sur': 'Available on',
+               'Siège principal': 'Headquarters',
+               'Agence capitale': 'Capital agency',
+               'Agence touristique': 'Tourist agency',
+               
+               // Footer
+               'Navigation': 'Navigation',
+               'Contact': 'Contact',
+               'Suivez-nous': 'Follow us'
+           },
+           'ar': {
+               // Navigation
+               'Accueil': 'الرئيسية',
+               'À propos': 'حولنا',
+               'Agences': 'الفروع',
+               "Voir l'Espace client": 'مساحة الشريك',
+               'Mon Espace': 'مساحتي',
+               
+               // Section Hero
+               'Leader de la LLD au Maroc': 'الرائد في الإيجار طويل المدى بالمغرب',
+               'La liberté': 'الحرية',
+               'sur mesure.': 'حسب الطلب.',
+               'Configurez votre loyer en temps réel': 'قم بتكوين إيجارك في الوقت الفعلي. اختر المدة والكيلومترات وابرح بسيارتك الفاخرة خلال 48 ساعة.',
+               
+               // About
+               'À propos de KREE': 'حول KREE',
+               'Leader marocain de la location longue durée': 'الرائد المغربي في الإيجار طويل المدى',
+               'Notre Mission': 'مهمتنا',
+               'Nos Valeurs': 'قيمنا',
+               'Excellence du service client': 'تميز خدمة العملاء',
+               'Transparence et confiance': 'الشفافية والثقة',
+               'Innovation continue': 'الابتكار المستمر',
+               'Respect de l\'environnement': 'احترام البيئة',
+               'Contactez-nous': 'اتصل بنا',
+               'Adresse': 'العنوان',
+               
+               // Agences
+               'Nos Agences': 'فروعنا',
+               'Réseau national de locations': 'شبكة وطنية للتأجير',
+               'Téléchargez notre App': 'حمّل تطبيقنا',
+               'Gérez vos locations en toute simplicité': 'إدارة تأجيراتك بكل سهولة',
+               'Télécharger sur': 'حمّل من',
+               'Disponible sur': 'متوفر على',
+               'Siège principal': 'المقر الرئيسي',
+               'Agence capitale': 'فرع العاصمة',
+               'Agence touristique': 'فرع سياحي',
+               
+               // Footer
+               'Navigation': 'التنقل',
+               'Contact': 'اتصل',
+               'Suivez-nous': 'تابعنا'
+           }
+       };
+
+       // Déclaration de la langue courante
+       let currentLanguage = 'fr';
+
+       // Helper function to translate text
+       function t(key) {
+           const translation = translations[currentLanguage];
+           return translation && translation[key] ? translation[key] : key;
+       }
+
+       // Toggle Mobile Menu - FONCTION CORRIGÉE
+       function toggleMobileMenu() {
+           const mobileMenu = document.getElementById('mobile-menu');
+           const burgerBtn = document.getElementById('burger-menu-btn');
+           
+           if (mobileMenu) {
+               mobileMenu.classList.toggle('hidden');
+               
+               // Changer l'icône du burger en croix et vice versa
+               if (!mobileMenu.classList.contains('hidden')) {
+                   // Menu ouvert - changer en icône X
+                   burgerBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>';
+                   // Recreate Lucide icons quand le menu est ouvert
+                   lucide.createIcons();
+               } else {
+                   // Menu fermé - changer en icône menu
+                   burgerBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+                   lucide.createIcons();
+               }
+           }
+       }
+
+       function changeLanguage(lang) {
+           currentLanguage = lang;
+           applyTranslations();
+           updateLanguageButtons();
+           updateCurrentLangDisplay();
+           
+           // Changer la direction du texte pour l'arabe
+           if (lang === 'ar') {
+               document.documentElement.dir = 'rtl';
+               document.documentElement.lang = 'ar';
+               document.body.classList.add('rtl');
+           } else {
+               document.documentElement.dir = 'ltr';
+               document.documentElement.lang = lang;
+               document.body.classList.remove('rtl');
+           }
+           
+           // Recréer les icônes Lucide
+           lucide.createIcons();
+       }
+
+       function applyTranslations() {
+           const t = translations[currentLanguage];
+           
+           if (!t) return;
+           
+           // Traduire les éléments avec des data-translate
+           document.querySelectorAll('[data-translate]').forEach(element => {
+               const key = element.getAttribute('data-translate');
+               if (t[key]) {
+                   element.textContent = t[key];
+               }
+           });
+           
+           // Traduire tous les h1, h2, h3, p, span, button, label qui contiennent du texte
+           const textElements = document.querySelectorAll('h1, h2, h3, h4, p, span, button, label, li, div');
+           textElements.forEach(element => {
+               // Skip elements with no-translate class
+               if (element.classList.contains('no-translate')) return;
+               
+               if (element.children.length === 0 && element.textContent.trim()) {
+                   const text = element.textContent.trim();
+                   if (t[text]) {
+                       element.textContent = t[text];
+                   }
+               }
+           });
+           
+           // Traduire les éléments avec des IDs spécifiques
+           const elementsToTranslate = {
+               'nav-auth-text': 'Espace Client',
+               'nav-auth-text-mobile': 'Espace Client',
+               'current-lang': currentLanguage.toUpperCase(),
+               'country-label': 'Pays',
+               'phone-label': 'Téléphone',
+               'reg-firstname': 'Prénom',
+               'reg-lastname': 'Nom',
+               'reg-email': 'Email',
+               'reg-password': 'Mot de passe',
+               'reg-confirm': 'Confirmer',
+               'reg-terms': 'J\'accepte les',
+               'reg-terms-link': 'conditions générales',
+               'reg-submit': 'Créer mon compte',
+               'login-title': 'Bienvenue !',
+               'login-subtitle': 'Accédez à votre espace ',
+               'login-email': 'Email',
+               'login-password': 'Mot de passe',
+               'login-submit': 'Se connecter',
+               'register-title': 'Créer un compte',
+               'register-subtitle': 'Inscrivez-vous en quelques secondes',
+               'login-tab': 'Connexion',
+               'register-tab': 'Inscription'
+           };
+
+           Object.keys(elementsToTranslate).forEach(id => {
+               const element = document.getElementById(id);
+               if (element && t[elementsToTranslate[id]]) {
+                   if (element.tagName === 'INPUT' || element.tagName === 'SELECT') {
+                       element.placeholder = t[elementsToTranslate[id]];
+                   } else if (element.tagName === 'LABEL') {
+                       element.textContent = t[elementsToTranslate[id]];
+                   } else {
+                       element.textContent = t[elementsToTranslate[id]];
+                   }
+               }
+           });
+
+           // Traduire les options du sélecteur de pays
+           const countrySelect = document.getElementById('reg-country');
+           if (countrySelect && t['Sélectionner un pays']) {
+               countrySelect.options[0].textContent = t['Sélectionner un pays'];
+           }
+       }
+
+       function updateLanguageButtons() {
+           const langButtons = ['fr', 'en', 'ar'];
+           const currentLangBtn = document.getElementById('current-lang');
+           
+           if (currentLangBtn) {
+               currentLangBtn.textContent = currentLanguage.toUpperCase();
+           }
+           
+           langButtons.forEach(lang => {
+               const btn = document.getElementById(`lang-${lang}`);
+               if (btn) {
+                   if (currentLanguage === lang) {
+                       btn.className = 'w-full text-left px-4 py-2 text-kree-orange font-bold bg-gray-100 text-sm';
+                   } else {
+                       btn.className = 'w-full text-left px-4 py-2 hover:bg-gray-100 text-sm text-gray-700';
+                   }
+               }
+           });
+       }
+
+       function updateCurrentLangDisplay() {
+           const currentLangElement = document.getElementById('current-lang');
+           if (currentLangElement) {
+               currentLangElement.textContent = currentLanguage.toUpperCase();
+           }
+       }
+
+       // Fonction pour mettre à jour le placeholder du téléphone selon le pays sélectionné
+       function updatePhonePlaceholder() {
+           const countrySelect = document.getElementById('reg-country');
+           const phoneInput = document.getElementById('reg-phone');
+           
+           if (countrySelect && phoneInput) {
+               const selectedOption = countrySelect.selectedOptions[0];
+               const phoneCode = selectedOption.getAttribute('data-code');
+               
+               if (phoneCode) {
+                   // Adapter le placeholder selon le code pays
+                   if (phoneCode === '+212') {
+                       phoneInput.placeholder = '+212 6 XX XX XX XX';
+                   } else if (phoneCode === '+33') {
+                       phoneInput.placeholder = '+33 X XX XX XX XX';
+                   } else if (phoneCode === '+1') {
+                       phoneInput.placeholder = '+1 (XXX) XXX-XXXX';
+                   } else if (phoneCode === '+44') {
+                       phoneInput.placeholder = '+44 X XXX XXXXXX';
+                   } else if (phoneCode === '+49') {
+                       phoneInput.placeholder = '+49 XXX XXXXXXX';
+                   } else if (phoneCode === '+39') {
+                       phoneInput.placeholder = '+39 XXX XXX XXXX';
+                   } else if (phoneCode === '+34') {
+                       phoneInput.placeholder = '+34 XXX XXX XXX';
+                   } else if (phoneCode === '+32') {
+                       phoneInput.placeholder = '+32 XXX XX XX XX';
+                   } else if (phoneCode === '+41') {
+                       phoneInput.placeholder = '+41 XX XXX XXXX';
+                   } else {
+                       phoneInput.placeholder = phoneCode + ' XXXXXXXX';
+                   }
+                   
+                   // Mettre à jour la valeur si elle existe déjà
+                   const currentValue = phoneInput.value;
+                   if (currentValue && !currentValue.startsWith(phoneCode)) {
+                       phoneInput.value = phoneCode + ' ' + currentValue.replace(/^\+\d+\s*/, '');
+                   } else if (!currentValue) {
+                       phoneInput.value = phoneCode + ' ';
+                   }
+               }
+           }
+       }
+
+       // Configuration des événements pour le sélecteur de pays
+       document.addEventListener('DOMContentLoaded', function() {
+           const countrySelect = document.getElementById('reg-country');
+           if (countrySelect) {
+               countrySelect.addEventListener('change', updatePhonePlaceholder);
+           }
+       });
+
+       // Gestion des onglets d'authentification
+       function switchAuthTab(tab) {
+           const loginTab = document.getElementById('login-tab');
+           const registerTab = document.getElementById('register-tab');
+           const loginForm = document.getElementById('login-form');
+           const registerForm = document.getElementById('register-form');
+           
+           if (tab === 'login') {
+               loginTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark shadow-sm';
+               registerTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500';
+               loginForm.classList.remove('hidden');
+               registerForm.classList.add('hidden');
+           } else {
+               registerTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all glass-effect text-kree-dark shadow-sm';
+               loginTab.className = 'flex-1 py-3 rounded-lg text-sm font-bold transition-all text-gray-500';
+               registerForm.classList.remove('hidden');
+               loginForm.classList.add('hidden');
+           }
+       }
+       window.switchAuthTab = switchAuthTab;
+
+       // Navigation entre sections
+       function showSection(sectionName) {
+           // Masquer toutes les sections
+           const sections = document.querySelectorAll('.section');
+           sections.forEach(section => section.classList.add('hidden'));
+           
+           // Afficher la section demandée
+           document.getElementById(sectionName + '-section').classList.remove('hidden');
+           
+           // Fermer le menu mobile si ouvert
+           const mobileMenu = document.getElementById('mobile-menu');
+           if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+               toggleMobileMenu();
+           }
+           
+           lucide.createIcons();
+       }
+
+       // AUTH & NAVIGATION
+       window.openAuthModal = () => { 
+           document.getElementById('auth-modal').classList.remove('hidden'); 
+           switchAuthTab('login'); 
+       }
+       window.closeAuthModal = () => document.getElementById('auth-modal').classList.add('hidden');
+
+       // Fonctions d'authentification simulées
+       window.simulateLogin = function() {
+           const email = document.getElementById('login-email-input').value.trim();
+           const password = document.getElementById('login-password-input').value.trim();
+           
+           // Simulation de connexion
+           alert('Connexion simulée pour ' + email);
+           closeAuthModal();
+       }
+
+       window.simulateRegister = function() {
+           const firstname = document.getElementById('reg-firstname-input').value.trim();
+           const lastname = document.getElementById('reg-lastname-input').value.trim();
+           const email = document.getElementById('reg-email-input').value.trim();
+           
+           // Simulation d'inscription
+           alert('Inscription simulée pour ' + firstname + ' ' + lastname + ' (' + email + ')');
+           closeAuthModal();
+       }
+
+       // WhatsApp Chat Functionality
+       let whatsappState = {
+           isOpen: false,
+           isMinimized: false,
+           messages: []
+       };
+
+       // Base de connaissances du chatbot
+       const chatbotKnowledge = {
+           'bonjour': 'Bonjour ! 👋 Je suis l\'assistant KREE. Comment puis-je vous aider aujourd\'hui ?',
+           'salut': 'Salut ! 😊 Je suis là pour répondre à vos questions sur la location longue durée.',
+           'catalogue': 'Nous avons 5 catégories de véhicules : Économique, Confort, 7/9 Places, Utilitaire et Luxe. Quelle catégorie vous intéresse ?',
+           'prix': 'Nos tarifs démarrent à partir de 3.200 DH/mois. Le prix exact dépend du modèle, de la durée et du kilométrage.',
+           'contact': '📞 Appelez-nous au +212 697 278 436\n📧 Email : contact@kree.ma\n📍 Adresses : Casablanca & Marrakech',
+           'merci': 'Avec plaisir ! 😊 N\'hésitez pas si vous avez d\'autres questions.',
+           'au revoir': 'À bientôt ! N\'oubliez pas de visiter notre site pour découvrir nos véhicules. 🚗'
+       };
+
+       // Fonctions du chatbot
+       window.openWhatsAppModal = function() {
+           const modal = document.getElementById('whatsapp-modal');
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           modal.classList.remove('hidden');
+           floatButton.style.display = 'none';
+           whatsappState.isOpen = true;
+           whatsappState.isMinimized = false;
+           
+           setTimeout(() => {
+               document.getElementById('whatsapp-input').focus();
+           }, 300);
+           
+           lucide.createIcons();
+       }
+
+       window.closeWhatsAppModal = function() {
+           const modal = document.getElementById('whatsapp-modal');
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           modal.classList.add('hidden');
+           floatButton.style.display = 'flex';
+           whatsappState.isOpen = false;
+       }
+
+       window.minimizeChat = function() {
+           const floatButton = document.querySelector('.whatsapp-float');
+           
+           whatsappState.isMinimized = !whatsappState.isMinimized;
+           const chatContainer = document.querySelector('#whatsapp-modal > div > div');
+           
+           if (whatsappState.isMinimized) {
+               chatContainer.classList.add('h-16');
+               document.getElementById('whatsapp-chat').classList.add('hidden');
+               document.querySelector('#whatsapp-modal .border-t').classList.add('hidden');
+               floatButton.style.display = 'flex';
+           } else {
+               chatContainer.classList.remove('h-16');
+               document.getElementById('whatsapp-chat').classList.remove('hidden');
+               document.querySelector('#whatsapp-modal .border-t').classList.remove('hidden');
+               floatButton.style.display = 'none';
+           }
+       }
+
+       window.handleWhatsAppInput = function(event) {
+           if (event.key === 'Enter') {
+               sendWhatsAppMessage();
+           }
+       }
+
+       window.sendWhatsAppMessage = function() {
+           const input = document.getElementById('whatsapp-input');
+           const message = input.value.trim();
+           
+           if (!message) return;
+           
+           addMessage(message, 'user');
+           input.value = '';
+           
+           // Réponse du chatbot
+           setTimeout(() => {
+               const response = getChatbotResponse(message);
+               addMessage(response, 'bot');
+           }, 1000);
+       }
+
+       function addMessage(text, sender) {
+           const chat = document.getElementById('whatsapp-chat');
+           const time = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+           
+           const messageDiv = document.createElement('div');
+           messageDiv.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+           
+           messageDiv.innerHTML = `
+               <div class="max-w-[80%] ${sender === 'user' ? 'bg-green-500 text-white rounded-2xl rounded-br-none' : 'bg-white rounded-2xl rounded-tl-none shadow-sm border border-gray-100'} p-4">
+                   <p class="text-sm whitespace-pre-line">${text}</p>
+                   <span class="text-xs ${sender === 'user' ? 'text-white/70' : 'text-gray-500'} mt-1 block">${time}</span>
+               </div>
+           `;
+           
+           chat.appendChild(messageDiv);
+           chat.scrollTop = chat.scrollHeight;
+           
+           // Sauvegarder le message
+           whatsappState.messages.push({ text, sender, time });
+       }
+
+       function getChatbotResponse(userMessage) {
+           const lowerMessage = userMessage.toLowerCase();
+           
+           // Recherche de correspondance dans la base de connaissances
+           for (const [key, response] of Object.entries(chatbotKnowledge)) {
+               if (lowerMessage.includes(key)) {
+                   return response;
+               }
+           }
+           
+           return 'Je ne suis pas sûr de comprendre. 🤔\n\nJe peux vous aider avec :\n• Les tarifs et modèles de véhicules\n• Les documents nécessaires\n• Le processus de location\n• L\'assistance technique\n\nPouvez-vous reformuler votre question ?';
+       }
+
+       // Initialisation
+       document.addEventListener('DOMContentLoaded', function() {
+           // Initialiser les traductions
+           applyTranslations();
+           updateLanguageButtons();
+           updatePhonePlaceholder();
+           
+           // Initialiser les icônes Lucide
+           lucide.createIcons();
+           
+           // Afficher la section home par défaut
+           showSection('home');
+       });
+   </script>
+</body>
+</html>
